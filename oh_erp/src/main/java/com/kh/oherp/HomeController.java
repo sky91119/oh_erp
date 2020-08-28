@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Handles requests for the application home page.
- */
+ 박솔의 테스트 1 */
 @Controller
 public class HomeController {
 	
