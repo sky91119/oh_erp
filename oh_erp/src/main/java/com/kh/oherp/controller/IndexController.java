@@ -7,16 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/template") // 첫주소
+@RequestMapping("/")
 public class IndexController {
 
-	@Autowired
-	private IndexController IndexController;
-
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index() {
-		return "template/index";
-		
+		return "index";
 	}
 
 	
