@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	mapper는 구문을 만들 수 있는 영역
+	일반적으로 테이블당 1개씩의 mapper를 둔다
+	
+	- namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+	- id : 구문을 외부에서 호출하기 위한 식별값
+	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
+	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
+ -->
+ <!-- namespace는 등록이랑 아무 상관이 없습니다 -->
+<mapper namespace="attendance">
+
+<!-- 
+parameterType하고 resultType 등록한걸로 쓰셔야됩니다
+아까 보니까 attendance_detailDto라고 써있던데 절대 안됩니다(등록이 안됐기 때문에 안되겠죠)
+반드시 등록한 이름으로 쓰시기 바랍니다
+어.. 움.. 네 알겠습니다..ㅠㅠ 감사합니다!! ㅠㅠㅠ -->
+<insert id="regist" parameterType="attendance">
+    
+    </insert>
+ 
+	<!-- 조회 (전부 다)-->
+	<select id = "getList" resultType="attendance">
+	select * from Attendance_detail order by attendance_no DESC
+	</select>	
+	
+<!-- 목록 검색  -->
+	<select id="search" parameterType="int" resultType="attendance">
+	select *from attendance_detail where instr(${type}, #{keyword}) >0 
+	order by DESC
+	</select>
+	
+	<select id="onlyList" parameterType="attendance">
+	
+	select*from attendance_detail
+	<if test="type!=null and keyword ! = null">
+	where instr(${type}, #{keyword}) >0
+	</if>
+	order by attendance_no DESC
+	
+	</select>
+	
+	<!-- 등록 -->
+	
+	
+	
+</mapper>
+
+
+
+
