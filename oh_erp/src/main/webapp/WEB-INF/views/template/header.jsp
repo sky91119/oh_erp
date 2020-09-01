@@ -181,16 +181,3 @@
     </div>
     
     <div class="col-sm-8 text-left"> 
-       <h1>출퇴근 관리</h1>
-       <hr>
-       <h1>갤린더</h1>
-       <hr>
-       <h1>게시판</h1>
-    </div>
-  </div>
-</div>
-<footer class="container-fluid text-center">
-  <p>Footer</p>
-</footer>
-</body>
-</html>
