@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     </div>
-  </div>
-</div>
-<footer class="container-fluid text-center">
+</div>  
+
+ </div>
+ 
+  <!--footer --> 
+<div class="jumbotron text-center" style="margin-bottom:0">
   <p>Footer</p>
-</footer>
+</div>
+
 </body>
 </html>

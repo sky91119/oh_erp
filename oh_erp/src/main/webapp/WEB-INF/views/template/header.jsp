@@ -1,26 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+<title>oherp-index</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-     <style>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+     <!--스타일 -->
+        <style>  
+         
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+            
    
     .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
+      margin-bottom: 0px;
+      border-radius: 0px;
     }
    
-    .row.content {height: 450px}
+    .row.content {height: auto;}
   
     .sidenav {
-      padding-top: 20px;
+      padding-top: 0px;
       background-color: #f1f1f1;
       height: auto;
     }
@@ -39,102 +56,59 @@
       }
       .row.content {height:auto;} 
     } 
-  </style>
-  
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-  <a class="navbar-brand" href="#">ERP</a> /<!-- 요게 홈으로 가게 링크걸기-->
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
- <ul class="nav navbar-nav">
-     
-     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">급여관리<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li>상용직</li>
-          <li><a href="#">급여계산대장</a></li>
-          <li><a href="#">급여현황</a></li>
-           <li>일용직</li>
-          <li><a href="#">근무입력</a></li>
-          <li><a href="#">급여계산대장</a></li>
-           <li><a href="#">급여현황</a></li>
-        </ul>
-      </li>
-      
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">근태관리<span class="caret"></span></a> <!--관리자만 보이게 하기-->
-        <ul class="dropdown-menu">
-          <li><a href="#">출퇴근기록관리</a></li>
-          <li><a href="#">근태조회</a></li>
-          <li><a href="#">일정</a></li>
-          <li><a href="#">요청관리</a></li>
-        </ul>
-      </li>
+         
+    </style>
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ERP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!--헤더부분 예제 https://getbootstrap.kr/docs/4.5/components/navs/ 참고하면됩니다. -->
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
    
-       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">갤린더<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">회사일정</a></li>
-          <li><a href="#">근무일정</a></li>
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="#">급여관리</a>
       </li>
-      
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">기본사항등록<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">사원등록</a></li>
-          <li><a href="#">일용직등록</a></li>
-          <li><a href="#">수당등록</a></li>
-          <li><a href="#">부서등록</a></li>
-          <li><a href="#">프로젝트등록</a></li>
-        </ul>
+        <li class="nav-item">
+        <a class="nav-link" href="#">근태관리</a>
       </li>
-      
-         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">전자결재<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-                <li>기안문서</li>
-                <li><a href="#">작성함</a></li>
-                <li><a href="#">진행함</a></li>
-                <li><a href="#">반려함</a></li>
-                <li><a href="#">완결함</a></li>
-                <li>결재문서</li>
-                <li><a href="#">미결함</a></li>
-                <li><a href="#">진행함</a></li>
-                <li><a href="#">반려함</a></li>
-                <li><a href="#">완결함</a></li>
-        </ul>
+        <li class="nav-item">
+        <a class="nav-link" href="#">갤린더</a>
       </li>
-      
-        <li class="dropdown"><a href="#">증명서발급</a></li>
-      
-
-         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">통합</a></li>
-          <li><a href="#">공지사항</a></li>
-          <li><a href="#">회사규정</a></li>
-          <li><a href="#">인사발령</a></li>
-        </ul>
+        <li class="nav-item">
+        <a class="nav-link" href="#">기본사항등록</a>
       </li>
-      
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">전자결재</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">증명서발급</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">게시판</a>
+      </li>
     </ul>
   </div>
-   </div>
+       <!--헤더부분 오른쪽 로그인 회원가입 -->
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up </a>
+      </li>
+      &nbsp;   &nbsp;;
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      </li>
+    </ul>
 </nav>
 
-<div class="container-fluid text-center">    
-  <div class="row content">
+
+  <!--nav 왼쪽 -->
+<div class="container-fluid text-center">  
+       <div class="row content">
     <div class="col-sm-2 sidenav">
-    
+      <hr>
      <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2019/12/22/98915688.2.jpg" class="img-circle" alt="Bird" width="100" height="100">
      
      <hr>
@@ -178,6 +152,7 @@
       <p><a href="#">공지사항</a></p>
       <p><a href="#">회사규정</a></p>
        <p><a href="#">인사발령</a></p>
-    </div>
-    
-    <div class="col-sm-8 text-left"> 
+   </div> 
+   
+       <!--본문 -->
+    <div class="col-sm" style="margin: 20px"> 
