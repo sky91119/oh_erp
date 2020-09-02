@@ -3,5 +3,6 @@
     부서등록
 <form action="regist" method="post">
 부서명<input type="text" name="department_name">
-메뉴<input type="text" name="department_use">
+<!--  사용여부<input type="text" name="department_use">-->
+<input type="submit" value="저장">
 </form>
