@@ -37,4 +37,27 @@ public class Attendance_detailCotnroller {
 		return "attendance/detail";
 	}
 	
+	
+	@GetMapping("/create")
+	public String create() {
+		return "attendance/create";
+	}
+	
+	@PostMapping("/create")
+	public String create(
+			@ModelAttribute Attendance_detailDto attendance_detailDto) {
+		return "redirect:/attendance/create_finish";
+	}
+	
+	
+	@GetMapping("/create_finish")
+	public String create_finish() {
+		return "attendance/create_finish";
+	}
+	
+	@PostMapping("/create_finish")
+	public String create_finish(
+			@ModelAttribute Attendance_detailDto attendance_detailDto) {
+		return "redirect:/attendance/create_finish";//"attendance/redirect:create_finish";
+	}
 }

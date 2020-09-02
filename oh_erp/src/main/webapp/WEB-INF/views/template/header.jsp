@@ -71,7 +71,7 @@
       
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">근태관리<span class="caret"></span></a> <!--관리자만 보이게 하기-->
         <ul class="dropdown-menu">
-          <li><a href="#">출퇴근기록관리</a></li>
+          <li><a href="<%=request.getContextPath()%>/attendance/detail">출퇴근기록관리</a></li>
           <li><a href="#">근태조회</a></li>
           <li><a href="#">일정</a></li>
           <li><a href="#">요청관리</a></li>
