@@ -15,4 +15,5 @@ public class AttendanceRequestDto {
 	private String attendance_request_start;
 	private String attendance_request_finish;
 	private String attendance_request_management;
+	private String attendance_request_today;
 }

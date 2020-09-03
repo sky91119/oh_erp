@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
@@ -66,52 +67,17 @@
      			</tr>
      		</thead>
      		<tbody>
-     			<tr>
-     				<td>근무 일정 생성</td>
-     				<td>김수미</td>
-     				<td>8월 31일 (월) 9:00 AM - 1:30 PM</td>
-     				<td>병원 갔다옴</td>
-     				<td>대기중</td>
-     				<td>08/28 10:34AM</td>
-     				<td>승인/거절</td>
+     			<c:forEach var="attendanceDto" items="${list}">
+     				<tr>
+     					<td>${attendanceDto.attendance_request_type}</td>
+     					<td>${attendanceDto.member_code}</td>
+     					<td>${attendanceDto.attendance_request_content}</td>
+     					<td>${attendanceDto.attendance_request_cause}</td>
+     					<td>${attendanceDto.attendance_request_management}</td>
+     					<td>${attendanceDto.attendance_request_today}</td>
+     					<td>승인/거절</td>
      			</tr>
-     			<tr>
-     				<td>근무 일정 생성</td>
-     				<td>김수미</td>
-     				<td>8월 31일 (월) 9:00 AM - 1:30 PM</td>
-     				<td>병원 갔다옴</td>
-     				<td>대기중</td>
-     				<td>08/28 10:34AM</td>
-     				<td>승인/거절</td>
-     			</tr>
-     			<tr>
-     				<td>근무 일정 생성</td>
-     				<td>김수미</td>
-     				<td>8월 31일 (월) 9:00 AM - 1:30 PM</td>
-     				<td>병원 갔다옴</td>
-     				<td>대기중</td>
-     				<td>08/28 10:34AM</td>
-     				<td>승인/거절</td>
-     			</tr>
-     			<tr>
-     				<td>근무 일정 생성</td>
-     				<td>김수미</td>
-     				<td>8월 31일 (월) 9:00 AM - 1:30 PM</td>
-     				<td>병원 갔다옴</td>
-     				<td>대기중</td>
-     				<td>08/28 10:34AM</td>
-     				<td>승인/거절</td>
-     			</tr>
-     			 <tr>
-     				<td>근무 일정 생성</td>
-     				<td>김수미</td>
-     				<td>8월 31일 (월) 9:00 AM - 1:30 PM</td>
-     				<td>병원 갔다옴</td>
-     				<td>대기중</td>
-     				<td>08/28 10:34AM</td>
-     				<td>승인/거절</td>
-     			</tr>
-     			
+     			</c:forEach>
      		</tbody>
      	</table>
      </div>
