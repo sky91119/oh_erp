@@ -1,6 +1,8 @@
 package com.kh.oherp.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,31 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public List<DepartmentDto> getList(Model model) {
+	public List<DepartmentDto> list(Model model) {
 		List<DepartmentDto> list = sqlSession.selectList("department.getList");
 		model.addAttribute("list", list);
+		return list;
+	}
+
+//	@Override
+//	public List<DepartmentDto> search(String type, String keyword, Model model) {
+//		Map<String, String> param = new HashMap<>();
+//		param.put("type", type);
+//		param.put("keyword", keyword);
+//		
+//	List<DepartmentDto> list = sqlSession.selectList("department.search", param);
+//	model.addAttribute("list", list);
+//		return list;
+//	}
+
+	@Override
+	public List<DepartmentDto> search(String type, String keyword, Model model) {
+		Map<String, String> map = new HashMap<>();
+		map.put("type",type);
+		map.put("keyword",keyword);
+		List<DepartmentDto> list= sqlSession.selectList("department.unionList", map);
+		model.addAttribute("list", list);
+
 		return list;
 	}
 

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!--부서 검색창 -->
-<form action="union" method="post">
+<form action="search" method="post">
 <span>부서리스트</span>
 
 	<input type="text" name="keyword">
@@ -12,7 +12,7 @@
 	<input type="submit" value="검색">
 	
 	<select name="type">
-		<option value="department_code">부서코드</option>
+		<option value="department_no">부서코드</option>
 		<option value="department_name">부서명</option>
 		<option value="department_use">사용</option>
 	</select>
