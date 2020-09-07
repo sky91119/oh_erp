@@ -7,4 +7,5 @@ import com.kh.oherp.entity.AttendanceRequestDto;
 
 public interface AttendanceRequestDao {
 	List<AttendanceRequestDto> getList(Map<String, Object> map);
+	void requestManageYes(int attendance_request_no);
 }

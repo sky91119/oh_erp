@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
 	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
 -->
-
+	<!-- 요청관리 리스트(검색) -->
 	<select id="getList" resultType="attendanceRequestDto" parameterType="map">
 		SELECT * FROM attendance_request
 		<if test="type != null and keyword != null">
@@ -39,6 +39,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		ORDER BY attendance_request_no DESC
 	</select>
+	
+	<!-- 승인 버튼 누르면 상태 승인으로 변하게 -->
+	<update id="requestManageYes" parameterType="int">
+		update attendance_request SET attendance_request_management='승인됨'
+		where attendance_request_no=#{attendance_request_no}
+	</update>
+	
+	<!-- 승인 /거절 버튼 구현 -->
+	<update id="requestManageNo" parameterType="map">
+		<if test="">
+		update attendance_request SET attendance_request_management='거절됨'
+		</if>
+		where attendance_request_no=#{attendance_request_no}
+	</update>
 	
 </mapper>
 

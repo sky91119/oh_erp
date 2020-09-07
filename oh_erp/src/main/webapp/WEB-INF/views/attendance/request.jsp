@@ -34,7 +34,7 @@
 		font-size:16px;
 		text-align:right;
 	}       
-/*요청관리*/
+/*요청관리 상태*/
 	.waiting{
          background-color: #D27300;
          margin: 0px 3px 0px 0px;
@@ -43,6 +43,25 @@
          text-align: center;
          font-size: 0.75rem;
          border-radius: 2px;
+	}
+	.ok{
+	     background-color: #01853d;
+         margin: 0px 3px 0px 0px;
+         padding: 2px 8px;
+         color: #ffffff;
+         text-align: center;
+         font-size: 0.75rem;
+         border-radius: 2px;
+	}
+	.no{
+	 	 background-color: #bf0920;
+         margin: 0px 3px 0px 0px;
+         padding: 2px 8px;
+         color: #ffffff;
+         text-align: center;
+         font-size: 0.75rem;
+         border-radius: 2px;
+         #bf0920
 	}
 /*텍스트*/
 	.left-font{
@@ -87,24 +106,44 @@
      		</thead>
      		<tbody>
      			<c:forEach var="attendanceDto" items="${list}">
-     				<tr>
+     				<tr>	
      					<td>${attendanceDto.attendance_request_type}</td>
      					<td>${attendanceDto.member_code}</td>
      					<td>${attendanceDto.attendance_request_content}</td>
      					<td>${attendanceDto.attendance_request_cause}</td>
      					<td>
-     						<div class="waiting offset-2 col-6">
-     							${attendanceDto.attendance_request_management}
-     						</div>
+							<c:set var="manage" value="${attendanceDto.attendance_request_management}" />
+							<c:choose>
+								<c:when test="${manage eq '거절됨'}">
+									<div class="no offset-2 col-6">
+     									${attendanceDto.attendance_request_management}
+     								</div>
+								</c:when>
+								<c:when test="${manage eq '승인됨'}">
+								  	 <div class="ok offset-2 col-6">
+     									${attendanceDto.attendance_request_management}
+     								</div>
+								</c:when>
+								<c:otherwise>
+									<div class="waiting offset-2 col-6">
+     									${attendanceDto.attendance_request_management}
+     								</div>
+								</c:otherwise>
+							</c:choose>			
      					</td>
      					<td>
      						<fmt:parseDate value="${attendanceDto.attendance_request_today}" 
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
      					</td>
-     					<td>
-     						<button class="btn btn-outline-primary btn-sm">승인</button>
-     						<button class="btn btn-outline-danger btn-sm">거절</button>
+     					<td>	<!-- 승인/거절 버튼 -->
+     						<c:if test="${manage eq '대기중'}">
+     							<form action=${pageContext.request.contextPath}/attendance/request_yes method="post">
+     								<input type="hidden" name="attendance_request_no" value="${attendanceDto.attendance_request_no}">
+     								<button class="btn btn-outline-primary btn-sm">승인</button>
+     							</form>
+     								<button class="btn btn-outline-danger btn-sm">거절</button>
+     						</c:if>
      					</td>
      			</tr>
      			</c:forEach>

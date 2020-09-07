@@ -21,5 +21,11 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 		return list;
 	}
 
+	@Override
+	public void requestManageYes(int attendance_request_no) {
+		sqlSession.update("attendanceRequest.requestManageYes",attendance_request_no);		
+	}
+
+
 	
 }
