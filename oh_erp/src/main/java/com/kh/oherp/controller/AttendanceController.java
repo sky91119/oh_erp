@@ -38,12 +38,26 @@ public class AttendanceController {
 		return"attendance/request";
 	}
 	
-	@PostMapping("/request_yes")
-	public String request_yes(
-				@RequestParam int attendance_request_no
+// 승인 버튼만 구현	
+//	@PostMapping("/request_yes")
+//	public String request_yes(
+//				@RequestParam int attendance_request_no
+//			) {
+//		attendanceRequestDao.requestManageYes(attendance_request_no);
+//		return "redirect:request";
+//	}
+	
+	@PostMapping("/request_manage")
+	public String request_manage(
+			@RequestParam int attendance_request_no,
+			@RequestParam String management
 			) {
-		attendanceRequestDao.requestManageYes(attendance_request_no);
-		return "redirect:request";
+		Map<String,Object>param=new HashMap<>();
+		param.put("attendance_request_no", attendance_request_no);
+		param.put("management", management);
+		attendanceRequestDao.requestManage(param);
+		
+		return"redirect:request";
 	}
 	
 }

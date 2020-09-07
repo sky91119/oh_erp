@@ -138,11 +138,12 @@
      					</td>
      					<td>	<!-- 승인/거절 버튼 -->
      						<c:if test="${manage eq '대기중'}">
-     							<form action=${pageContext.request.contextPath}/attendance/request_yes method="post">
+     							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
      								<input type="hidden" name="attendance_request_no" value="${attendanceDto.attendance_request_no}">
-     								<button class="btn btn-outline-primary btn-sm">승인</button>
+     								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
+     								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
      							</form>
-     								<button class="btn btn-outline-danger btn-sm">거절</button>
+     								
      						</c:if>
      					</td>
      			</tr>

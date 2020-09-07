@@ -21,9 +21,15 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 		return list;
 	}
 
+	//승인 버튼만 구현
+//	@Override
+//	public void requestManageYes(int attendance_request_no) {
+//		sqlSession.update("attendanceRequest.requestManageYes",attendance_request_no);		
+//	}
+
 	@Override
-	public void requestManageYes(int attendance_request_no) {
-		sqlSession.update("attendanceRequest.requestManageYes",attendance_request_no);		
+	public void requestManage(Map<String,Object> param) {
+		sqlSession.update("attendanceRequest.requestManage",param);
 	}
 
 
