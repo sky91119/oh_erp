@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class DepartmentDto {
 private int department_no;
 private String department_name, department_use;
+
 }
