@@ -80,11 +80,13 @@
     		<input type="date" class="form-control">
     	</div>
 		<div class="col-2">
-			<select class="form-control">
-				<option>모든 요청들</option>
-				<option>승인이 필요한 요청들</option>
-				<option>완료된 요청들</option>
-			</select>
+			<form action=${pageContext.request.contextPath}/attendance/request method="post">
+				<select class="form-control" name="type" onchange="this.form.submit()">
+					<option value="모든">모든 요청들</option>
+					<option value="대기중">승인이 필요한 요청들</option>
+					<option value="완료됨">완료된 요청들</option>
+				</select>
+			</form>
         </div>
         <div class="col-8 sum-request">
         	<span>총 요청수 : 3</span>

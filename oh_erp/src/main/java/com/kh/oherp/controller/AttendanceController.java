@@ -22,15 +22,13 @@ public class AttendanceController {
 	@Autowired
 	private AttendanceRequestDao attendanceRequestDao;
 	
-	@GetMapping("/request")
+	@RequestMapping("/request")
 	public String reqeust(
 				@RequestParam(required = false) String type,
-				@RequestParam(required = false) String keyword,
 				Model model) {
 		
 		Map<String,Object>map=new HashMap<>();
 		map.put("type",type);
-		map.put("keyword",keyword);
 		
 		List<AttendanceRequestDto>list=attendanceRequestDao.getList(map);
 		model.addAttribute("list",list);
