@@ -25,10 +25,14 @@ public class AttendanceController {
 	@RequestMapping("/request")
 	public String reqeust(
 				@RequestParam(required=false,defaultValue="모든 요청들") String type,
+				@RequestParam(required=false)String startDate,
+				@RequestParam(required=false)String finishDate,
 				Model model) {
 		
 		Map<String,Object>map=new HashMap<>();
 		map.put("type",type);
+		map.put("startDate",startDate);
+		map.put("finishDate",finishDate);
 		
 		List<AttendanceRequestDto>list=attendanceRequestDao.getList(map);
 		model.addAttribute("list",list);

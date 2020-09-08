@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<if test="type=='완료된 요청들'">
 					where attendance_request_management='승인됨' or attendance_request_management='거절됨'
 				</if>
-			</if>		
+			</if>	
 		ORDER BY attendance_request_no DESC
 	</select>
 	

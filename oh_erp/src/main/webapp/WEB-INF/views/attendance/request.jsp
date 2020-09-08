@@ -75,7 +75,22 @@
 	/*텍스트*/
 		.left-font{
 			text-align:left;
-		}	
+		}
+		
+		.left-float40{
+			float:left;			
+			width: 38%;
+			text-align:left;
+		}
+		
+		.left-float60{
+			float:left;			
+			width: 62%;
+			text-align:left;
+		}
+		.inline{
+			display:inline;
+		};
 	
 	</style>
     <script>
@@ -95,7 +110,7 @@
                 
                 //시작일 지정
                 //minDate:new Date(),//- 오늘부터 선택 가능
-                minDate:moment(new Date()).add(1, 'days'),
+               // minDate:moment(new Date()).add(1, 'days'),
                 
                 //문서에 포함시켜 표시
                 //inline:true,
@@ -111,13 +126,10 @@
                 selectBackword: false,
                 
                 //주말 제외
-                disableWeekends:true,
+                disableWeekends:false,
                 
                 //날짜 제외
                 disableDates:[
-                    '2020-08-05',
-                    '2020-08-06',
-                    '2020-08-07'
                 ],
                 
                 //선택 후 이벤트 설정(start와 end는 momentjs의 객체)
@@ -137,25 +149,34 @@
 	</div>
     
     <div class="row padding32-bot">
-    	<div class="col-2">
-    		<input type="text" class="picker-start">
-  			<input type="text" class="picker-end">
-    	</div>
-		<div class="col-2">
-			<form action=${pageContext.request.contextPath}/attendance/request method="post">
-				<select class="form-control" name="type" onchange="this.form.submit()">
-					<option value="" class="manage">${map.type}</option>
-					<option value="모든 요청들">모든 요청들</option>
-					<option value="승인이 필요한 요청들">승인이 필요한 요청들</option>
-					<option value="완료된 요청들">완료된 요청들</option>
-				</select>
+    	
+    	<!-- 조회 날짜 선택 -->
+    	<div class="col-6">
+    		<form action=${pageContext.request.contextPath}/attendance/request method="post">
+    			<div class="left-float40 inline">
+    				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜">
+  					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜">
+  				</div>
+    			<!--<span>시작${map.startDate}</span>
+    			<span> 끝${map.finishDate}</span> -->
+		<!-- 상태 선택 -->
+				<div class="left-float60">
+					<select class="inline form-control col-6" name="type" onchange="this.form.submit()">
+						<option value="" class="manage">${map.type}</option>
+						<option value="모든 요청들">모든 요청들</option>
+						<option value="승인이 필요한 요청들">승인이 필요한 요청들</option>
+						<option value="완료된 요청들">완료된 요청들</option>
+					</select>
+				</div>
 			</form>
         </div>
-        <div class="col-8 sum-request">
+        
+        <div class="col-6 sum-request">
         	<span>총 요청수 : 3</span>
         </div>
 
      </div>
+     
      <div>
      	<table class="table left-font">
      		<thead>
