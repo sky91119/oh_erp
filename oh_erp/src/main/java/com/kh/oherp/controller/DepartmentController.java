@@ -33,7 +33,7 @@ public class DepartmentController {
 	public String regist(@ModelAttribute DepartmentDto departmentDto) {
 		//DepartmentDto를 등록
 		boolean result = departmentDao.regist(departmentDto);
-				
+
 		if(result) {
 			return "redirect:regist_finish";
 		} else {
