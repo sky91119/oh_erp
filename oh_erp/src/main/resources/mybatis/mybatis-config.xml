@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- <typeAlias type="com.kh.spring07.entity.StudentDto" alias="student"/> -->
 		 <typeAlias type="com.kh.oherp.entity.DepartmentDto" alias="departmentDto"/>
 		<typeAlias type="com.kh.oherp.entity.Attendance_detailDto" alias="attendance"/>
-
+        <typeAlias type="com.kh.oherp.entity.MemberDto" alias="memberDto"/>
 		
 	</typeAliases>
 	
