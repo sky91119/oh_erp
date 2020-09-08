@@ -41,6 +41,7 @@ public class DepartmentController {
 		}
 	}
 	
+	
 	@GetMapping("/list")
 	public String list(Model model) {
 		departmentDao.list(model);
@@ -76,4 +77,6 @@ public class DepartmentController {
 		
 		return "department/list";
 	}
+		
+	
 }
