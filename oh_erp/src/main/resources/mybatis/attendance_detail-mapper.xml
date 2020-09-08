@@ -13,42 +13,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
  -->
  <!-- namespace는 등록이랑 아무 상관이 없습니다 -->
-<mapper namespace="attendance">
+<mapper namespace="attendance_detail">
 
 <!-- 
 parameterType하고 resultType 등록한걸로 쓰셔야됩니다
 아까 보니까 attendance_detailDto라고 써있던데 절대 안됩니다(등록이 안됐기 때문에 안되겠죠)
-반드시 등록한 이름으로 쓰시기 바랍니다
-어.. 움.. 네 알겠습니다..ㅠㅠ 감사합니다!! ㅠㅠㅠ -->
-<insert id="regist" parameterType="attendance">
-    
-    </insert>
+ -->
+	<insert id="regist" parameterType="attendance_detailDto">
+	
+	insert into attendance_detail(
+attendance_no,
+member_code,
+attendance_date,
+attendance_spot,
+attendance_in_time1,
+attendance_in_time2,
+attendance_in_time3,
+attendance_out_time1,
+attendance_out_time2,
+attendance_out_time3,
+attendance_note,
+attendance_total
+	)values(
+attendance_detail_seq.nextval,
+#{member_code},
+#{attendance_date},
+#{attendance_spot},
+#{attendance_in_time1},
+#{attendance_in_time2},
+#{attendance_in_time3},
+#{attendance_out_time1},
+#{attendance_out_time2},
+#{attendance_out_time3},
+#{attendance_note},
+0	
+	)
+	</insert>
+
+<select id="onlycode" parameterType="int" resultType="attendance_detailDto">
+Select * from attendance_detail 
+where member_code = #{member_code} 
+</select>	
  
-	<!-- 조회 (전부 다)-->
-	<select id = "getList" resultType="attendance">
-	select * from Attendance_detail order by attendance_no DESC
-	</select>	
-	
-<!-- 목록 검색  -->
-	<select id="search" parameterType="int" resultType="attendance">
-	select *from attendance_detail where instr(${type}, #{keyword}) >0 
-	order by DESC
-	</select>
-	
-	<select id="onlyList" parameterType="attendance">
-	
-	select*from attendance_detail
-	<if test="type!=null and keyword ! = null">
-	where instr(${type}, #{keyword}) >0
-	</if>
-	order by attendance_no DESC
-	
-	</select>
-	
-	<!-- 등록 -->
-	
-	
-	
+ 
+ <select id="list" resultType="attendance_detailDto">
+ 
+SELECT 
+member.member_code, 
+member.member_name, 
+member.member_position, 
+attendance_detail.attendance_no, 
+attendance_detail.attendance_date, 
+attendance_detail.attendance_spot,
+attendance_detail.attendance_in_time1,
+attendance_detail.attendance_in_time2,
+attendance_detail.attendance_in_time3,
+attendance_detail.attendance_out_time1,
+attendance_detail.attendance_out_time2,
+attendance_detail.attendance_out_time3,
+attendance_detail.attendance_note,
+attendance_detail.attendance_total
+FROM member, attendance_detail
+WHERE member.member_code = attendance_detail.member_code; 
+ 
+ </select>
 </mapper>
 
 

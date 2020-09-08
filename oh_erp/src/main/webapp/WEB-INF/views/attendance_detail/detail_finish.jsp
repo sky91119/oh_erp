@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
@@ -24,46 +24,65 @@
 padding : 32px;
 }
 </style>
+
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-<div class = "padding32">
 
-<h1>출퇴근기록 생성하기(사원조회가능 + 보기만 가능)</h1>
-<br>
-<br>
-<!-- 날짜 -->
+<div class = "padding32" align="center">
 
-<form>
-<label>날짜</label>
-<input type = "Month">
-</form>
+    <div style="font-size: 50px;">
+    출퇴근기록 관리
+    </div>
+    
+<form action = "admin_page" method="post">
 
-<form>
-<select>
-<option value="">활성직원</option> 
-<option value="">출퇴근기록이 있는 직원만</option> 
-</select>
-</form>
+<div class = "table-ssideopen">
+<br><br>
 
-<form>
-<select>
-<option value="지각 표시 범위">2분</option> <!--for문으로 될 수 있을 것같소만 -->
-<option value="">출퇴근기록이 있는 직원만</option> 
-</select>
-</form>
+<h1 align = "center">출퇴근기록</h1>
+<hr width="90%">
 
-<table board = "2">
+<table>
 
 <thead>
 <tr>
+<th width="20%">사원이름</th>
+<th width= "10%">첫째 주 월</th>
+<th width= "10%">첫째 주 화</th>
+<th width= "10%">첫째 주 수</th>
+<th width= "10%">첫째 주 목</th>
+<th width= "10%">첫째 주 금</th>
+<th width= "10%">첫째 주 토</th>
+<th width= "10%">첫째 주 일</th>
+<th width="10%"> 합계</th>
+</tr>
+</thead>
 
-<th>
+<tbody align="center">
+<c:forEach var = "attendance_detailDto" items="${list}">
+<tr>
 
+<td>
+${attendance_detailDto.attendance_name}
+</td>
 
+<td>
+${attendance_detailDto.attendance_in_time1}:${attendance_detailDto.attendance_in_time2}
+<br>
+<hr>
+${attendance_detailDto.attendance_out_time1}:${attendance_detailDto.attendance_out_time2}
+<br>
+${attendance_detailDto.attendance_spot}
+</td>
 
-
+<td>${attendance_detailDto.member_position}</td>
+</c:forEach>
+</tbody>
 </table>
-
-
 </div>
+
+</form>
+    
+    </div>
+
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
