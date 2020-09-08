@@ -24,7 +24,7 @@ public class AttendanceController {
 	
 	@RequestMapping("/request")
 	public String reqeust(
-				@RequestParam(required = false) String type,
+				@RequestParam(required=false,defaultValue="모든 요청들") String type,
 				Model model) {
 		
 		Map<String,Object>map=new HashMap<>();
@@ -32,6 +32,7 @@ public class AttendanceController {
 		
 		List<AttendanceRequestDto>list=attendanceRequestDao.getList(map);
 		model.addAttribute("list",list);
+		model.addAttribute("map",map);
 		
 		return"attendance/request";
 	}

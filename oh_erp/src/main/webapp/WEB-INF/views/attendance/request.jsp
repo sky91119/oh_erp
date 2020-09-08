@@ -63,6 +63,14 @@
          border-radius: 2px;
          #bf0920
 	}
+/*요청관리 상태별 조회*/	
+	.manage{
+		background-color:lightgray;	
+	}
+	.managehover:hover{
+		background-color:lightgray;
+	}
+	
 /*텍스트*/
 	.left-font{
 		text-align:left;
@@ -82,9 +90,10 @@
 		<div class="col-2">
 			<form action=${pageContext.request.contextPath}/attendance/request method="post">
 				<select class="form-control" name="type" onchange="this.form.submit()">
-					<option value="모든">모든 요청들</option>
-					<option value="대기중">승인이 필요한 요청들</option>
-					<option value="완료됨">완료된 요청들</option>
+					<option value="" class="manage">${map.type}</option>
+					<option value="모든 요청들">모든 요청들</option>
+					<option value="승인이 필요한 요청들">승인이 필요한 요청들</option>
+					<option value="완료된 요청들">완료된 요청들</option>
 				</select>
 			</form>
         </div>

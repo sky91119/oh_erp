@@ -34,11 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 요청관리 리스트(검색) -->
 	<select id="getList" resultType="attendanceRequestDto" parameterType="map">
 		SELECT * FROM attendance_request
-			<if test="type!=null || type=='모든'">
-				<if test="type=='대기중'">
+			<if test="type!=null || type!='모든 요청들'">
+				<if test="type=='승인이 필요한 요청들'">
 					WHERE attendance_request_management='대기중'
 				</if>
-				<if test="type=='완료됨'">
+				<if test="type=='완료된 요청들'">
 					where attendance_request_management='승인됨' or attendance_request_management='거절됨'
 				</if>
 			</if>		
