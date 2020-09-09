@@ -27,32 +27,24 @@
 .padding32 {
 	padding: 32px;
 }
-
 .left {
 	text-align: left;
 	padding: 50px;
 }
-
 .inline {
 	display: inline-block;
 }
-
 .hidden_code{
 padding:30px;
-
 .row{
 padding :10px;
 }
-
-
 .col-4{
 text-align: left;
 }
-
 .inline {
    display: inline-block;
 }
-
 </style>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
@@ -159,10 +151,8 @@ class="form-control" name="attendance_in_time2">
 </div>
 			<script>
 				//현재시각구현
-
 				function showtime() { //현재시간을 출력하는 showtime 함수를 만듬
 					let date = new Date(); //date 변수 선언, DATE()생성자 함수를 이용하여 Date 객체를 생성
-
 					let currhour = date.getHours();
 					//Date객체 안에 내장함수인.getHours()함수, .getMinutes()함수는 각 시와 분을 출력하는 함수
 					let currminu = date.getMinutes();
@@ -171,29 +161,21 @@ class="form-control" name="attendance_in_time2">
 					//time 클래스를 .querySelector로 불러와, time변수에 저장. 
 					time.innerHTML = currhour + ":" + currminu;
 					//innerHTML을 사용하여 Time 클래스의 내용을 현재 시와 분으로 바꿔준다.  
-
 					setTimeout("showtime()", 1000);
-
 				}
-
 				//시간을 00:00 형식으로 출력하기
-
 				function addZeros(num, digit) {
 					//시, 분이 한 자리일 경우 앞에 0을 더해주는 함수 addZeros를 만듬
 					//addZeros의 매개변수는 num과 digit이고 각각 시와분과 자릿수를 의미
-
 					var zero = '';
 					num = num.toString(); //공백을 담고 있는 변수 zero를 선언
 					if (num.length < digit) { //num에 들어있는 값을 to.String을 통하여 문자열로 변환시킴
 						for (i = 0; i < digit - num.length; i++) {
 							zero += '0';
-
 						}
 					}
-
 					return zero + num;
 				}
-
 				showtime();
 			</script>
  

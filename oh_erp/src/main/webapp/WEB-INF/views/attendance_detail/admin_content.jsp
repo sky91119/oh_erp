@@ -6,51 +6,84 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<style>
+/*마진*/	
+	.margin20 {
+		margin: 20px 20px 20px 20px;
+	}
+	
+/*패딩*/
+	.padding32 {
+		padding:32px;
+	}	
+	.padding32-bot{
+		padding-bottom:32px;
+	}
+	.padding10{
+		padding:10px;
+	}
+/*제목*/
+	.title{
+		font-size: 25px;
+		text-align:left;
+		padding-bottom:15px;
+        }
+/*총 요청수*/ 
+	.sum-request{
+		font-size:16px;
+		text-align:right;
+	}       
+/*요청관리 상태*/
+	.waiting{
+         background-color: #D27300;
+         margin: 0px 3px 0px 0px;
+         padding: 2px 8px;
+         color: #ffffff;
+         text-align: center;
+         font-size: 0.75rem;
+         border-radius: 2px;
+	}
+	.ok{
+	     background-color: #01853d;
+         margin: 0px 3px 0px 0px;
+         padding: 2px 8px;
+         color: #ffffff;
+         text-align: center;
+         font-size: 0.75rem;
+         border-radius: 2px;
+	}
+	.no{
+	 	 background-color: #bf0920;
+         margin: 0px 3px 0px 0px;
+         padding: 2px 8px;
+         color: #ffffff;
+         text-align: center;
+         font-size: 0.75rem;
+         border-radius: 2px;
+         #bf0920
+	}
+/*텍스트*/
+	.left-font{
+		text-align:left;
+	}	
+	
+</style>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<div class="container-fluid">
+	<div>
+		<p class="title">근태상세관리</p>
+	</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+ <div class="row padding32-bot">
+    	<div class="col-2">
+    		<input type="date" class="form-control">
+    	</div>
+    	
 </head>
 <body>
 
-<style>
-.padding32 {
-	padding: 32px;
-}
-
-.left {
-	text-align: left;
-	padding: 50px;
-}
-
-.inline {
-	display: inline-block;
-}
-
-.hidden_code{
-padding:30px;
-
-.row{
-padding :30px;
-}
-
-
-.col-4{
-text-align: left;
-}
-</style>
-
-<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <div class="padding32" align="left">
 

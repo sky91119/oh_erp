@@ -21,11 +21,10 @@ parameterType하고 resultType 등록한걸로 쓰셔야됩니다
  -->
 	<insert id="regist" parameterType="attendance_detailDto">
 	
-	insert into attendance_detail(
+insert into attendance_detail(
 attendance_no,
 member_code,
 attendance_date,
-attendance_spot,
 attendance_in_time1,
 attendance_in_time2,
 attendance_in_time3,
@@ -38,7 +37,6 @@ attendance_total
 attendance_detail_seq.nextval,
 #{member_code},
 #{attendance_date},
-#{attendance_spot},
 #{attendance_in_time1},
 #{attendance_in_time2},
 #{attendance_in_time3},
@@ -56,27 +54,46 @@ where member_code = #{member_code}
 </select>	
  
  
- <select id="list" resultType="attendance_detailDto">
+ <select id="list" resultType="attendance_detailListVo">
  
 SELECT 
-member.member_code, 
-member.member_name, 
-member.member_position, 
-attendance_detail.attendance_no, 
-attendance_detail.attendance_date, 
-attendance_detail.attendance_spot,
-attendance_detail.attendance_in_time1,
-attendance_detail.attendance_in_time2,
-attendance_detail.attendance_in_time3,
-attendance_detail.attendance_out_time1,
-attendance_detail.attendance_out_time2,
-attendance_detail.attendance_out_time3,
-attendance_detail.attendance_note,
-attendance_detail.attendance_total
-FROM member, attendance_detail
-WHERE member.member_code = attendance_detail.member_code; 
- 
+m.member_code, 
+m.member_name,
+a.attendance_no, 
+a.attendance_date, 
+a.attendance_in_time1,
+a.attendance_in_time2,
+a.attendance_in_time3,
+a.attendance_out_time1,
+a.attendance_out_time2,
+a.attendance_out_time3,
+a.attendance_note,
+a.attendance_total
+FROM MEMBER m, ATTENDANCE_DETAIL a
+WHERE m.member_code = a.member_code
  </select>
+ 
+ <update id="update" parameterType="int" >
+ UPDATE attendance_detail set 
+ member_code=#{,
+ attendance_date=#{
+ attendance_in_time1=#{
+ attendance_in_time2=#{,
+ attendance_in_time3=#{
+ attendance_out_time1=#{
+ attendance_out_time2=#{
+ attendance_out_time3=#{
+ attendance_note=#{
+ attendance_total=#{
+ where attendance_no=#{
+ </update>
+ 
+ 
+ <delete id="del" parameterType="int">
+ delete attendance_detail where member_code=#{member_code}
+ </delete>
+ 
+ 
 </mapper>
 
 

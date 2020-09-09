@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <style>
-
 /*마진*/	
 	.margin20 {
 		margin: 20px 20px 20px 20px;
@@ -22,7 +22,6 @@
 	.padding10{
 		padding:10px;
 	}
-
 /*제목*/
 	.title{
 		font-size: 25px;
@@ -156,4 +155,3 @@
      
      
 </div>
-
