@@ -6,8 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.kh.oherp.entity.Attendance_detailDto;
+import com.kh.oherp.entity.Attendance_detailListVo;
 import com.kh.oherp.entity.DepartmentDto;
 
 @Repository
@@ -35,13 +37,11 @@ public class Attendance_detailDaolmpl implements Attendance_detailDao{
 
 
 	@Override
-	public List<Attendance_detailDto> list(Model model) {
-		List<Attendance_detailDto> admin_page = sqlSession.selectList("attendance_detail.list");
-		model.addAttribute("list", admin_page);
-		return admin_page;
+	public List<Attendance_detailListVo> list(Model model) {
+		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");
+		model.addAttribute("list", list);
+		return list;
 	}
-	
-
 
 	
 //	@Override
