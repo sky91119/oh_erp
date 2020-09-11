@@ -12,7 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
 	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
  -->
- <!-- namespace는 등록이랑 아무 상관이 없습니다 -->
 <mapper namespace="member">
 
 
@@ -56,13 +55,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
  
 	<!-- 단일조회 -->
-	<!--멤버테이블을 조회할건데 어떻게 조회할거죠 -->
-	<select id ="get"  parameterType="int" resultType="memberDto">
-	select * from member 
+	<!--
+	멤버테이블을 조회할건데 어떻게 조회할거죠
+	입력한 부서코드가 이미 있는지 비교해서 같으면 조회
+	-->
+	<select id ="get"  parameterType="int" resultType="departmentDto">
+	select * from department 
 	where department_no = #{department_no}
 	</select> 
 	
-	
+	<!--사원리스트 조회-->
+	<select id="getList" resultType="memberListVo">
+SELECT m.member_code, m.member_name, m.member_start_work, d.department_name
+FROM MEMBER m, DEPARTMENT d
+WHERE m.department_no = d.department_no
+	</select>
 	
 	
 </mapper>
