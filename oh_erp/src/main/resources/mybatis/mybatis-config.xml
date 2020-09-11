@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		 <typeAlias type="com.kh.oherp.entity.DepartmentDto" alias="departmentDto"/>
 		<typeAlias type="com.kh.oherp.entity.Attendance_detailDto" alias="attendance_detailDto"/>        
 		<typeAlias type="com.kh.oherp.entity.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.kh.oherp.entity.MemberListVo" alias="memberListVo"/>
 		<typeAlias type="com.kh.oherp.entity.AttendanceRequestDto" alias="attendanceRequestDto"/>
 
 

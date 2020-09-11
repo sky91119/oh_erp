@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +26,11 @@
 	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 	crossorigin="anonymous"></script>
 
+	
 </head>
-<body>
 
+
+<body>
 	<style>
 .padding32 {
 	padding: 32px;
@@ -59,32 +62,48 @@
 
 	<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<!--<div class=hidden_code>
+			★부서코드(안보이게 해야됨)<input type="text" name="department_no">
+			</div>  
+-->
+			
+		
+
+
 
 	<form action="regist" method="post">
 		<div class="container-fluid">
 
+			 <h1>부서</h1>
+
+<div id="styled-select">   
+    <select name="department_no" id="group">
+		<c:forEach var="DepartmentDto" items="${list}">
+        <option value="${DepartmentDto.department_no}">${DepartmentDto.department_name}</option>
+		</c:forEach>		
+    </select>   
+</div> 
+
+		<br><br>
 			<hr>
 
-			<div class=hidden_code>
-				★부서코드(안보이게 해야됨)<input type="text" name="department_no">
-			</div>
 			<br>
 
 			<div class="row">
 
 
 				<div class="col">
-					<h1>사원등록</h1>
+					<h1>사원정보</h1>
 					<br>
 					<br>
 				</div>
 				<div class="col">
-					<h1>급여통장</h1>
+					<h1>계좌정보</h1>
 					<br>
 					<br>
 				</div>
 				<div class="col">
-					<h1>월급</h1>
+					<h1>급여정보</h1>
 					<br>
 					<br>
 				</div>
@@ -104,18 +123,22 @@
 					성명<input type="text" name="member_name"> <br> <br>
 					주민등록번호<input type="text" name="member_resident_number"> <br>
 					<br> 입사일자 <input type="date" class="form-control" name="member_start_work">
-					<br> <br> 직위/직급<input type="text" name="member_position">
-					<br> <br> 퇴사일자<input type="date" class="form-control"  name="member_last_work">
-					<br> <br> 퇴사사유<input type="text"
-						name="member_last_work_cause">
+					<br> <br> 직위/직급<input type="text" name="member_position">					
+					<br> <br> 
+					퇴사일자<input type="date" class="form-control"  name="member_last_work"> 
+					<br> <br> 
+					퇴사사유<input type="text" name="member_last_work_cause">
+					<br> <br>
+					우편번호<input type="text" name="member_post"> 
+					<br> <br> 
+					주소<input type="text" name="member_address">
 				</div>
 
 				<div class="col-4">
 					은행<input type="text" name="member_bank"> <br>
 					<br> 계좌번호<input type="text" name="member_account"> <br>
 					<br> 예금주<input type="text" name="member_bank_name"> <br>
-					<br> 우편번호<input type="text" name="member_post"> <br>
-					<br> 주소<input type="text" name="member_address">
+
 				</div>
 
 				<div class="col-4">
