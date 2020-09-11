@@ -83,7 +83,7 @@ public class Attendance_detailController {
 @GetMapping("/admin_delete/{member_code}")
 public String admin_delete(@PathVariable int member_code) {
 	attendance_detailDao.delete(member_code);
-   return"redirect:/attendance_detail/admin_page";
+   return "redirect:/attendance_detail/admin_page";
   
 }
    
