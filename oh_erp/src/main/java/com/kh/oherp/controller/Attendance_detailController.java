@@ -52,7 +52,7 @@ public class Attendance_detailController {
 		return "attendance_detail/admin_page";
 }
 
-
+   
 //관리자만 볼 수 있는 조회페이지
 //@PostMapping("/admin_page")
 //public String admin_page(
