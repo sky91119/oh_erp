@@ -99,9 +99,18 @@ WHERE m.member_code = a.member_code
  
  
  <delete id="del" parameterType="int">
- delete attendance_detail where member_code=#{member_code}
+ delete attendance_detail where attendance_no=#{attendance_no}
  </delete>
  
+ <!-- 조회페이지 검색 -->
+ <select id="search" parameterType="Map" resultType="attendance_detailListVo">
+ 
+ Select * from attendance_detail 
+      <if test="type != null and keyword != null">
+         where instr(${type},#{keyword}) > 0
+      </if> 
+ order by attendance_no desc
+ </select>
  
 </mapper>
 

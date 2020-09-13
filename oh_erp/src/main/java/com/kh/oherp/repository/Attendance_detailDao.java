@@ -3,6 +3,7 @@ package com.kh.oherp.repository;
 import java.util.List;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
@@ -18,13 +19,16 @@ public interface Attendance_detailDao {
 	 public List<Attendance_detailListVo> list(String col, String order);
 	 
 // admin_page에 있는 데이터 삭제
-	 public void delete(int member_code); //번호를 알려줄테니깐 지우렴
+	 public void delete(int attendance_no); //번호를 알려줄테니깐 지우렴
 
 
-	
-	 
-	
+//admin_page 조회검색
+	 public List<Attendance_detailListVo> search(
+			 @RequestParam (required = false) String type,
+				@RequestParam (required = false) String keyword,
+				Model model
+				);
 	 
 //합계 증가를 만들거임
 //	public Attendance_detailDto total(int attendance_total);
-}
+	 }
