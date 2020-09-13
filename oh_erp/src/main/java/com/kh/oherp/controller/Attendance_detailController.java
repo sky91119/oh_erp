@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
 import com.kh.oherp.repository.Attendance_detailDao;
-import com.kh.oherp.repository.Attendance_detailListVoDao;
 
 
 @Controller
@@ -72,7 +72,7 @@ public class Attendance_detailController {
 //      return "attendance_detail/admin_page";
 //}
 
-  // @GetMapping("/admin_edit")
+  //@GetMapping("/admin_edit")
  //  public String admin_edit(@RequestParam int member_code, Model model){
 //   Attendance_detailListVo attendance_detailListVo = attendance_detailListVo.edit(member_code);
    
@@ -80,13 +80,26 @@ public class Attendance_detailController {
    //   return "attendance_detail/admin_edit";
   // }
 
-@GetMapping("/admin_delete/{member_code}")
-public String admin_delete(@PathVariable int member_code) {
-	attendance_detailDao.delete(member_code);
+@GetMapping("/delete/{attendance_no}")
+public String delete(@PathVariable int attendance_no) {
+	attendance_detailDao.delete(attendance_no);
    return "redirect:/attendance_detail/admin_page";
   
 }
-   
+
+@RequestMapping("/search")
+public String search(
+		@RequestParam (required = false) String type,
+		@RequestParam (required = false) String keyword,
+		Model model
+		) {
+	attendance_detailDao.search(type, keyword, model);
+
+	return "attendance_detail/admin_page";	
+}
+
+
+
 //관리자만 볼 수 있는 조회페이지
 //@PostMapping("/admin_page")
 //public String admin_page(

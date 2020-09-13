@@ -47,8 +47,8 @@ public class Attendance_detailDaolmpl implements Attendance_detailDao{
 
 
 	@Override
-public void delete(int member_code) {
-	sqlSession.delete("attendance_detail.del", member_code);
+public void delete(int attendance_no) {
+	sqlSession.delete("attendance_detail.del", attendance_no);
 		
 	}
 
@@ -58,6 +58,16 @@ public void delete(int member_code) {
 		map.put("col", col);
 		map.put("order", order);
 		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list2", map);
+		return list;
+	}
+
+	@Override
+	public List<Attendance_detailListVo> search(String type, String keyword, Model model) {
+	Map<String, String> map= new HashMap<>();
+	map.put("type", type);
+	map.put("keyword", keyword);
+	List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.search", map);
+	model.addAttribute("list",list);
 		return list;
 	}
 	

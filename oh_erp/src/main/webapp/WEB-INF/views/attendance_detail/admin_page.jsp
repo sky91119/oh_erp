@@ -64,6 +64,12 @@
 /*텍스트*/
 	.left-font{
 		text-align:left;
+		
+		
+		.add{
+		font-size:16px;
+		text-align:right;
+		}
 	}	
 	
 </style>
@@ -95,18 +101,41 @@
 			</form>
         </div>
         
+        <div class="col-sm-2 add">
+        <button><a href="<%=request.getContextPath()%>/admin_page.jsp">+출퇴근기록생성하기</a></button>
+        
+        </div>
+        
           <div class="col-8 sum-request">
+         
         	<span>총 시간 : 3</span><br>
         	<span>총 급여 : 3</span>
         </div>
         
         </div>
+        
+         <div class="col-2 search" class="form-control">
+         
+         <form action= "search" method="post">
+          <select name = "type" class="form-control">
+          <option value="member_code">사원번호</option>
+          <option value="attendance_date">근태날짜</option>
+          </select>
+      
+          <input type = "text" name="keyword" placeholder="검색창" class="form-control">
+        
+          
+      
+          <input type = "submit" value="검색" class="form-control">
+          
+          </form>
+          </div>
      <div>
      <br>
      	<table class="table left-font">
     <thead>
      			<tr>
-	
+	<div align ="center">
 	<th><a href="admin_page?col=attendance_no&order=desc">근태번호</a></th>
     <th><a href="admin_page?col=member_code&order=desc">사원번호</a></th>
    <!-- <th><a href="admin_page?col=member_name&order=desc">성명</a></th>-->
@@ -115,6 +144,7 @@
    <th>퇴근시간</a></th>
    <th>근무노트</th>
    <th>합계</th>
+  </div>
   
 
   </tr>
@@ -130,13 +160,13 @@
 				
 				<!-- <td>${Attendance_detailListVo.member_name}</td>-->
 				
-				<td>${Attendance_detailListVo.attendance_date}</td>
+				<!--<td>${Attendance_detailListVo.attendance_date}</td>-->
 				
-				<!--<td>
+				<td>
      						<fmt:parseDate value="${Attendance_detailListVo.attendance_date}" 
-							var="time" pattern="yyyy-MM-dd"/>
-							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
-     					</td>-->
+							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
+							<fmt:formatDate value="${time}" pattern="yyyy-MM-dd"/>
+     					</td>
 				
 				<td>${Attendance_detailListVo.attendance_in_time1} :
 				${Attendance_detailListVo.attendance_in_time2}
@@ -150,7 +180,7 @@
 				<td>${Attendance_detailListVo.attendance_total}</td>
 				
 				<td>
-				<a href = "admin_delete/${attendance_detailListVo.member_code}">삭제</a>
+				<a href ="delete/${Attendance_detailListVo.attendance_no}">삭제</a>
 				</td>
 			</tr>
 		</c:forEach>
