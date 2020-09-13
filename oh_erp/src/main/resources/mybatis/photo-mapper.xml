@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+   mapper는 구문을 만들 수 있는 영역
+   일반적으로 테이블당 1개씩의 mapper를 둔다
+   
+   - namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+ -->
+<mapper namespace="photo">
+
+<!-- photo-mapper -->
+	<select id="seq" resultType="int">
+	
+	select photo_seq.nextval From dual
+	
+	</select>
+	
+	<insert id="add" parameterType="photoDto">
+	insert into photo(
+	
+	photo_no, photo_name, photo_size, photo_type, member_code
+	
+	
+	)values(
+	photo_seq.nextval, #{photo_name}, #{photo_size},
+	#{photo_type}, #{member_code}
+	)
+	</insert>
+</mapper>
+
+
+

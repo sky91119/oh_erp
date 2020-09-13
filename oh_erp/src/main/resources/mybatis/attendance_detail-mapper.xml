@@ -73,26 +73,44 @@ FROM MEMBER m, ATTENDANCE_DETAIL a
 WHERE m.member_code = a.member_code
  </select>
  
- <update id="update" parameterType="int" >
+ <select id="list2" parameterType="Map" resultType="attendance_detailListVo">
+ select * from attendance_detail order by ${col} ${order}
+ </select>
+ 
+ 
+ <select id="edit" resultType="attendance_detailListVo" parameterType="int">
+ select * from attendance_detail where member_code=#{member_code}
+ </select>
+ 
+ <update id="update" parameterType="attendance_detailListVo">
  UPDATE attendance_detail set 
- member_code=#{,
- attendance_date=#{
- attendance_in_time1=#{
- attendance_in_time2=#{,
- attendance_in_time3=#{
- attendance_out_time1=#{
- attendance_out_time2=#{
- attendance_out_time3=#{
- attendance_note=#{
- attendance_total=#{
- where attendance_no=#{
+ member_code=#{member_code},
+ attendance_date=#{attendance_date},
+ attendance_in_time1=#{attendance_in_time1},
+ attendance_in_time2=#{attendance_in_time2},
+ attendance_in_time3=#{attendance_in_time3},
+ attendance_out_time1=#{attendance_out_time1},
+ attendance_out_time2=#{attendance_out_time2},
+ attendance_out_time3=#{attendance_out_time3},
+ attendance_note=#{attendance_note},
+ attendance_total=#{attendance_total},
+ where attendance_no=#{attendance_no};
  </update>
  
  
  <delete id="del" parameterType="int">
- delete attendance_detail where member_code=#{member_code}
+ delete attendance_detail where attendance_no=#{attendance_no}
  </delete>
  
+ <!-- 조회페이지 검색 -->
+ <select id="search" parameterType="Map" resultType="attendance_detailListVo">
+ 
+ Select * from attendance_detail 
+      <if test="type != null and keyword != null">
+         where instr(${type},#{keyword}) > 0
+      </if> 
+ order by attendance_no desc
+ </select>
  
 </mapper>
 

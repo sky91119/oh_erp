@@ -1,12 +1,15 @@
 package com.kh.oherp.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
@@ -35,13 +38,49 @@ public class Attendance_detailDaolmpl implements Attendance_detailDao{
 		
 	}
 
-
 	@Override
 	public List<Attendance_detailListVo> list(Model model) {
 		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");
 		model.addAttribute("list", list);
 		return list;
 	}
+
+
+	@Override
+public void delete(int attendance_no) {
+	sqlSession.delete("attendance_detail.del", attendance_no);
+		
+	}
+
+	@Override
+	public List<Attendance_detailListVo> list(String col, String order) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("col", col);
+		map.put("order", order);
+		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list2", map);
+		return list;
+	}
+
+	@Override
+	public List<Attendance_detailListVo> search(String type, String keyword, Model model) {
+	Map<String, String> map= new HashMap<>();
+	map.put("type", type);
+	map.put("keyword", keyword);
+	List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.search", map);
+	model.addAttribute("list",list);
+		return list;
+	}
+	
+	
+
+	//@Override
+	//public List<Attendance_detailListVo>list(String col, String order) {
+	//Map<String, Object> map = new HashMap<>();
+	//map.put(col, col);
+	//map.put(order, order);
+	// List<Attendance_detailListVo> list = sqlSession.selectList(attendance_detail.list2, map);
+	//	return null;
+	//}
 
 	
 //	@Override
