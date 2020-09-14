@@ -37,7 +37,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<choose>
 				<!-- 날짜가 null이 아니라면 -->
 				<when test="startDate!=null and finishDate!=null">
-					WHERE(attendance_request_today BETWEEN #{startDate} AND #{finishDate})
+					WHERE(attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS'))
 					<choose>
 						<!-- 검색어가 null이 아니거나 모든요청들이 아니라면 -->
 						<when test='type!=null or type!="모든 요청들"'>

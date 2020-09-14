@@ -154,11 +154,10 @@
     	<div class="col-6">
     		<form action=${pageContext.request.contextPath}/attendance/request method="post">
     			<div class="left-float40 inline">
-    				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜">
-  					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜">
+    				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜" value="${map.startDate}">
+  					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜" value="${map.finishDate}">
   				</div>
-    			<span>시작${map.startDate}</span>
-    			<span> 끝${map.finishDate}</span>
+   
 		<!-- 상태 선택 -->
 				<div class="left-float60">
 					<select class="inline form-control col-6" name="type" onchange="this.form.submit()">
