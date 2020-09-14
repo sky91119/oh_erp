@@ -157,8 +157,8 @@
     				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜">
   					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜">
   				</div>
-    			<!--<span>시작${map.startDate}</span>
-    			<span> 끝${map.finishDate}</span> -->
+    			<span>시작${map.startDate}</span>
+    			<span> 끝${map.finishDate}</span>
 		<!-- 상태 선택 -->
 				<div class="left-float60">
 					<select class="inline form-control col-6" name="type" onchange="this.form.submit()">
