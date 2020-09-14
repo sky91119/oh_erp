@@ -5,15 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-
-public class Attendance_detailDto {
+@Data @AllArgsConstructor @NoArgsConstructor @Builder
+public class Attendance_detailListVo {
 
 	private int attendance_no;
 	private int member_code;
+	private String member_name;
 	private String attendance_date;
 	private String attendance_in_time1;
 	private String attendance_in_time2;
@@ -23,5 +20,6 @@ public class Attendance_detailDto {
 	private String attendance_out_time3;
 	private String attendance_note;
 	private int attendance_total;
+	
 	
 }

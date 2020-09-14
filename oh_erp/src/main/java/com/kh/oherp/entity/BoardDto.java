@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor @Builder
 public class BoardDto {
-	private int member_code, member_account, member_basic_pay, member_meal_pay, member_car_pay;
-	private String member_name, member_resident_number, member_start_work, member_last_work, member_last_work_cause, member_position,
-	member_bank, member_bank_name, member_post, member_address;
-		
+    private int board_no;   //게시글번호
+    private int member_code;   // 사원번호
+    private String board_type;  //분류
+    private String board_title;  //제목
+    private String board_content;  //내용
+    private String board_view;  //조회수
+    private String board_date;  // 날짜
 	}

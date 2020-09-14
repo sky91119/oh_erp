@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	mapper는 구문을 만들 수 있는 영역
+	일반적으로 테이블당 1개씩의 mapper를 둔다
+	
+	- namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+	- id : 구문을 외부에서 호출하기 위한 식별값
+	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
+	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
+ -->
+<mapper namespace="member">
+
+
+
+	<insert id="regist" parameterType="memberDto">
+		INSERT INTO member(
+			 member_code,
+			 department_no, 
+			 member_account, 
+			 member_basic_pay, 
+			 member_meal_pay,
+			 member_car_pay,
+			 member_name,
+			 member_resident_number, 
+			 member_start_work, 
+			 member_last_work,
+			 member_last_work_cause, 
+			 member_position, 
+			 member_bank, 
+			 member_bank_name, 
+			 member_post, 
+			 member_address
+		) values(
+		member_seq.nextval, 
+		#{department_no},
+		#{member_account},
+		#{member_basic_pay}, 
+		#{member_meal_pay},
+		#{member_car_pay},
+		#{member_name},
+		#{member_resident_number}, 
+		#{member_start_work}, 
+		#{member_last_work},
+		#{member_last_work_cause}, 
+		#{member_position}, 
+		#{member_bank},
+		#{member_bank_name}, 
+		#{member_post},
+		#{member_address}
+		)
+	</insert>
+ 
+	<!-- 단일조회 -->
+	<!--
+	멤버테이블을 조회할건데 어떻게 조회할거죠
+	입력한 부서코드가 이미 있는지 비교해서 같으면 조회
+	-->
+	<select id ="get"  parameterType="int" resultType="departmentDto">
+	select * from department 
+	where department_no = #{department_no}
+	</select> 
+	
+	<!--사원리스트 조회-->
+	<select id="getList" resultType="memberListVo">
+SELECT m.member_code, m.member_name, m.member_start_work, d.department_name
+FROM MEMBER m, DEPARTMENT d
+WHERE m.department_no = d.department_no
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+

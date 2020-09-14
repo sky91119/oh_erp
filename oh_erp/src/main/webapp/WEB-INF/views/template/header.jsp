@@ -89,7 +89,7 @@
         <a class="nav-link" href="#">증명서발급</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">게시판</a>
+        <a class="nav-link" href="http://localhost:8080/oherp/board/board1">게시판</a>
       </li>
     </ul>
   </div>
@@ -148,10 +148,10 @@
              <!--증명서발급-->
       <p><a href="#">증명서발급</a></p>
             <!--게시판-->
-      <p><a href="#">통합</a></p>
-      <p><a href="#">공지사항</a></p>
-      <p><a href="#">회사규정</a></p>
-       <p><a href="#">인사발령</a></p>
+      <p><a href="http://localhost:8080/oherp/board/list">통합</a></p>
+      <p><a href="http://localhost:8080/oherp/board/board2list">공지사항</a></p>
+      <p><a href="http://localhost:8080/oherp/board/board3list">회사규정</a></p>
+       <p><a href="http://localhost:8080/oherp/board/board4list">인사발령</a></p>
    </div> 
    
        <!--본문 -->
