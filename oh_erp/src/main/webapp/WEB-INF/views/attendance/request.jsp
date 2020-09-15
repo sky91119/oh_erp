@@ -27,6 +27,9 @@
 		.padding10{
 			padding:10px;
 		}
+		.padding5{
+			padding:5px;
+		}
 
 	/*제목*/
 		.title{
