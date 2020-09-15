@@ -84,7 +84,7 @@ public class BoardController {
 			RedirectAttributes attr) {
 		//boardDto에는 정보가 3개 들어있다
 		//- 회원번호는 여기서밖에 알 수 없으니까 구해와서 설정해준다.
-		boardDto.setMember_code(1);
+	    //	boardDto.setMember_code(1);
 		
 		int no = boardDao.write(boardDto);
 		
@@ -96,11 +96,13 @@ public class BoardController {
 	public String content(
 			@RequestParam int board_no,
 			Model model) {
-		BoardDto boardDto = boardDao.read(board_no);
+//		BoardDto boardDto = boardDao.get(board_no); 단위작업
+		BoardDto boardDto = boardDao.read(board_no);  //read로 해야 조회수 증가됨 
 		model.addAttribute("boardDto", boardDto);
 		
-//		return "/WEB-INF/views/board/content.jsp";
 		return "board/content";
 	}
 	
-}
+
+	    }
+

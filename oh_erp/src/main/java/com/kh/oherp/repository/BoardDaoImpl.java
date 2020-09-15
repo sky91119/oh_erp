@@ -30,7 +30,7 @@ import com.kh.oherp.entity.BoardDto;
 
 		@Override
 		public BoardDto read(int board_no) {
-			sqlSession.update("board.read", board_no);
+			sqlSession.update("board.view", board_no);
 			BoardDto boardDto = sqlSession.selectOne("board.get", board_no);
 			return boardDto;
 		}

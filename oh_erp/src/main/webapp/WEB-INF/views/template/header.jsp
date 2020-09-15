@@ -89,7 +89,7 @@
         <a class="nav-link" href="#">증명서발급</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="http://localhost:8080/oherp/board/board1">게시판</a>
+        <a class="nav-link" href="http://localhost:8080/oherp/board/list">게시판</a>
       </li>
     </ul>
   </div>
