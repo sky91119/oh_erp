@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
 	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
 -->
-
+	<!-- 요청관리 list -->
 	<select id="getList" resultType="attendanceRequestDto" parameterType="map">
 		SELECT *FROM attendance_request
 			<choose>
@@ -75,6 +75,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY attendance_request_today DESC
 	</select>
 	
+	<!-- 요청관리 list수정 -->
+	<select id="getList2" resultType="attendanceRequestDto" parameterType="map">
+		SELECT *FROM attendance_request
+		WHERE 1=1
+		<if test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
+			and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS')
+
+			<if test='type == "승인이 필요한 요청들"'>
+				and(attendance_request_management='대기중')
+			</if>
+			<if test='type == "완료된 요청들"'>
+				and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+			</if>
+		</if>
+		
+		ORDER BY attendance_request_today DESC
+	</select>
+	
+	
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="listCnt" resultType="int">
+		SELECT COUNT(*) FROM ATTENDANCE_REQUEST 
+	</select>
+	
 	<!-- 승인 버튼 누르면 상태 승인으로 변하게 
 	<update id="requestManageYes" parameterType="int">
 		update attendance_request SET attendance_request_management='승인됨'
@@ -91,6 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		where attendance_request_no=#{attendance_request_no}
 	</update>
+	
 	
 </mapper>
 

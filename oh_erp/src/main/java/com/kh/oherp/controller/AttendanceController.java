@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.oherp.entity.AttendanceRequestDto;
 import com.kh.oherp.repository.AttendanceRequestDao;
@@ -21,6 +23,12 @@ public class AttendanceController {
 	
 	@Autowired
 	private AttendanceRequestDao attendanceRequestDao;
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	
+	
 	
 	@RequestMapping("/request")
 	public String reqeust(
@@ -38,8 +46,22 @@ public class AttendanceController {
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		
+		//게시글 수
+		int listCnt = attendanceRequestDao.listCnt();
+		model.addAttribute("listCnt",listCnt);
+		
 		return"attendance/request";
 	}
+	
+//	@GetMapping("/request_data")
+//	@ResponseBody
+//	public List<AttendanceRequestDto> listData(Model model) {
+//		List<AttendanceRequestDto> list = sqlSession.selectList("attendanceRequest.getList");
+//		return list;
+//	}
+	
+	
+	
 	
 // 승인 버튼만 구현	
 //	@PostMapping("/request_yes")

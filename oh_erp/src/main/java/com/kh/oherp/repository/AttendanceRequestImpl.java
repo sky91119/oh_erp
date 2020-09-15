@@ -17,7 +17,7 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 	
 	@Override
 	public List<AttendanceRequestDto> getList(Map<String, Object> map) {
-		List<AttendanceRequestDto>list=sqlSession.selectList("attendanceRequest.getList",map);
+		List<AttendanceRequestDto>list=sqlSession.selectList("attendanceRequest.getList2",map);
 		return list;
 	}
 
@@ -30,6 +30,12 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 	@Override
 	public void requestManage(Map<String,Object> param) {
 		sqlSession.update("attendanceRequest.requestManage",param);
+	}
+
+	@Override
+	public int listCnt() {
+		int listCnt=sqlSession.selectOne("attendanceRequest.listCnt");
+		return listCnt;
 	}
 
 
