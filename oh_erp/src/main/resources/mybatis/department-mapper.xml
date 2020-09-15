@@ -71,6 +71,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       order by department_no desc
    </select>
    
+   <!--데이터 삭제-->
+ 	<delete id="del" parameterType="int">
+	 delete department where department_no=#{department_no}
+	 </delete>
+   
+   <!--부서명 수정-->
+   	<update id="mod" parameterType="departmentDto">
+	UPDATE DEPARTMENT 
+	SET DEPARTMENT_NAME = #{DEPARTMENT_NAME} 
+	WHERE DEPARTMENT_NO = #{DEPARTMENT_NO};
+   	</update>
+   
 </mapper>
 
 
