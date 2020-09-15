@@ -4,7 +4,8 @@
 
 <form action="upload" method="post" enctype="multipart/form-data"> 
 
-<input type="text" name = "uploader">
+
+<input type="text" name ="uploader">
 <br><br>
 <input type = "file" name="f" multiple accept=".jpg, .png, .gif">
 
