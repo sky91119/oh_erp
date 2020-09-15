@@ -1,73 +1,150 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+    <!-- moment js : datepicker를 사용하기 위한 필수 의존성 파일 -->
+    <script src="<%=request.getContextPath()%>/res/js/moment.min.js"></script>  
+    <!-- date-range-picker -->
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/lightpick.css">
+    <script src="<%=request.getContextPath()%>/res/js/lightpick.js"></script>
 
-<style>
-/*마진*/	
-	.margin20 {
-		margin: 20px 20px 20px 20px;
-	}
+	<style>
+
+	/*마진*/	
+		.margin20 {
+			margin: 20px 20px 20px 20px;
+		}
+		
+	/*패딩*/
+		.padding32 {
+			padding:32px;
+		}	
+		.padding32-bot{
+			padding-bottom:32px;
+		}
+		.padding10{
+			padding:10px;
+		}
+		.padding15{
+			padding:15px;
+		}
+
+	/*제목*/
+		.title{
+			font-size: 25px;
+			text-align:left;
+			padding-bottom:15px;
+        	}
+	/*총 요청수*/ 
+		.sum-request{
+			font-size:16px;
+			text-align:right;
+		}       
+	/*요청관리 상태*/
+		.waiting{
+        	background-color: #D27300;
+         	margin: 0px 3px 0px 0px;
+         	padding: 2px 8px;
+         	color: #ffffff;
+         	text-align: center;
+         	font-size: 0.75rem;
+         	border-radius: 2px;
+		}
+		.ok{
+	    	background-color: #01853d;
+         	margin: 0px 3px 0px 0px;
+         	padding: 2px 8px;
+         	color: #ffffff;
+         	text-align: center;
+         	font-size: 0.75rem;
+         	border-radius: 2px;
+		}
+		.no{
+	 		 background-color: #bf0920;
+        	 margin: 0px 3px 0px 0px;
+         	padding: 2px 8px;
+         	color: #ffffff;
+         	text-align: center;
+         	font-size: 0.75rem;
+         	border-radius: 2px;
+		}
+	/*요청관리 상태별 조회*/	
+		.manage{
+			background-color:lightgray;	
+		}
 	
-/*패딩*/
-	.padding32 {
-		padding:32px;
-	}	
-	.padding32-bot{
-		padding-bottom:32px;
-	}
-	.padding10{
-		padding:10px;
-	}
-/*제목*/
-	.title{
-		font-size: 25px;
-		text-align:left;
-		padding-bottom:15px;
-        }
-/*총 요청수*/ 
-	.sum-request{
-		font-size:16px;
-		text-align:right;
-	}       
-/*요청관리 상태*/
-	.waiting{
-         background-color: #D27300;
-         margin: 0px 3px 0px 0px;
-         padding: 2px 8px;
-         color: #ffffff;
-         text-align: center;
-         font-size: 0.75rem;
-         border-radius: 2px;
-	}
-	.ok{
-	     background-color: #01853d;
-         margin: 0px 3px 0px 0px;
-         padding: 2px 8px;
-         color: #ffffff;
-         text-align: center;
-         font-size: 0.75rem;
-         border-radius: 2px;
-	}
-	.no{
-	 	 background-color: #bf0920;
-         margin: 0px 3px 0px 0px;
-         padding: 2px 8px;
-         color: #ffffff;
-         text-align: center;
-         font-size: 0.75rem;
-         border-radius: 2px;
-         #bf0920
-	}
-/*텍스트*/
-	.left-font{
-		text-align:left;
-	}	
+	/*텍스트*/
+		.left-font{
+			text-align:left;
+		}
+		
+		.left-float40{
+			float:left;			
+			width: 38%;
+			text-align:left;
+		}
+		
+		.left-float60{
+			float:left;			
+			width: 62%;
+			text-align:left;
+		}
+		.inline{
+			display:inline;
+		};
 	
-</style>
+	</style>
+    <script>
+        window.onload = function(){
+            var options = {
+                //대상 지정
+                field: document.querySelector(".picker-start"),
+                
+                //두 번째 대상 지정
+                secondField: document.querySelector(".picker-end"),
+                
+                //날짜 표시 형식 지정
+                format: 'YYYY-MM-DD',
+                
+                //한 화면에 표시될 달의 개수
+                numberOfMonths: 2,
+                
+                //시작일 지정
+                //minDate:new Date(),//- 오늘부터 선택 가능
+               // minDate:moment(new Date()).add(1, 'days'),
+                
+                //문서에 포함시켜 표시
+                //inline:true,
+
+                //시작요일(1:월 ~ 7:일)
+                firstDay: 7,
+                
+                //자동으로 닫히지 않도록 설정
+                //autoclose: false,
+                
+                //선택 방향 제어
+                selectForward: true,
+                selectBackword: false,
+                
+                //주말 제외
+                disableWeekends:false,
+                
+                //날짜 제외
+                disableDates:[
+                ],
+                
+                //선택 후 이벤트 설정(start와 end는 momentjs의 객체)
+                onSelect:function(start, end){
+                    if(!start || !end) return; //둘 중 하나라도 없으면 계산 중지
+                    var days = end.diff(start, 'days') + 1;
+                    console.log(days);
+                }
+            };
+            var picker = new Lightpick(options);
+        };
+    </script>
 
 <div class="container-fluid">
 	<div>
@@ -75,23 +152,33 @@
 	</div>
     
     <div class="row padding32-bot">
-    	<div class="col-2">
-    		<input type="date" class="form-control">
-    	</div>
-		<div class="col-2">
-			<form action=${pageContext.request.contextPath}/attendance/request method="post">
-				<select class="form-control" name="type" onchange="this.form.submit()">
-					<option value="모든">모든 요청들</option>
-					<option value="대기중">승인이 필요한 요청들</option>
-					<option value="완료됨">완료된 요청들</option>
-				</select>
+    	
+    	<!-- 조회 날짜 선택 -->
+    	<div class="col-6">
+    		<form action=${pageContext.request.contextPath}/attendance/request method="post">
+    			<div class="left-float40 inline">
+    				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜" value="${map.startDate}">
+  					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜" value="${map.finishDate}">
+  				</div>
+   
+		<!-- 상태 선택 -->
+				<div class="left-float60">
+					<select class="inline form-control col-6" name="type" onchange="this.form.submit()">
+						<option value="" class="manage">${map.type}</option>
+						<option value="모든 요청들">모든 요청들</option>
+						<option value="승인이 필요한 요청들">승인이 필요한 요청들</option>
+						<option value="완료된 요청들">완료된 요청들</option>
+					</select>
+				</div>
 			</form>
         </div>
-        <div class="col-8 sum-request">
+        
+        <div class="col-6 sum-request">
         	<span>총 요청수 : 3</span>
         </div>
 
      </div>
+     
      <div>
      	<table class="table left-font">
      		<thead>
