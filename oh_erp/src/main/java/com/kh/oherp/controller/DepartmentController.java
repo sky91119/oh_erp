@@ -35,7 +35,7 @@ public class DepartmentController {
 		boolean result = departmentDao.regist(departmentDto);
 
 		if(result) {
-			return "redirect:regist_finish";
+			return "redirect:list";
 		} else {
 			return "redirect:regist?error";
 		}
