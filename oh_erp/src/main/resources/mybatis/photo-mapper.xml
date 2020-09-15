@@ -20,13 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="add" parameterType="photoDto">
 	insert into photo(
-	
-	photo_no, photo_name, photo_size, photo_type, member_code
-	
-	
+	photo_no, photo_name, photo_info, member_code
 	)values(
-	photo_seq.nextval, #{photo_name}, #{photo_size},
-	#{photo_type}, #{member_code}
+	photo_seq.nextval, #{photo_no}, #{photo_name},
+	#{photo_info}, #{member_code}
 	)
 	</insert>
 </mapper>
