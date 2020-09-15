@@ -76,7 +76,31 @@ public class DepartmentController {
 	
 	@GetMapping("/delete/{department_no}")
 	public String delete(@PathVariable int department_no) {
+		//@pathVariable URL 경로에 변수를 넣어주는 기능
 		departmentDao.delete(department_no);
 		return "redirect:/department/list";
 	}
+	
+	@GetMapping("/update/{department_no}")
+	public String modify(
+			@PathVariable int department_no
+			) {
+		return "department/modify";
+	}
+	
+	@PostMapping("{department_no}")
+	public String modify(
+			@PathVariable int department_no,
+			@ModelAttribute DepartmentDto departmentDto
+			) {
+		departmentDao.modify(departmentDto);
+		return "redirect:/department/list";
+	}
+	
+//	@RequestMapping("/update")
+//	public String update(
+//			@ModelAttribute DepartmentDto departmentDto
+//			) {
+//		departmentDao.update(departmentDto);
+//		return "redirect:/department/list";
 }

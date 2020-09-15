@@ -27,6 +27,9 @@ public interface DepartmentDao {
 			Model model
 			);
 	void delete(int department_no);
+
+	void modify(DepartmentDto departmentDto);
+
 	
 }
 

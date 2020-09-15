@@ -5,6 +5,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<script>
+	$(document).ready(function(){
+		$("#btnUpdate").click(function(){
+			document.form1.action ="${path}/update";
+			document.form1.submit();
+		});
+	});
+
+</script>
 <!--부서 검색창 -->
 <form action="search" method="post">
 <span>부서리스트</span>
@@ -28,6 +37,7 @@
 			<td>부서코드</td>
 			<td>부서명</td>
 			<td>사용</td>
+			<td>수정</td>
 			<td></td>
 		</tr>
 	</thead>
@@ -37,13 +47,18 @@
 				<td>${DepartmentDto.department_no}</td>
 				<td>${DepartmentDto.department_name}</td>
 				<td>${DepartmentDto.department_use}</td>
+				<td><a href="update/${DepartmentDto.department_no}">수정</a></td>
 				<td><a href ="delete/${DepartmentDto.department_no}">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
 
- 
+<!--  
+------------------------------------------
+-----------------부서 등록 모달---------------
+------------------------------------------
+-->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;">
 <!--모달 버튼이름을 적어-->  
 부서등록
@@ -69,3 +84,4 @@
       </div>
     </div>
   </div></div>
+  
