@@ -27,8 +27,8 @@
 		.padding10{
 			padding:10px;
 		}
-		.padding5{
-			padding:5px;
+		.padding15{
+			padding:15px;
 		}
 
 	/*제목*/
