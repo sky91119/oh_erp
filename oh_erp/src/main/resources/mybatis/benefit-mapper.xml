@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="benefit">
+
+
+
+	<insert id="regist" parameterType="memberDto">
+		INSERT INTO benefit(
+			 benefit_code,
+			 benefit_name, 
+			 benefit_order, 
+			 benefit_rate, 
+			 benefit_calculate
+		) values(
+		member_seq.nextval, 
+		#{department_no},
+		#{member_account},
+		#{member_basic_pay}, 
+		#{member_meal_pay},
+		#{member_car_pay},
+		#{member_name},
+		#{member_resident_number}, 
+		#{member_start_work}, 
+		#{member_last_work},
+		#{member_last_work_cause}, 
+		#{member_position}, 
+		#{member_bank},
+		#{member_bank_name}, 
+		#{member_post},
+		#{member_address}
+		)
+	</insert>
+ 
+	<!-- 단일조회 -->
+	<!--
+	멤버테이블을 조회할건데 어떻게 조회할거죠
+	입력한 부서코드가 이미 있는지 비교해서 같으면 조회
+	-->
+	<select id ="get"  parameterType="int" resultType="departmentDto">
+	select * from department 
+	where department_no = #{department_no}
+	</select> 
+	
+	<!--사원리스트 조회-->
+	<select id="getList" resultType="memberListVo">
+SELECT m.member_code, m.member_name, m.member_start_work, d.department_name
+FROM MEMBER m, DEPARTMENT d
+WHERE m.department_no = d.department_no
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+

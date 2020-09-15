@@ -13,6 +13,7 @@ public class UploadVo {
 	private List<MultipartFile> f;
 	
 	
+	
 	//파일 유무를 반환하는 메소드
 	public boolean isFileExist() {
 		if(f==null)
