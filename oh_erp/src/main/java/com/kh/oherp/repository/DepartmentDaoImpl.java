@@ -64,6 +64,11 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		return list;
 	}
 
+	@Override
+	public void delete(int department_no) {
+		sqlSession.delete("department.del", department_no);
+	}
+
 	
 }
 

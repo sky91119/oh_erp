@@ -28,6 +28,7 @@
 			<td>부서코드</td>
 			<td>부서명</td>
 			<td>사용</td>
+			<td></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -36,6 +37,7 @@
 				<td>${DepartmentDto.department_no}</td>
 				<td>${DepartmentDto.department_name}</td>
 				<td>${DepartmentDto.department_use}</td>
+				<td><a href ="delete/${DepartmentDto.department_no}">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

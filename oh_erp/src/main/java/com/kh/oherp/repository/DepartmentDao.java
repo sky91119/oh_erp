@@ -26,6 +26,8 @@ public interface DepartmentDao {
 			@RequestParam (required = false) String keyword,
 			Model model
 			);
+	void delete(int department_no);
+	
 }
 
 
