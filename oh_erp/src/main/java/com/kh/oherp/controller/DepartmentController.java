@@ -21,11 +21,6 @@ import com.kh.oherp.repository.DepartmentDao;
 @RequestMapping("/department")
 public class DepartmentController {
 
-	@GetMapping("/regist")
-	public String regist(){		 
-		return "department/regist";
-	}
-	
 	@Autowired
 	private DepartmentDao departmentDao;
 	
