@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+   mapper는 구문을 만들 수 있는 영역
+   일반적으로 테이블당 1개씩의 mapper를 둔다
+   
+   - namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+ -->
+<mapper namespace="daily_worker">
+
+<!--
+    <insert id="regist" parameterType="com.kh.spring07.entity.StudentDto">
+    
+    </insert>
+    
+    또는
+   
+    <insert id="regist" parameterType="student">
+      INSERT INTO student(
+         name, age, score, when
+      ) VALUES(
+         #{name}, #{age}, #{score}, sysdate
+      )
+   </insert>
+   
+   알아야 할 설정값
+   - id : 구문을 외부에서 호출하기 위한 식별값
+   - parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
+   - resultType : 구문이 실행된 결과 유형(반환형과 유사)
+-->
+   <!--노가다꾼 등록-->
+   <insert id="regist" parameterType="daily_workerDto">
+      INSERT INTO daily_worker(
+          daily_worker_code, daily_worker_name,  daily_worker_resident_number
+      ) values(
+         daily_worker_seq.nextval, #{daily_worker_name}, #{daily_worker_resident_number}
+      )
+   
+   </insert>
+   
+   <!-- 주민번호를 이용한 단일조회 -->      
+   <select id="get" parameterType="string" resultType="daily_workerDto">
+   
+   select * from daily_worker 
+   where daily_worker_resident_number=#{daily_worker_resident_number}
+   
+   </select>   
+   
+   <!--부서목록 조회-->
+   <select id="getList" resultType="daily_workerDto">
+      select * from daily_worker 
+      order by daily_worker_code desc
+   </select>
+   
+   <!--부서검색 -->
+   <select id="search" resultType="departmentDto" parameterType="map"> 
+      select * from department
+      where instr(${type},#{keyword}) > 0
+      order by department_no desc
+   </select>
+   
+   <!--부서목록조회 + 부서검색 -->
+   <select id="unionList" resultType="departmentDto" parameterType="map">
+      SELECT * from department
+      <if test="type != null and keyword != null">
+         where instr(${type},#{keyword}) > 0
+      </if>      
+      order by department_no desc
+   </select>
+   
+   <!--데이터 삭제-->
+ 	<delete id="del" parameterType="int">
+	 delete department where department_no=#{department_no}
+	 </delete>
+   
+   <!--부서명 수정-->
+   	<update id="mod" parameterType="departmentDto">
+	UPDATE DEPARTMENT 
+	SET DEPARTMENT_NAME = #{department_name} 
+	WHERE DEPARTMENT_NO = #{department_no}
+   	</update>
+   
+</mapper>
+
+
+
