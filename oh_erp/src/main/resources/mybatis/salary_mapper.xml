@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+   mapper는 구문을 만들 수 있는 영역
+   일반적으로 테이블당 1개씩의 mapper를 둔다
+   
+   - namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+ -->
+<mapper namespace="salary">
+
+
+<!--    알아야 할 설정값 -->
+<!--    - id : 구문을 외부에서 호출하기 위한 식별값 -->
+<!--    - parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사) -->
+<!--    - resultType : 구문이 실행된 결과 유형(반환형과 유사) -->
+ 
+   <!--급여계산대장 등록-->
+   <insert id="insert" parameterType="salaryDto">
+      INSERT INTO salary(
+    salary_no,
+	salary_date,
+	salary_sortation,
+	salary_period_start,
+	salary_period_finish,
+	salary_payday,
+	salary_name,
+	salary_article,
+	salary_member
+      ) values(
+	salary_seq.nextval,
+	#{salary_date},
+	#{salary_sortation},
+	#{salary_period_start},
+	#{salary_period_finish},
+	#{salary_payday},
+	#{salary_name},
+	#{salary_article},
+	#{salary_member};
+      )
+   
+   </insert>
+   
+   <!-- 급여명을 이용한 단일조회 -->      
+   <select id="getName" parameterType="string" resultType="salaryDto">
+   
+   select * from salary
+   where salary_name=#{salary_name} order by salary_date desc
+   
+   </select>   
+   
+   <!-- 급여연월을 이용한 단일조회 -->      
+   <select id="get" parameterType="string" resultType="salaryDto">
+   
+   select * from salary
+   where salary_date=#{salary_date} order by salary_date desc
+   
+   </select>
+   
+   <!--급여목록 조회-->
+   <select id="List" resultType="salaryDto">
+      select * from salary 
+      order by salary_date desc
+   </select>
+   
+   <!--급여 검색 -->
+   <select id="search" resultType="salaryDto" parameterType="map"> 
+      select * from salary
+      where instr(${type},#{keyword}) > 0
+      order by salary_date desc
+   </select>
+   
+   <!--급여목록조회 + 급여검색 -->
+   <select id="salaryList" resultType="salaryDto" parameterType="map">
+      SELECT * from salary
+      <if test="type != null and keyword != null">
+         where instr(${type},#{keyword}) > 0
+      </if>      
+      order by salary_date desc
+   </select>
+   
+</mapper>
