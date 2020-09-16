@@ -79,8 +79,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!--부서명 수정-->
    	<update id="mod" parameterType="departmentDto">
 	UPDATE DEPARTMENT 
-	SET DEPARTMENT_NAME = #{DEPARTMENT_NAME} 
-	WHERE DEPARTMENT_NO = #{DEPARTMENT_NO};
+	SET DEPARTMENT_NAME = #{department_name} 
+	WHERE DEPARTMENT_NO = #{department_no}
    	</update>
    
 </mapper>
