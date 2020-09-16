@@ -5,15 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<script>
-	$(document).ready(function(){
-		$("#btnUpdate").click(function(){
-			document.form1.action ="${path}/update";
-			document.form1.submit();
-		});
-	});
-
-</script>
 <!--부서 검색창 -->
 <form action="search" method="post">
 <span>부서리스트</span>
