@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
+import com.kh.oherp.entity.Attendance_countDto;
 import com.kh.oherp.repository.Attendance_detailDao;
 
 
@@ -49,19 +50,38 @@ public class Attendance_detailController {
    }
    }
    ////////////////////////////////////////////////////////////////////////////
-   
-  @GetMapping("/admin_page")
-    public String admin_page(Model model,
-          @RequestParam (required = false, defaultValue = "member_code") String col, //defaultValue =기본값 설정을 member_code라고 주겠다. 
+   //이거  원래 admin_page
+@GetMapping("/admin_page")
+   public String admin_page(Model model,
+        @RequestParam (required = false, defaultValue = "member_code") String col, //defaultValue =기본값 설정을 member_code라고 주겠다. 
                                                               
-           @RequestParam (required = false, defaultValue= "asc") String order //너가 아무말도 없으면 내가 코드를 오름차순으로 보여주겠다. 
-           ){ //나는 col과 order라는 값을 추가로 받겠다. 
+        @RequestParam (required = false, defaultValue= "asc") String order //너가 아무말도 없으면 내가 코드를 오름차순으로 보여주겠다. 
+         ){ //나는 col과 order라는 값을 추가로 받겠다. 
 
-       List<Attendance_detailListVo> list = attendance_detailDao.list(col, order);
-        model.addAttribute("list", list);
+    List<Attendance_detailListVo> list = attendance_detailDao.list(col, order);
+     model.addAttribute("list", list);
    
-        return "/attendance_detail/admin_page";
+      return "/attendance_detail/admin_page";
  }
+   
+   //기록나누기실시
+ //@GetMapping("/admin_page")
+ //public String admin_page(Model model,
+ //    @RequestParam (required = false, defaultValue = "member_code"); //defaultValue =기본값 설정을 member_code라고 주겠다. 
+                                                              
+ //          @RequestParam (required = false, defaultValue= "asc") String order //너가 아무말도 없으면 내가 코드를 오름차순으로 보여주겠다. 
+ //          ){ //나는 col과 order라는 값을 추가로 받겠다. 
+
+//       List<Attendance_detailListVo> list = attendance_detailDao.list(col, order);
+ //       model.addAttribute("list", list);
+   
+  //      return "/attendance_detail/admin_page";
+// }
+   
+   
+   
+   
+   
    
 //   @GetMapping("/admin_page")
  //   public String admin_page(Model model,
@@ -80,6 +100,16 @@ public class Attendance_detailController {
    //   return "attendance_detail/admin_edit";
   // }
 
+
+  
+//  @GetMapping("/admin_edit")
+//  public String admin_edit(
+//	  @RequestParam) {
+	  
+//	return "redirect:/attendance_detail/admin_edit";
+		
+//  }
+  
 @GetMapping("/delete/{attendance_no}")
 public String delete(@PathVariable int attendance_no) {
 	attendance_detailDao.delete(attendance_no);
@@ -95,9 +125,58 @@ public String search(
 		) {
 	attendance_detailDao.search(type, keyword, model);
 
-	return "attendance_detail/admin_page";	
+	return "attendance_detail/admin_page";
 }
 
+
+//rank_page
+//@GetMapping("/rank_page")
+//public String rank_page() {
+//	return "attendance_detail/rank_page";
+//}
+
+//count_page
+@GetMapping("/count_page")
+public String count_page(Model model
+		) {
+	List<Attendance_countDto> count = attendance_detailDao.count(model);
+	model.addAttribute("count", count);
+	return "attendance_detail/count_page";
+	
+}
+
+
+//@GetMapping("/admin_page")
+//public String admin_page(Model model,
+//      @RequestParam (required = false, defaultValue = "member_code") String col, //defaultValue =기본값 설정을 member_code라고 주겠다. 
+//                                                          
+//       @RequestParam (required = false, defaultValue= "asc") String order //너가 아무말도 없으면 내가 코드를 오름차순으로 보여주겠다. 
+ //      ){ //나는 col과 order라는 값을 추가로 받겠다. 
+
+ //  List<Attendance_detailListVo> list = attendance_detailDao.list(col, order);
+ //   model.addAttribute("list", list);
+
+ //   return "/attendance_detail/admin_page";
+//}
+
+
+//@GetMapping("/admin_page")
+//   public String admin_page(Model model,
+//
+//    ){ 
+//  model.addAttribute("list", list);
+// attendance_detailDao.list(model);
+// return "attendance_detail/admin_page";
+//}
+
+
+//rank_page
+//@GetMapping("/rank_page")
+//public String rank_page(Model model) {
+//		List<Attendance_rankDto> rank_page= attendance_detailDao.rank_page(model);
+//		model.addAttribute("rank_page", rank_page);
+//		return "attendance_detail/rank_page";
+//}
 
 
 //관리자만 볼 수 있는 조회페이지

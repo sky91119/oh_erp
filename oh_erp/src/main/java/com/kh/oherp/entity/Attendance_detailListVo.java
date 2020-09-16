@@ -21,5 +21,6 @@ public class Attendance_detailListVo {
 	private String attendance_note;
 	private int attendance_total;
 	
+	//사원이름이랑 사원번호랑 총 갯수 뭘하는사람의 총 갯수?
 	
 }

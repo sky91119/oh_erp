@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
+import com.kh.oherp.entity.Attendance_countDto;
 
 public interface Attendance_detailDao {
 // 근태상세 등록을 하겠뜸
@@ -31,4 +32,23 @@ public interface Attendance_detailDao {
 	 
 //합계 증가를 만들거임
 //	public Attendance_detailDto total(int attendance_total);
+	 
+//통계 (우선 연습 : 출근날짜 통계)
+//	 List<Attendance_countDto> rank_page(Model model);
+	 
+//통계 count_page
+
+	public List<Attendance_countDto> count(Model model);
+	
+	
+// 출근시간 null 구하기
+	public List<Attendance_detailListVo> in_null(Model model);
+	
+// 출근시간 null 구하기
+	public List<Attendance_detailListVo> out_null(Model model);
+	
+	 
+
+	 
+	 
 	 }

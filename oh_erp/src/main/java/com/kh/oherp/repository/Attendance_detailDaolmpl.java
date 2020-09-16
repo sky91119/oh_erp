@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
+import com.kh.oherp.entity.Attendance_countDto;
 import com.kh.oherp.entity.DepartmentDto;
 
 @Repository
@@ -70,7 +71,55 @@ public void delete(int attendance_no) {
 	model.addAttribute("list",list);
 		return list;
 	}
+
+	@Override
+	public List<Attendance_countDto> count(Model model){
+		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");
+		model.addAttribute("count", count);
+		return count;
+	}
+
+	@Override
+	public List<Attendance_detailListVo> in_null(Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Attendance_detailListVo> out_null(Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public List<Attendance_detailListVo> in_null(Model model) {
+//		List<Attendance_detailListVo> inList = sqlSession.selectList("attendance_detail.in_null");
+///		return inList;
+//	}
 	
+
+//	@Override
+//	public List<Attendance_detailListVo> out_null(Model model) {
+//		List<Attendance_detailListVo> outList = sqlSession.selectList("attendance_detail.out_null");
+//		return outList;
+//	}
+
+	
+///	@Override
+//	public List<Attendance_detailListVo> list(Model model) {
+//		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");
+//		model.addAttribute("list", list);
+//		return list;
+//	}
+	
+//	@Override
+//	public List<Attendance_countDto> rank_page(Model model) {
+//		List<Attendance_countDto> rank_page = sqlSession.selectList("attendance_detail.rank_page");
+//		model.addAttribute("rank_page", rank_page);
+//		return rank_page;
+//	}
+
+
 	
 
 	//@Override

@@ -29,7 +29,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	#{photo_type}, #{member_code}
 	)
 	</insert>
+	
+	
+	
+	<select id="get" parameterType="int" resultType="photoDto">
+	
+	select* from photo where attendance_no = #{attendance_no}
+	
+	</select>
 </mapper>
+
 
 
 

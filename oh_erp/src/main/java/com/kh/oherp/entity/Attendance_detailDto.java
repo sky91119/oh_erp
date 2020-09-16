@@ -14,6 +14,7 @@ public class Attendance_detailDto {
 
 	private int attendance_no;
 	private int member_code;
+	private int member_name;
 	private String attendance_date;
 	private String attendance_in_time1;
 	private String attendance_in_time2;

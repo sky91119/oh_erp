@@ -96,8 +96,8 @@ WHERE m.member_code = a.member_code
  attendance_total=#{attendance_total},
  where attendance_no=#{attendance_no};
  </update>
- 
- 
+  
+
  <delete id="del" parameterType="int">
  delete attendance_detail where attendance_no=#{attendance_no}
  </delete>
@@ -112,6 +112,28 @@ WHERE m.member_code = a.member_code
  order by attendance_no desc
  </select>
  
+ 
+ 
+<!--<select id="rank" resultType="attendance_detailDto">
+ select * from attendance_detail where attendance_in_time1 < 9 order by member_code asc;
+ </select>-->
+ 
+<select id="count">
+SELECT TO_CHAR(ATTENDANCE_IN_TIME1)in_time, count(*)cnt FROM ATTENDANCE_DETAIL
+GROUP BY TO_CHAR(ATTENDANCE_IN_TIME1) ORDER BY in_time DESC;
+
+</select>
+ 
+ 
+ <!-- 출근시간 구하기  -->
+ <select id="in_null">
+ SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_IN_TIME1 IS NULL;
+ </select>
+ 
+ <!-- 퇴근시간 null구하기 -->
+  <select id="out_null">
+ SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_OUT_IME1 IS NULL;
+ </select>
 </mapper>
 
 

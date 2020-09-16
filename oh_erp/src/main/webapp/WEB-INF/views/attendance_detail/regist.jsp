@@ -45,6 +45,7 @@ text-align: left;
 .inline {
    display: inline-block;
 }
+
 </style>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
@@ -65,15 +66,12 @@ text-align: left;
         <div class="row">
 
            
-            <div class="col">
+            <div class="col-11" align="center">
                 <h3>출퇴근기록 작성란</h3>
   
             </div>
            
-            <div class="col">
-                <h1></h1>
-                <br><br>
-            </div>
+            
         </div>
 <hr>
         <div class="row">
@@ -84,8 +82,10 @@ text-align: left;
         </div>
 
         <div class="row">
-
-<div class="col-4">
+ <div class="col-3">
+ </div>
+ 
+<div class="col-5">
                   사원코드<input type="text" class="form-control" name="member_code"> 
                <br> <br>
          날짜<input type="date" class="form-control" name="attendance_date">
@@ -107,12 +107,13 @@ text-align: left;
 		</select>
                <br> <br>
               
-                 <div class="offset-sm-4 col-sm-4">
+                 <div class="col-sm-4" style="display:inline-block;">
                출근시간
   <input type="text" class="form-control" name="attendance_in_time1"> : <input type="text"
 class="form-control" name="attendance_in_time2">
 
 		<select class="form-control" name="attendance_in_time3">
+	                     	<option value=""></option>
 							<option value="AM">AM</option>
 							<option value="PM">PM</option>
 						</select>
@@ -126,6 +127,7 @@ class="form-control" name="attendance_in_time2">
 				<br>
 			
 					<select class="form-control"  name="attendance_out_time3">
+					<option value=""></option>
 						<option value="AM">AM</option>
 						<option value="PM">PM</option>
 					</select>
@@ -142,6 +144,7 @@ class="form-control" name="attendance_in_time2">
 <br><br>
  </div>
  
+
 <div class="col-4">
  <!-- 현재시간 구현! -->
 			<h1>

@@ -20,4 +20,10 @@ public class PhotoDaolmpl implements PhotoDao{
 		return no;
 	}
 
+	@Override
+	public PhotoDto get(int attendance_no) {
+		PhotoDto photoDto = sqlSession.selectOne("photo.get", attendance_no);
+		return photoDto;
+	}
+
 }
