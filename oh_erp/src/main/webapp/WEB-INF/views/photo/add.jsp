@@ -10,6 +10,6 @@
 	<br> <input type="text" name="photo_name"
 		placeholder="사진제목(부서명 +이름을 적어주세요.)"><br>
 	<br> <input type="file" name="file" accept=".jpg, .png, .gif"><br>
-	<br> <input type="submit" value="사진등록">
+	<br> <input type="submit" value="프로필등록">
 
 </form>

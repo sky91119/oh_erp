@@ -55,12 +55,23 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	@Override
 	public List<DepartmentDto> search(String type, String keyword, Model model) {
 		Map<String, String> map = new HashMap<>();
+		
 		map.put("type",type);
 		map.put("keyword",keyword);
 		List<DepartmentDto> list= sqlSession.selectList("department.unionList", map);
 		model.addAttribute("list", list);
 
 		return list;
+	}
+
+	@Override
+	public void delete(int department_no) {
+		sqlSession.delete("department.del", department_no);
+	}
+
+	@Override
+	public void modify(DepartmentDto departmentDto) {
+		sqlSession.update("department.mod", departmentDto);
 	}
 
 	

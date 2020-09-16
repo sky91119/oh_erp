@@ -36,15 +36,16 @@ public class PhotoController {
 	@PostMapping("/add")
 	public String add(
 			@ModelAttribute PhotoDto photoDto,
-		//	@RequestParam int photo_no,
+//			@RequestParam int photo_no,
 		//	@RequestParam String photo_name,
 		//	@RequestParam int member_code,
 			@RequestParam MultipartFile file
 			
 			) throws IllegalStateException, IOException {
-		//System.out.println("photo_no="+photo_no);
-		//System.out.println("photo_name="+ photo_name);
-		//System.out.println("file="+!file.isEmpty());
+		System.out.println("사진정보="+photoDto);
+//		System.out.println("photo_no="+photo_no);
+//		System.out.println("photo_name="+ photo_name);
+		System.out.println("파일있나="+!file.isEmpty());
 		
 		//PhotoDto photoDto = new PhotoDto();
 		//photoDto.setPhoto_no(photo_no);
