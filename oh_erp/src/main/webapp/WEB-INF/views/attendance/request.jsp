@@ -95,7 +95,14 @@
 		}
 		.inline{
 			display:inline;
-		};
+		}
+	/*승인 수락 버튼*/
+		.btn-group-sm>.btn, .btn-sm {
+   			 padding: .25rem .5rem;
+   			 font-size: .875rem;
+   			 line-height: 1.4;
+  		  	 border-radius: .2rem;
+		}	
 	
 	</style>
     <script>
