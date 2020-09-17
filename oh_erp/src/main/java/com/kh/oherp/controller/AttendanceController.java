@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.oherp.entity.AttendanceRequestDto;
+import com.kh.oherp.entity.MemberRequestDto;
 import com.kh.oherp.repository.AttendanceRequestDao;
 
 @Controller
@@ -42,7 +43,7 @@ public class AttendanceController {
 		map.put("startDate",startDate);
 		map.put("finishDate",finishDate);
 		
-		List<AttendanceRequestDto>list=attendanceRequestDao.getList(map);
+		List<MemberRequestDto>list=attendanceRequestDao.getList(map);
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		

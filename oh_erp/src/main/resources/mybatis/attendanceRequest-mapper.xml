@@ -76,8 +76,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 요청관리 list수정 -->
-	<select id="getList2" resultType="attendanceRequestDto" parameterType="map">
-		SELECT *FROM attendance_request
+	<select id="getList2" resultType="memberRequestDto" parameterType="map">
+		SELECT ar.ATTENDANCE_REQUEST_NO,ar.MEMBER_CODE ,ar.ATTENDANCE_REQUEST_TYPE ,ar.ATTENDANCE_REQUEST_CONTENT ,ar.ATTENDANCE_REQUEST_CAUSE ,ar.ATTENDANCE_REQUEST_START ,ar.ATTENDANCE_REQUEST_FINISH ,ar.ATTENDANCE_REQUEST_MANAGEMENT ,ar.ATTENDANCE_REQUEST_TODAY ,m.MEMBER_NAME FROM ATTENDANCE_REQUEST ar INNER JOIN MEMBER m ON (m.MEMBER_CODE = ar.MEMBER_CODE)
 		WHERE 1=1
 		<if test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
 			and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 게시글 갯수 출력 -->
+	<!-- 게시글 수 출력 -->
 	<select id="listCnt" resultType="int" parameterType="map">
 		SELECT COUNT(*) FROM ATTENDANCE_REQUEST 
 		WHERE 1=1

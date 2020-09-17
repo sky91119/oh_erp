@@ -220,7 +220,7 @@
      			<c:forEach var="attendanceDto" items="${list}">
      				<tr>	
      					<td>${attendanceDto.attendance_request_type}</td>
-     					<td>${attendanceDto.member_code}</td>
+     					<td>${attendanceDto.member_name}</td>
      					<td>${attendanceDto.attendance_request_content}</td>
      					<td>${attendanceDto.attendance_request_cause}</td>
      					<td>
