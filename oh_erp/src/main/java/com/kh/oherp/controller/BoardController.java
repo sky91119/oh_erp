@@ -50,6 +50,28 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	@GetMapping("/list2")
+	public String list2(Model model) {
+		List<BoardDto> list = sqlSession.selectList("board.getList");
+		model.addAttribute("list", list);
+		return "board/list2";
+	
+	}
+	@GetMapping("/list3")
+	public String list3(Model model) {
+		List<BoardDto> list = sqlSession.selectList("board.getList");
+		model.addAttribute("list", list);
+		return "board/list3";
+	
+	}
+	@GetMapping("/list4")
+	public String list4(Model model) {
+		List<BoardDto> list = sqlSession.selectList("board.getList");
+		model.addAttribute("list", list);
+		return "board/list4";
+	
+	}
+	
 	@PostMapping("/search")
 	public String search(
 				@RequestParam String type,
@@ -101,7 +123,7 @@ public class BoardController {
 		int no = boardDao.write(boardDto);
 		
 		attr.addAttribute("board_no", no);
-		return "redirect:content";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/content")
@@ -145,6 +167,25 @@ public class BoardController {
 	
 		}
 
+//		// 게시판 수정뷰
+//		@RequestMapping(value = "/updateView", method = RequestMethod.GET)
+//		public String updateView(BoardDto boardDto, Model model) throws Exception{
+//			logger.info("updateView");
+//			
+//			model.addAttribute("update", service.read(boardVO.getBno()));
+//			
+//			return "board/updateView";
+//		}
+//		
+//		// 게시판 수정
+//		@RequestMapping(value = "/update", method = RequestMethod.POST)
+//		public String update(BoardDto boardDto) throws Exception{
+//			logger.info("update");
+//			
+//			service.update(boardVO);
+//			
+//			return "redirect:/board/list";
+//		}
 		
 		
 		}

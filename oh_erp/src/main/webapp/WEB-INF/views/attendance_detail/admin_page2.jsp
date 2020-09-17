@@ -172,6 +172,9 @@
             
          </div>
          
+         
+        
+        
         
          <!--<div class="col-2 search" class="form-control">
          
@@ -192,40 +195,56 @@
           </form>
           </div>-->
      <div>
-     
      <br>
         <table class="table left-font">
     <thead>
               <tr>
    
-   <!-- <th><a href="admin_page?col=attendance_no&order=desc">근태번호</a></th>
+   <th><a href="admin_page?col=attendance_no&order=desc">근태번호</a></th>
     <th><a href="admin_page?col=member_code&order=desc">사원번호</a></th>
-   <!-- <th><a href="admin_page?col=member_name&order=desc">성명</a>
-    <th><a href="admin_page?col=attendance_in&order=desc">날짜</a></th>
-    </th>-->
-    <th>근태번호</th>   
-    <th>사원번호</th>
+   <!-- <th><a href="admin_page?col=member_name&order=desc">성명</a></th>-->
    <th>성명</th>
-   <th>출근시간</th>
-   <th>퇴근시간</th>
+    <th><a href="admin_page?col=attendance_date&order=desc">날짜</a></th>
+   <th>출근시간</a></th>
+   <th>퇴근시간</a></th>
    <th>근무노트</th>
    <th>합계</th>
    <th>   </th>
- 
+  </div>
   
+
   </tr>
   </thead>
   <tbody>
    
       <c:forEach var="Attendance_detailListVo" items="${list}">
          <tr>
-            <td>${Attendance_detailListVo.attendance_no}</td>            
-            <td>${Attendance_detailListVo.member_code}</td>            
-            <td>${Attendance_detailListVo.member_name}</td>
-            <td>${Attendance_detailListVo.attendance_in}</td>
-            <td>${Attendance_detailListVo.attendance_out}</td>
+            <td>${Attendance_detailListVo.attendance_no}</td>
+            
+            <td><a href ="admin_edit/${attendance_detailListVo.member_code}">
+            ${Attendance_detailListVo.member_code}</a></td>
+            
+             <td>${Attendance_detailListVo.member_name}</td>
+            
+            <!--<td>${Attendance_detailListVo.attendance_date}</td>-->
+            
+            <td>
+                       <fmt:parseDate value="${Attendance_detailListVo.attendance_date}" 
+                     var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
+                     <fmt:formatDate value="${time}" pattern="yyyy-MM-dd"/>
+                    </td>
+            
+            <td>${Attendance_detailListVo.attendance_in_time1} :
+            ${Attendance_detailListVo.attendance_in_time2}
+            ${Attendance_detailListVo.attendance_in_time3}</td>
+            
+            <td>${Attendance_detailListVo.attendance_out_time1} :
+            ${Attendance_detailListVo.attendance_out_time2}
+            ${Attendance_detailListVo.attendance_out_time3}</td>
+            
             <td>${Attendance_detailListVo.attendance_note}</td>
-            <td>${Attendance_detailListVo.attendance_total}</td>            
+            <td>${Attendance_detailListVo.attendance_total}</td>
+            
             <td>
             <a href ="delete/${Attendance_detailListVo.attendance_no}">삭제</a>
             </td>

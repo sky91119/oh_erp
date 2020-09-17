@@ -45,6 +45,7 @@ text-align: left;
 .inline {
    display: inline-block;
 }
+
 </style>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
@@ -65,15 +66,12 @@ text-align: left;
         <div class="row">
 
            
-            <div class="col">
+            <div class="col-11" align="center">
                 <h3>출퇴근기록 작성란</h3>
   
             </div>
            
-            <div class="col">
-                <h1></h1>
-                <br><br>
-            </div>
+            
         </div>
 <hr>
         <div class="row">
@@ -84,11 +82,14 @@ text-align: left;
         </div>
 
         <div class="row">
+ <div class="col-3">
+ </div>
+ 
+<div class="col-5">
 
-<div class="col-4">
-                  사원코드<input type="text" class="form-control" name="member_code"> 
+ 사원코드<input type="text" class="form-control" name="member_code"> 
                <br> <br>
-         날짜<input type="date" class="form-control" name="attendance_date">
+
                <br> <br>
                근무일정
 					<select class="form-control">
@@ -100,36 +101,22 @@ text-align: left;
                
                <br> <br>
                
-              지점<select class="form-control" name="attendance_spot">
+            <!--지점<select class="form-control" name="attendance_spot">
 						<option value="서울지점">서울지점</option>
 						<option value="경기지점">경기지점</option>
 						<option value="기타">기타</option>
-		</select>
+		</select>-->
                <br> <br>
               
-                 <div class="offset-sm-4 col-sm-4">
+              
                출근시간
-  <input type="text" class="form-control" name="attendance_in_time1"> : <input type="text"
-class="form-control" name="attendance_in_time2">
+  <input type="datetime-local" class="form-control" name="attendance_in"> 
 
-		<select class="form-control" name="attendance_in_time3">
-							<option value="AM">AM</option>
-							<option value="PM">PM</option>
-						</select>
-						</div>
                <br> <br>
                
                퇴근시간
-               <input type="text" class="form-control"
-						name="attendance_out_time1"> : <input type="text"
-						class="form-control" name="attendance_out_time2">
-				<br>
-			
-					<select class="form-control"  name="attendance_out_time3">
-						<option value="AM">AM</option>
-						<option value="PM">PM</option>
-					</select>
-               <br> <br>
+               <input type="datetime-local" class="form-control" name="attendance_out"> 
+				
                
                현재근무중<input type="checkbox" class="form-control">
                 <br> <br>
@@ -142,6 +129,7 @@ class="form-control" name="attendance_in_time2">
 <br><br>
  </div>
  
+
 <div class="col-4">
  <!-- 현재시간 구현! -->
 			<h1>
