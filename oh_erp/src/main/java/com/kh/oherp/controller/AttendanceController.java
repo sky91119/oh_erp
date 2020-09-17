@@ -105,4 +105,24 @@ public class AttendanceController {
 		return"redirect:request";
 	}
 	
+	@PostMapping("/request_do")
+	public String request_do(
+				@RequestParam(required=false) String requtype,
+				@RequestParam String userinfo,
+				@RequestParam(required=false) String cause,
+				@RequestParam(required=false) String restartDate,
+				@RequestParam(required=false) String refinishDate
+			) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("requtype", requtype);
+		map.put("userinfo", userinfo);
+		map.put("cause", cause);
+		map.put("restartDate", restartDate);
+		map.put("refinishDate", refinishDate);
+		attendanceRequestDao.request(map);
+		
+		return"redirect:myrequest";
+	}
+	
 }

@@ -43,6 +43,10 @@
         .titlediv{
         	padding-bottom:15px;
         }
+        .title2{
+        	font-size: 25px;
+        	text-align:left;
+        }
 	/*총 요청수*/ 
 		.sum-request{
 			font-size:16px;
@@ -80,6 +84,16 @@
 		.plz{
          	text-align: center;	
 		}	
+		
+		.textarea{
+			resize: none;
+			width:100%;
+			border:1px solid #ced4da;
+		}
+		
+		.text-right{
+			float:right;
+		}
 
 	/*요청관리 상태별 조회*/	
 		.manage{
@@ -191,11 +205,50 @@
 <div class="container-fluid">
 	<div class="row titlediv">
 		<span class="col-11 title">요청 관리</span>
-		<button class="col-1 btn btn-primary btn-sm plz">
+		<button type="button" class="col-1 btn btn-primary btn-sm plz" data-toggle="modal" data-target="#myModal">
 			휴가 생성 요청
 		</button>
 	</div>
-    <br>
+	<!-- 모달 창 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" align="left">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      	<div class="modal-header">
+      		<p class="title2">휴가 생성 요청</p>
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<!--          <h4 class="modal-title" id="myModalLabel"></h4>-->
+      	</div>
+      	<div class="modal-body">
+			<form action=${pageContext.request.contextPath}/attendance/request_do method="post">
+				<span>휴가 유형 </span>
+				<input type="hidden" name="userinfo" value="1004">
+				<select class="inline form-control col-6" name="requtype">
+					<option value="">선택 안됨</option>
+					<option value="오전반차">오전 반차</option>
+					<option value="오후연차">오후 반차</option>
+					<option value="오후연차">연차</option>
+				</select>
+				<br>
+				<br>
+				<span>요청 날짜</span>
+					<input type="text" class="inline form-control picker-start col-5" name="restartDate" placeholder="시작날짜" value="${map.restartDate}">
+  					<input type="text" class="inline form-control picker-end col-5" name="refinishDate" placeholder="종료날짜" value="${map.refinishDate}">
+				<br>
+				<br>
+				<span>요청 사유</span>
+				<br>
+				<textarea class="textarea" rows="6" cols="63" name="cause" placeholder="요청 사유를 입력하세요.(필수)"></textarea>
+				<br>
+				<input type="submit" value="요청" class="text-right btn btn-outline-primary">
+			</form>
+    	 </div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-outline-danger" data-dismiss="modal">닫기</button>
+      	</div>
+    	</div>
+  	</div></div>
+	<!-- -------------------------- -->
+
     <div class="row padding32-bot">
     	
     	<!-- 조회 날짜 선택 -->
