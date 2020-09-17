@@ -36,9 +36,13 @@
 	/*제목*/
 		.title{
 			font-size: 25px;
+			float:left;			
+			width: 50%;
 			text-align:left;
-			padding-bottom:15px;
         	}
+        .titlediv{
+        	padding-bottom:15px;
+        }
 	/*총 요청수*/ 
 		.sum-request{
 			font-size:16px;
@@ -72,11 +76,11 @@
          	font-size: 0.75rem;
          	border-radius: 2px;
 		}
-	/*휴가 요청 버튼*/
+	/*휴가생성요청  버튼*/	
 		.plz{
-			text-align: right;
-		}
-			
+         	text-align: center;	
+		}	
+
 	/*요청관리 상태별 조회*/	
 		.manage{
 			background-color:lightgray;	
@@ -108,6 +112,8 @@
    			 line-height: 1.4;
   		  	 border-radius: .2rem;
 		}	
+		
+		
 	
 	</style>
     <script>
@@ -183,15 +189,18 @@
     
    
 <div class="container-fluid">
-	<div>
-		<p class="title">요청 관리</p>
+	<div class="row titlediv">
+		<span class="col-11 title">요청 관리</span>
+		<button class="col-1 btn btn-primary btn-sm plz">
+			휴가 생성 요청
+		</button>
 	</div>
-    
+    <br>
     <div class="row padding32-bot">
     	
     	<!-- 조회 날짜 선택 -->
     	<div class="col-6">
-    		<form action=${pageContext.request.contextPath}/attendance/request method="post">
+    		<form action=${pageContext.request.contextPath}/attendance/myrequest method="post">
     			<div class="left-float40 inline">
     				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜" value="${map.startDate}">
   					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜" value="${map.finishDate}">

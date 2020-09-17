@@ -49,6 +49,30 @@ public class AttendanceController {
 		return"attendance/request";
 	}
 	
+	@RequestMapping("/myrequest")
+	public String myrequest(
+				@RequestParam(required=false,defaultValue="모든 요청들") String type,
+				@RequestParam(required=false)String startDate,
+				@RequestParam(required=false)String finishDate,
+				Model model) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("type",type);
+		map.put("startDate",startDate);
+		map.put("finishDate",finishDate);
+		
+		List<MemberRequestDto>list=attendanceRequestDao.getList(map);
+		model.addAttribute("list",list);
+		model.addAttribute("map",map);
+		
+		//게시글 수
+		int listCnt = attendanceRequestDao.listCnt(map);
+		model.addAttribute("listCnt",listCnt);
+		
+		return "attendance/myrequest";
+	}
+	
+	
 //	@GetMapping("/request_data")
 //	@ResponseBody
 //	public List<AttendanceRequestDto> listData(Model model) {
