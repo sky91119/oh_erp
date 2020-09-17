@@ -96,9 +96,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 총 게시글 갯수 출력 -->
-	<select id="listCnt" resultType="int">
+	<!-- 게시글 갯수 출력 -->
+	<select id="listCnt" resultType="int" parameterType="map">
 		SELECT COUNT(*) FROM ATTENDANCE_REQUEST 
+		WHERE 1=1
+		<if test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
+			and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS')
+
+			<if test='type == "승인이 필요한 요청들"'>
+				and(attendance_request_management='대기중')
+			</if>
+			<if test='type == "완료된 요청들"'>
+				and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+			</if>
+		</if>
+		
 	</select>
 	
 	<!-- 승인 버튼 누르면 상태 승인으로 변하게 

@@ -47,7 +47,7 @@ public class AttendanceController {
 		model.addAttribute("map",map);
 		
 		//게시글 수
-		int listCnt = attendanceRequestDao.listCnt();
+		int listCnt = attendanceRequestDao.listCnt(map);
 		model.addAttribute("listCnt",listCnt);
 		
 		return"attendance/request";
