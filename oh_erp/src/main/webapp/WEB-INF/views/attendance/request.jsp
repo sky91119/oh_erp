@@ -224,41 +224,41 @@
      			</tr>
      		</thead>
      		<tbody>
-     			<c:forEach var="attendanceDto" items="${list}">
+     			<c:forEach var="memberRequestDto" items="${list}">
      				<tr>	
-     					<td>${attendanceDto.attendance_request_type}</td>
-     					<td>${attendanceDto.member_name}</td>
-     					<td>${attendanceDto.attendance_request_content}</td>
-     					<td>${attendanceDto.attendance_request_cause}</td>
+     					<td>${memberRequestDto.attendance_request_type}</td>
+     					<td>${memberRequestDto.member_name}</td>
+     					<td>${memberRequestDto.attendance_request_content}</td>
+     					<td>${memberRequestDto.attendance_request_cause}</td>
      					<td>
-							<c:set var="manage" value="${attendanceDto.attendance_request_management}" />
+							<c:set var="manage" value="${memberRequestDto.attendance_request_management}" />
 							<c:choose>
 								<c:when test="${manage eq '거절됨'}">
 									<div class="no offset-2 col-6">
-     									${attendanceDto.attendance_request_management}
+     									${memberRequestDto.attendance_request_management}
      								</div>
 								</c:when>
 								<c:when test="${manage eq '승인됨'}">
 								  	 <div class="ok offset-2 col-6">
-     									${attendanceDto.attendance_request_management}
+     									${memberRequestDto.attendance_request_management}
      								</div>
 								</c:when>
 								<c:otherwise>
 									<div class="waiting offset-2 col-6">
-     									${attendanceDto.attendance_request_management}
+     									${memberRequestDto.attendance_request_management}
      								</div>
 								</c:otherwise>
 							</c:choose>			
      					</td>
      					<td>
-     						<fmt:parseDate value="${attendanceDto.attendance_request_today}" 
+     						<fmt:parseDate value="${memberRequestDto.attendance_request_today}" 
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
      					</td>
      					<td>	<!-- 승인/거절 버튼 -->
      						<c:if test="${manage eq '대기중'}">
      							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
-     								<input type="hidden" name="attendance_request_no" value="${attendanceDto.attendance_request_no}">
+     								<input type="hidden" name="attendance_request_no" value="${memberRequestDto.attendance_request_no}">
      								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
      								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
      							</form>

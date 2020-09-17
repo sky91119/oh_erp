@@ -25,12 +25,7 @@ public class AttendanceController {
 	@Autowired
 	private AttendanceRequestDao attendanceRequestDao;
 	
-	@Autowired
-	private SqlSession sqlSession;
-	
-	
-	
-	
+
 	@RequestMapping("/request")
 	public String reqeust(
 				@RequestParam(required=false,defaultValue="모든 요청들") String type,
