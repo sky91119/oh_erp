@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.oherp.entity.AttendanceRequestDto;
+import com.kh.oherp.entity.MemberRequestDto;
 
 @Repository
 public class AttendanceRequestImpl implements AttendanceRequestDao{
@@ -15,9 +16,10 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//목록
 	@Override
-	public List<AttendanceRequestDto> getList(Map<String, Object> map) {
-		List<AttendanceRequestDto>list=sqlSession.selectList("attendanceRequest.getList",map);
+	public List<MemberRequestDto> getList(Map<String, Object> map) {
+		List<MemberRequestDto>list=sqlSession.selectList("attendanceRequest.getList2",map);
 		return list;
 	}
 
@@ -26,10 +28,18 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 //	public void requestManageYes(int attendance_request_no) {
 //		sqlSession.update("attendanceRequest.requestManageYes",attendance_request_no);		
 //	}
-
+	
+	// 승인/거절
 	@Override
 	public void requestManage(Map<String,Object> param) {
 		sqlSession.update("attendanceRequest.requestManage",param);
+	}
+	
+	//게시글 수
+	@Override
+	public int listCnt(Map<String, Object> map) {
+		int listCnt=sqlSession.selectOne("attendanceRequest.listCnt",map);
+		return listCnt;
 	}
 
 
