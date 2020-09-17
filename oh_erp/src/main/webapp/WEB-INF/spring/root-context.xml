@@ -123,5 +123,6 @@
       -->
      <aop:aspectj-autoproxy/>
 
+	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 </beans>
 
