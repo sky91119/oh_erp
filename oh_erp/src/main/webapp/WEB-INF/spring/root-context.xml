@@ -99,6 +99,8 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
      </context:component-scan> 
      
+     
+
      <!-- 
         스케줄러 사용 설정
       -->

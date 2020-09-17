@@ -1,5 +1,9 @@
 package com.kh.oherp.repository;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,9 +34,20 @@ import com.kh.oherp.entity.BoardDto;
 
 		@Override
 		public BoardDto read(int board_no) {
-			sqlSession.update("board.read", board_no);
+			sqlSession.update("board.view", board_no);
 			BoardDto boardDto = sqlSession.selectOne("board.get", board_no);
 			return boardDto;
 		}
-		
+
+		@Override//삭제
+		public void delete(int board_no) {
+		sqlSession.delete("board.del", board_no);
+			
+		}
+
+		@Override
+		public int countBoard() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	}
