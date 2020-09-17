@@ -38,7 +38,7 @@ public class MemberController {
 			) {
 		boolean result = memberDao.regist(memberDto,departmentDto);
 		if(result) {
-			return "redirect:regist_finish";
+			return "redirect:list";
 		} else {
 			return "redirect:regist?error";
 		}

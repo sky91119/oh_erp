@@ -25,12 +25,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.kh.oherp.entity.MemberDto" alias="memberDto"/>
 		<typeAlias type="com.kh.oherp.entity.MemberListVo" alias="memberListVo"/>
 		<typeAlias type="com.kh.oherp.entity.AttendanceRequestDto" alias="attendanceRequestDto"/>
-		<typeAlias type="com.kh.oherp.entity.MemberRequestDto" alias="memberRequestDto"/>
+		<typeAlias type="com.kh.oherp.entity.AttendanceRequestDto" alias="memberRequestDto"/>
 		<typeAlias type="com.kh.oherp.entity.BoardDto" alias="boardDto"/>
-		<typeAlias type="com.kh.oherp.entity.PhotoDto" alias="photoDto"/>		
+		<typeAlias type="com.kh.oherp.entity.PhotoDto" alias="photoDto"/>
+		<typeAlias type="com.kh.oherp.entity.BenefitDto" alias="benefitDto"/>
+		<typeAlias type="com.kh.oherp.entity.ProjectDto" alias="projectDto"/>
+		<typeAlias type="com.kh.oherp.entity.Daily_workerDto" alias="daily_workerDto"/>
 	</typeAliases>
 	
 </configuration>
-
 
 

@@ -2,39 +2,36 @@ package com.kh.oherp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.oherp.entity.BenefitDto;
-import com.kh.oherp.repository.BenefitDao;
+import com.kh.oherp.entity.ProjectDto;
+import com.kh.oherp.repository.ProjectDao;
 
 @Controller
-@RequestMapping("/benefit")
-public class BenefitController {
+@RequestMapping("/project")
+public class ProjectController {
 
 	@GetMapping("/regist")
 	public String regist() {
-		return "benefit/regist";
-	}	
+		return "project/regist";
+	}
 	
 	@Autowired
-	private BenefitDao benefitDao;
+	private ProjectDao projectDao;
 	@PostMapping("/regist")
-	public void regist(
-			@ModelAttribute BenefitDto benefitDto
+	public String regist(
+			@ModelAttribute ProjectDto projectDto
 			) {
-		benefitDao.regist(benefitDto);
-//		return "redirect:
+		boolean result =projectDao.regist(projectDto);
+		
+		if(result) {
+			return "redirect:list";
+		} else {
+			return "redirect:regist?error";
+		}
 	}
-	
-	@GetMapping("/list")
-	public String list(Model model) {
-		benefitDao.list(model);
-		return "benefit/list";
-	}
-	
 	
 }

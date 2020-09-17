@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor @Builder
-public class benefitDto {
+public class BenefitDto {
 	private int benefit_code; //수당번호
 	private String benefit_name; //수당항목명
 	private int benefit_order; //표시순서
