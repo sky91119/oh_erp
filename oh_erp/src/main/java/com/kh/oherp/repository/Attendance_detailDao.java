@@ -14,7 +14,7 @@ public interface Attendance_detailDao {
 	public boolean regist(Attendance_detailDto attendance_detailDto);
 	
 // 근태상세의 관리자만 조회가능한 페이지를 만들겠뜸
-	 List<Attendance_detailListVo> list(Model model );
+	 List<Attendance_detailListVo> list(Model model);
 	 
 // 근태상세에서 클릭시 오름.내림차순 부여	 
 	 public List<Attendance_detailListVo> list(String col, String order);

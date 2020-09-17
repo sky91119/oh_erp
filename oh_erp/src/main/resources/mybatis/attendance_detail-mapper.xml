@@ -42,7 +42,7 @@ where member_code = #{member_code}
 </select>	
  
  
- <select id="list" resultType="attendance_detailListVo">
+ <select id="list" resultType="attendance_detailListVo" parameterType="map">
 
 SELECT 
 m.member_code, 
@@ -53,8 +53,8 @@ a.attendance_out,
 a.attendance_note,
 a.attendance_total
 FROM MEMBER m, ATTENDANCE_DETAIL a
-WHERE m.member_code = a.member_code;
-
+WHERE m.member_code = a.member_code
+order by ${col} ${order}
  </select>
  
  <select id="list2" parameterType="Map" resultType="attendance_detailListVo">

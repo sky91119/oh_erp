@@ -58,7 +58,7 @@ public void delete(int attendance_no) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("col", col);
 		map.put("order", order);
-		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list2", map);
+		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list", map);
 		return list;
 	}
 

@@ -10,6 +10,7 @@ public class Attendance_detailListVo {
 
 	private int attendance_no;
 	private int member_code;
+	private String member_name;
 	private String attendance_in;
 	private String attendance_out;
 	private String attendance_note;
