@@ -72,39 +72,27 @@ public void delete(int attendance_no) {
 		return list;
 	}
 
-	@Override
-	public List<Attendance_countDto> count(Model model){
-		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");
-		model.addAttribute("count", count);
-		return count;
-	}
-
-	@Override
-	public List<Attendance_detailListVo> in_null(Model model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Attendance_detailListVo> out_null(Model model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Attendance_countDto> count(Model model){
+//		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");
+//		model.addAttribute("count", count);
+//		return count;
+//	}
 
 //	@Override
 //	public List<Attendance_detailListVo> in_null(Model model) {
-//		List<Attendance_detailListVo> inList = sqlSession.selectList("attendance_detail.in_null");
-///		return inList;
+//		List<Attendance_detailListVo> in = sqlSession.selectList("attendance_detail.in_null");
+//		model.addAttribute("in", in);
+//		return in;
 //	}
-	
 
 //	@Override
 //	public List<Attendance_detailListVo> out_null(Model model) {
-//		List<Attendance_detailListVo> outList = sqlSession.selectList("attendance_detail.out_null");
-//		return outList;
+//		List<Attendance_detailListVo> out = sqlSession.selectList("attendance_detail.out_null");
+//		model.addAttribute("out", out);
+//		return out;
 //	}
 
-	
 ///	@Override
 //	public List<Attendance_detailListVo> list(Model model) {
 //		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");

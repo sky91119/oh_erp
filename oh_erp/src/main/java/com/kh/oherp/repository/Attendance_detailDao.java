@@ -38,14 +38,14 @@ public interface Attendance_detailDao {
 	 
 //통계 count_page
 
-	public List<Attendance_countDto> count(Model model);
+//	public List<Attendance_countDto> count(Model model);
 	
 	
 // 출근시간 null 구하기
-	public List<Attendance_detailListVo> in_null(Model model);
+//	public List<Attendance_detailListVo> in_null(Model model);
 	
 // 출근시간 null 구하기
-	public List<Attendance_detailListVo> out_null(Model model);
+//	public List<Attendance_detailListVo> out_null(Model model);
 	
 	 
 

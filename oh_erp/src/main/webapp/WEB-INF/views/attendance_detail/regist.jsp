@@ -86,9 +86,10 @@ text-align: left;
  </div>
  
 <div class="col-5">
-                  사원코드<input type="text" class="form-control" name="member_code"> 
+
+ 사원코드<input type="text" class="form-control" name="member_code"> 
                <br> <br>
-         날짜<input type="date" class="form-control" name="attendance_date">
+
                <br> <br>
                근무일정
 					<select class="form-control">
@@ -100,38 +101,22 @@ text-align: left;
                
                <br> <br>
                
-              지점<select class="form-control" name="attendance_spot">
+            <!--지점<select class="form-control" name="attendance_spot">
 						<option value="서울지점">서울지점</option>
 						<option value="경기지점">경기지점</option>
 						<option value="기타">기타</option>
-		</select>
+		</select>-->
                <br> <br>
               
-                 <div class="col-sm-4" style="display:inline-block;">
+              
                출근시간
-  <input type="text" class="form-control" name="attendance_in_time1"> : <input type="text"
-class="form-control" name="attendance_in_time2">
+  <input type="datetime-local" class="form-control" name="attendance_in"> 
 
-		<select class="form-control" name="attendance_in_time3">
-	                     	<option value=""></option>
-							<option value="AM">AM</option>
-							<option value="PM">PM</option>
-						</select>
-						</div>
                <br> <br>
                
                퇴근시간
-               <input type="text" class="form-control"
-						name="attendance_out_time1"> : <input type="text"
-						class="form-control" name="attendance_out_time2">
-				<br>
-			
-					<select class="form-control"  name="attendance_out_time3">
-					<option value=""></option>
-						<option value="AM">AM</option>
-						<option value="PM">PM</option>
-					</select>
-               <br> <br>
+               <input type="datetime-local" class="form-control" name="attendance_out"> 
+				
                
                현재근무중<input type="checkbox" class="form-control">
                 <br> <br>

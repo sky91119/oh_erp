@@ -20,32 +20,20 @@ parameterType하고 resultType 등록한걸로 쓰셔야됩니다
 아까 보니까 attendance_detailDto라고 써있던데 절대 안됩니다(등록이 안됐기 때문에 안되겠죠)
  -->
 	<insert id="regist" parameterType="attendance_detailDto">
-	
-insert into attendance_detail(
+	insert into attendance_detail(
 attendance_no,
 member_code,
-attendance_date,
-attendance_in_time1,
-attendance_in_time2,
-attendance_in_time3,
-attendance_out_time1,
-attendance_out_time2,
-attendance_out_time3,
+attendance_in ,
+attendance_out,
 attendance_note,
 attendance_total
 	)values(
 attendance_detail_seq.nextval,
 #{member_code},
-#{attendance_date},
-#{attendance_in_time1},
-#{attendance_in_time2},
-#{attendance_in_time3},
-#{attendance_out_time1},
-#{attendance_out_time2},
-#{attendance_out_time3},
+to_date(#{attendance_in},'yyyy-mm-dd"T"hh24:mi:ss'),
+to_date(#{attendance_out},'yyyy-mm-dd"T"hh24:mi:ss'),
 #{attendance_note},
-0	
-	)
+0)
 	</insert>
 
 <select id="onlycode" parameterType="int" resultType="attendance_detailDto">
@@ -55,22 +43,18 @@ where member_code = #{member_code}
  
  
  <select id="list" resultType="attendance_detailListVo">
- 
+
 SELECT 
 m.member_code, 
 m.member_name,
-a.attendance_no, 
-a.attendance_date, 
-a.attendance_in_time1,
-a.attendance_in_time2,
-a.attendance_in_time3,
-a.attendance_out_time1,
-a.attendance_out_time2,
-a.attendance_out_time3,
+a.attendance_no,
+a.attendance_in,
+a.attendance_out,
 a.attendance_note,
 a.attendance_total
 FROM MEMBER m, ATTENDANCE_DETAIL a
-WHERE m.member_code = a.member_code
+WHERE m.member_code = a.member_code;
+
  </select>
  
  <select id="list2" parameterType="Map" resultType="attendance_detailListVo">
@@ -83,20 +67,14 @@ WHERE m.member_code = a.member_code
  </select>
  
  <update id="update" parameterType="attendance_detailListVo">
- UPDATE attendance_detail set 
- member_code=#{member_code},
- attendance_date=#{attendance_date},
- attendance_in_time1=#{attendance_in_time1},
- attendance_in_time2=#{attendance_in_time2},
- attendance_in_time3=#{attendance_in_time3},
- attendance_out_time1=#{attendance_out_time1},
- attendance_out_time2=#{attendance_out_time2},
- attendance_out_time3=#{attendance_out_time3},
- attendance_note=#{attendance_note},
- attendance_total=#{attendance_total},
- where attendance_no=#{attendance_no};
+ UPDATE attendance_detail 
+SET 
+attendance_in = #{attendance_in},
+ATTENDANCE_OUT = #{attendance_out},
+attendance_note = #{attendance_note},
+attendance_total = #{attendance_total}
+WHERE  attendance_no = #{attendance_no}
  </update>
-  
 
  <delete id="del" parameterType="int">
  delete attendance_detail where attendance_no=#{attendance_no}
@@ -112,28 +90,15 @@ WHERE m.member_code = a.member_code
  order by attendance_no desc
  </select>
  
- 
- 
 <!--<select id="rank" resultType="attendance_detailDto">
  select * from attendance_detail where attendance_in_time1 < 9 order by member_code asc;
  </select>-->
  
-<select id="count">
-SELECT TO_CHAR(ATTENDANCE_IN_TIME1)in_time, count(*)cnt FROM ATTENDANCE_DETAIL
-GROUP BY TO_CHAR(ATTENDANCE_IN_TIME1) ORDER BY in_time DESC;
+ <select id="inTime">
+ SELECT TO_CHAR(ATTENDANCE_IN)attendance_in, count(*)cnt FROM ATTENDANCE_DETAIL
+GROUP BY TO_CHAR(ATTENDANCE_IN) ORDER BY attendance_in DESC;
+ </select>
 
-</select>
- 
- 
- <!-- 출근시간 구하기  -->
- <select id="in_null">
- SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_IN_TIME1 IS NULL;
- </select>
- 
- <!-- 퇴근시간 null구하기 -->
-  <select id="out_null">
- SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_OUT_IME1 IS NULL;
- </select>
 </mapper>
 
 

@@ -2,13 +2,16 @@ package com.kh.oherp.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +27,7 @@ import com.kh.oherp.repository.Attendance_detailDao;
 
 @Controller
 @RequestMapping("/attendance_detail")
+@CrossOrigin("*") //아무나 들어와도 데이터를 주겠다. 
 public class Attendance_detailController {
 
    
@@ -78,19 +82,14 @@ public class Attendance_detailController {
   //      return "/attendance_detail/admin_page";
 // }
    
-   
-   
-   
-   
-   
-//   @GetMapping("/admin_page")
- //   public String admin_page(Model model,
-//   
-//         ){ 
-    //  model.addAttribute("list", list);
-//      attendance_detailDao.list(model);
-//      return "attendance_detail/admin_page";
-//}
+
+// @GetMapping("/admin_page")
+//  public String admin_page(Model model){ 
+ 
+//   List<Attendance_detailListVo> in_null = Attendance_detailDao.in_null(model);
+// model.addAttribute("in_null", in_null);
+//  return "attendance_detail/admin_page";
+
 
   //@GetMapping("/admin_edit")
  //  public String admin_edit(@RequestParam int member_code, Model model){
@@ -136,14 +135,31 @@ public String search(
 //}
 
 //count_page
-@GetMapping("/count_page")
-public String count_page(Model model
-		) {
-	List<Attendance_countDto> count = attendance_detailDao.count(model);
-	model.addAttribute("count", count);
-	return "attendance_detail/count_page";
+//@GetMapping("/count_page")
+//public String count_page(Model model
+//		) {
+//	List<Attendance_countDto> count = attendance_detailDao.count(model);
+//	model.addAttribute("count", count);
+//	return "attendance_detail/count_page";
 	
-}
+//}
+
+
+//count_page 통계
+//@GetMapping("/count_page")
+//public Map<String, Integer> count_page(){
+//	Map<String, Integer> map = new HashMap<>();
+//	map.put("2020-08", 3);
+ //   map.put("2020-09", 5);	
+ //   return map;
+//}
+//@GetMapping("/count_page")
+//public List<Attendance_StatsVo> count_page(){
+//	List<Attendance_statsVo> list = new ArrayList<>();
+//}
+//}
+
+
 
 
 //@GetMapping("/admin_page")

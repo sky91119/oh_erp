@@ -14,14 +14,8 @@ public class Attendance_detailDto {
 
 	private int attendance_no;
 	private int member_code;
-	private int member_name;
-	private String attendance_date;
-	private String attendance_in_time1;
-	private String attendance_in_time2;
-	private String attendance_in_time3;
-	private String attendance_out_time1;
-	private String attendance_out_time2;
-	private String attendance_out_time3;
+	private String attendance_in;
+	private String attendance_out;
 	private String attendance_note;
 	private int attendance_total;
 	
