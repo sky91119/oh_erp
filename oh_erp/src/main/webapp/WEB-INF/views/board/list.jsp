@@ -44,6 +44,21 @@
 
     </div>
     
+    
+     <!-- 페이징 -->
+   <div>
+    <section>
+        <div id="data-container"></div>
+        <div id="pagination"></div>
+    </section>
+</div>
+    
+    
+
+</script>
+
+        
+  
     <!-- 검색창 -->
 <form action="union" method="post">
 
@@ -55,19 +70,13 @@
 	<input type="submit" value="검색">	
 </form>
 <br>
- <!-- 페이징 -->
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">6</a></li>
-    <li class="page-item"><a class="page-link" href="#">7</a></li>
-    <li class="page-item"><a class="page-link" href="#">8</a></li>
-    <li class="page-item"><a class="page-link" href="#">9</a></li>
-    <li class="page-item"><a class="page-link" href="#">10</a></li>
-    <li class="page-item"><a class="page-link" href="#">></a></li>
-  </ul>
+
+  
+<!--   <div> -->
+<%--     <span th:each="pageNum : ${pageList}" th:inline="text"> --%>
+<%--         <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a> --%>
+<!--     </span> -->
+<!-- </div> -->
+
+  
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

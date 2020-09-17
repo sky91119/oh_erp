@@ -10,6 +10,12 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/twbs-pagination/jquery.twbsPagination.js"></script>
      <!--스타일 -->
         <style>  
          
@@ -61,98 +67,81 @@
     
   </head>
   <body>
+  
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="#">ERP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!--헤더부분 예제 https://getbootstrap.kr/docs/4.5/components/navs/ 참고하면됩니다. -->
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-   
-      <li class="nav-item">
-        <a class="nav-link" href="#">급여관리</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">근태관리</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">갤린더</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">기본사항등록</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">전자결재</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">증명서발급</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="http://localhost:8080/oherp/board/list">게시판</a>
-      </li>
-    </ul>
-  </div>
-       <!--헤더부분 오른쪽 로그인 회원가입 -->
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up </a>
-      </li>
-      &nbsp;   &nbsp;;
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-      </li>
-    </ul>
-</nav>
+<!-- Dropdown -->
+   &emsp; &emsp; &emsp;&emsp;&emsp;
+     <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        급여관리
+      </a>
+      <div class="dropdown-menu">
+       <p>상용직</p>
+        <a class="dropdown-item" href="#">급여계산대장</a>
+        <a class="dropdown-item" href="#">급여현황</a>
+         <p>일용직</p>
+        <a class="dropdown-item" href="#">근무입력</a>
+        <a class="dropdown-item" href="#">급여계산대장</a>
+        <a class="dropdown-item" href="#">급여현황</a>
+      </div>
+       
+         <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        근태관리
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">출퇴근기록관리</a>
+        <a class="dropdown-item" href="#">근태조회</a>
+        <a class="dropdown-item" href="#">요청</a>
+        <a class="dropdown-item" href="#">요청관리</a>
+      </div>
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        캘린더
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">회사일정</a>
+        <a class="dropdown-item" href="#">근무일정</a>
+      </div>
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        기본사항등록
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">사원등록</a>
+        <a class="dropdown-item" href="#">일용직등록</a>
+        <a class="dropdown-item" href="#">수당등록</a>
+        <a class="dropdown-item" href="#">부서등록</a>
+        <a class="dropdown-item" href="#">프로젝트등록</a>
+      </div>
+      
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        게시판
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">통합</a>
+        <a class="dropdown-item" href="#">공지사항</a>
+        <a class="dropdown-item" href="#">회사규정</a>
+        <a class="dropdown-item" href="#">인사발령</a>    
+      </div>     
+          </li>  
+  </ul>
+      </nav>
 
 
   <!--nav 왼쪽 -->
 <div class="container-fluid text-center">  
        <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <hr>
-     <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2019/12/22/98915688.2.jpg" class="img-circle" alt="Bird" width="100" height="100">
-     
-     <hr>
-      <!--급여관리-->
-      <p>상용직</p>
-      <p><a href="#">급여계산대장</a></p>
-      <p><a href="#">급여현황</a></p>
-      <p>일용직</p>
-      <p><a href="#">근무입력</a></p>
-      <p><a href="#">급여계산대장</a></p>
-      <p><a href="#">급여현황</a></p>
-      <!--근태관리-->
-      <p><a href="#">출퇴근기록관리</a></p>
-      <p><a href="#">근태조회</a></p>
-      <p><a href="#">요청</a></p>
-       <p><a href="#">요청관리</a></p>
-         <!--캘린더-->
-      <p><a href="#">회사일정</a></p>
-      <p><a href="#">근무일정</a></p>
-          <!--기본사항등록-->
-      <p><a href="#">사원등록</a></p>
-      <p><a href="#">일용직등록</a></p>
-      <p><a href="#">수당등록</a></p>
-       <p><a href="#">부서등록</a></p>
-         <p><a href="#">프로젝트등록</a></p>
-          <!--전자결재-->
-     <p>기안문서</p>
-      <p><a href="#">작성함</a></p>
-      <p><a href="#">진행함</a></p>
-        <p><a href="#">반려함</a></p>
-      <p><a href="#">완결함</a></p>
-      <p>결재문서</p>
-      <p><a href="#">미결함</a></p>
-      <p><a href="#">진행함</a></p>
-        <p><a href="#">반려함</a></p>
-      <p><a href="#">완결함</a></p>
-             <!--증명서발급-->
-      <p><a href="#">증명서발급</a></p>
-            <!--게시판-->
-      <p><a href="http://localhost:8080/oherp/board/list">통합</a></p>
-      <p><a href="http://localhost:8080/oherp/board/board2list">공지사항</a></p>
-      <p><a href="http://localhost:8080/oherp/board/board3list">회사규정</a></p>
-       <p><a href="http://localhost:8080/oherp/board/board4list">인사발령</a></p>
-   </div> 
+    
    
        <!--본문 -->
-    <div class="col-sm" style="margin: 20px"> 
+    <div class="col-sm" style="margin: 60px"> 
+    

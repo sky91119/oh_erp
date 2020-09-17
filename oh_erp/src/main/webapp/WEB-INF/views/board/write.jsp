@@ -4,6 +4,30 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a[name='file-delete']").on("click", function(e) {
+            e.preventDefault();
+            deleteFile($(this));
+        });
+    })
+    function addFile() {
+        var str = "<div class='file-group'><input type='file' name='file'><a href='#this' name='file-delete'>삭제</a></div>";
+        $("#file-list").append(str);
+        $("a[name='file-delete']").on("click", function(e) {
+            e.preventDefault();
+            deleteFile($(this));
+        });
+    }
+ 
+    function deleteFile(obj) {
+        obj.parent().remove();
+    }
+</script>
+
+
+
+
 <form action="write" method="post">
 
 <div class="form-group">
@@ -27,7 +51,22 @@
 		rows="10"></textarea>
 </div>
 
-<input type="submit" class="btn btn-info">
-<a href="http://localhost:8080/oherp/board/list" class="btn btn-secondary" type="submit">목록으로</a>
+
+<!-- <form action="write" method="post" enctype="multipart/form-data">
+    생략
+    <div class="form-group" id="file-list">
+        <a href="#this" onclick="addFile()">파일추가</a>
+        <div class="file-group">
+            <input type="file" name="file"><a href='#this' name='file-delete'>삭제</a>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default"></button>
 </form>
+ -->
+
+
+<!-- 목록으로 -->
+<input type="submit" class="btn btn-info">
+</form>
+<a href="http://localhost:8080/oherp/board/list" class="btn btn-secondary" type="submit">목록으로</a>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

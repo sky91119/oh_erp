@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+
+
+
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <h1>상세보기</h1>
 
@@ -22,10 +26,11 @@
 				${boardDto.board_content}</h4>
 
 
-
+<!-- 수정삭제목록으로 -->
 				<div class="card-body">
 					<a href="#" class="btn btn-outline-secondary btn-sm" role="button">수정</a>
-					<a href="#" class="btn btn-outline-secondary btn-sm " role="button">삭제</a>
+
+					<a href="delete/${boardDto.board_no}" class="btn btn-outline-secondary btn-sm" role="button">삭제</a>
 				</div>
 				<div class="card-body">
 					<a href="http://localhost:8080/oherp/board/list"

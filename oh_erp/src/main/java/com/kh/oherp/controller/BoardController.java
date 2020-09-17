@@ -1,24 +1,36 @@
 package com.kh.oherp.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.oherp.entity.BoardDto;
 import com.kh.oherp.entity.DepartmentDto;
 import com.kh.oherp.repository.BoardDao;
 import com.kh.oherp.repository.DepartmentDao;
+
 
 
 @Controller
@@ -103,6 +115,37 @@ public class BoardController {
 		return "board/content";
 	}
 	
+	@GetMapping("/delete/{board_no}")
+	public String delete(@PathVariable int board_no) {
+		boardDao.delete(board_no);
+	   return "board/delete";
+	}
 
-	    }
+//	방식2 : Spring에서 권장하는 방식(DispatcherServlet 이용)
+//	- ResponseEntity : 응답 정보가 모여있는 개체 파일다운
+	@GetMapping("/down/{no}")
+	public ResponseEntity<ByteArrayResource> down(
+				@PathVariable int no) throws IOException{
+		BoardDto gallaryDto = boardDao.get(no);
+		if(gallaryDto == null) {//정보가 없을 때
+			return ResponseEntity.notFound().build();
+		}
+		else {//정보가 있을 때
+			File target = new File("D:/upload", String.valueOf(no));
+			byte[] data = FileUtils.readFileToByteArray(target);
+			ByteArrayResource res = new ByteArrayResource(data);
+			
+			return ResponseEntity
+							.ok()
+							.contentType(MediaType.APPLICATION_OCTET_STREAM)
+							.contentLength(gallaryDto.getFsize())
+							.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+URLEncoder.encode(gallaryDto.getFname(), "UTF-8")+"\"")
+							.header(HttpHeaders.CONTENT_ENCODING, "UTF-8")
+						.body(res);
+	
+		}
 
+		
+		
+		}
+}
