@@ -1,40 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<script>
+    $(function () {
+        let container = $('#pagination');
+        container.pagination({
+            dataSource: [
+                {name: "hello1"},
+                {name: "hello2"},
+                {name: "hello3"},
+                {name: "hello4"},
+                {name: "hello5"},
+                {name: "hello6"},
+                {name: "hello7"},
+                {name: "hello8"},
+                {name: "hello9"},
+                {name: "hello10"},
+                {name: "hello11"},
+                {name: "hello12"},
+                {name: "hello13"},
+                {name: "hello14"},
+                {name: "hello15"},
+                {name: "hello16"},
+                {name: "hello17"},
+            ],
+            callback: function (data, pagination) {
+                var dataHtml = '<ul>';
 
-<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+                $.each(data, function (index, item) {
+                    dataHtml += '<li>' + item.name + '</li>';
+                });
 
+                dataHtml += '</ul>';
 
-
-       <div class="container">
-        <h2>회사규정 게시판</h2>
-        <table class="board_list">
-            <colgroup>
-                <col width="15%"/>
-                <col width="*"/>
-                <col width="15%"/>
-                <col width="20%"/>
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">글번호</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">조회수</th>
-                    <th scope="col">작성일</th>
-                </tr>
-            </thead>
-<!--             <tbody> -->
-<%--                 <tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}"> --%>
-<%--                     <td th:text="${list.boardIdx}"></td> --%>
-<%--                     <td class="title"><a href="/board/openBoardDetail.do?boardIdx=" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td> --%>
-<%--                     <td th:text="${list.hitCnt}"></td> --%>
-<%--                     <td th:text="${list.createdDatetime}"></td> --%>
-<!--                 </tr>  -->
-<%--                 <tr th:unless="${#lists.size(list)} > 0"> --%>
-<!--                     <td colspan="4">조회된 결과가 없습니다.</td> -->
-<!--                 </tr> -->
-<!--             </tbody> -->
-        </table>
-        <a href="/board/openBoardWrite.do" class="btn">글 쓰기</a>
-    </div>
-    
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+                $("#data-container").html(dataHtml);
+            }
+        })
+    })
+</script>
