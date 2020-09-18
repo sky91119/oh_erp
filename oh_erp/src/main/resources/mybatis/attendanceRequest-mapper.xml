@@ -173,7 +173,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 내 게시글 수 출력 
+	 <!-- 내 게시글 수 출력 --> 
 		<select id="mylistCnt" resultType="int" parameterType="map">
 		SELECT COUNT(*) FROM ATTENDANCE_REQUEST 
 		WHERE 1=1
@@ -199,8 +199,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</if>
 			</otherwise>
 		</choose>
-		and ar.member_code=#{no}
-	</select> -->
+		and member_code=#{writer}
+	</select>
 	
 	<!-- 승인 버튼 누르면 상태 승인으로 변하게 
 	<update id="requestManageYes" parameterType="int">
