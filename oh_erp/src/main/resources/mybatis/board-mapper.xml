@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		board_date
 		) VALUES(
 		board_seq.nextval,
-		'1054',
+		#{member_code},
 		#{board_type},
 		#{board_title},
 		#{board_content},

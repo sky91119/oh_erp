@@ -139,7 +139,18 @@
       </div>     
           </li>  
   </ul>
+  
+       <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="no-login"></span> 사원번호  ${sessionScope.userinfo.member_code} </a>
+      </li>
+      &nbsp;   &nbsp;;
+      <li><a href="#"><span class="na-log-in"></span>성명  ${sessionScope.userinfo.member_name} </a>
+      </li>
+    </ul>
+</nav>
       </nav>
+
+ 
 
 
   <!--nav 왼쪽 -->
