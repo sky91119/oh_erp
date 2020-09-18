@@ -34,9 +34,9 @@
     }
 
     /*총 요청수*/
-    .sum-request {
+    .sum-salary {
         font-size: 16px;
-        text-align: right;
+        text-align:right;
     }
 
     /*요청관리 상태*/
@@ -77,16 +77,97 @@
     }
 </style>
 <div class="container-fluid">
-    <div>
+ <div>
         <p class="title">급여 계산 대장</p>
     </div>
+	<div class="row titlediv">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:5px;">
+  신규
+</button>
+</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" align="left">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+    <form action=${pageContext.request.contextPath}/salary/insert_do method="post">
+	<table>
+	<thead>급여정보입력</thead>
+	<p></p>
+		<tr>
+			<td>귀속연월</td>
+			<td><input type="month" class="form-control" id="salary_date" name="salary_date">
+			</td>
+		</tr>
+		<p></p>
+		<tr>
+			<td>급여구분</td>
+			<td><select class="form-control" id="salary_sortation" name="salary_sortation">
+					<option value="기본급">기본급</option>
+					<option value="기본급+상여">기본급+상여</option>
+			</select></td>
+		</tr>
+<p></p>
+		<tr>
+			<td>대상기간</td>
+
+			<td><input type="date" class="form-control"
+				name="salary_period_start" id="salary_period_start"></td>
+			<td>&nbsp;/&nbsp;</td>
+			<td><input type="date" class="form-control"
+				name="salary_period_finish" id="salary_period_finish"></td>
+		</tr>
+		<p></p>
+		<tr>
+			<td>지급일</td>
+			<td><input type="date" class="form-control" name="salary_payday" id="salary_payday"></td>
+		</tr>
+		<p></p>
+		<tr>
+			<td>급여대장명칭</td>
+			<td><input type="text" class="form-control" name="salary_name" id="salary_name"></td>
+		</tr>
+		<p></p>
+		<tr>
+			<td>대상사원</td>
+			<td><input type="checkbox" id="salary_member" name="salary_member" value="전체"> 
+			<label for="salary_member">전체</label> 
+			
+			<select name="salary_member" id="salary_member" class="form-control" required>
+				<option>사원 선택</option>
+                <c:forEach var="memberDto" items="${member}">
+                   <option value="${memberDto.member_code}">${memberDto.member_name}</option>
+                </c:forEach>
+            </select>
+		</tr>
+		<p></p>
+		</div>
+	</table>	
+	<p></p>
+		<input type="submit" value="저장" onclick="sampleModalPopup();">
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+  </div>
+    <div class="col-6 sum-salary">
+        	<span>총 등록대장 : ${salary_count} 개</span>
+        </div>
+<div class="container-fluid">
 
     <div class="row padding32-bot">
         <div class="col-2">
             <input type="date" class="form-control">
         </div>
         <div class="col-2">
-            <form action=${pageContext.request.contextPath}/salary/insert method="post">
+            <form action=${pageContext.request.contextPath}/salary/list method="post">
                 <select class="form-control" name="type" onchange="this.form.submit()">
                     <option value="all">전체</option>
                     <option value="waiting">승인이 필요한 요청들</option>
@@ -95,10 +176,6 @@
         </div>
 
     </div>
-    
-    <div class="col-6 sum-request">
-        	<span>총 요청수 : ${salary_count}</span>
-        </div>
     <div>
         <table class="table left-font">
             <thead>
@@ -151,4 +228,5 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>

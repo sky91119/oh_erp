@@ -1,6 +1,7 @@
 package com.kh.oherp.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,11 @@ public class SalaryDaoImpl implements SalaryDao{
 	public List<SalaryDto> member_salary() {
 		List<SalaryDto> member_salary = sqlSession.selectList("salary.member_salary");
 		return member_salary;
+	}
+	@Override
+	public int salary_count(Map<String, Object> map) {
+			int salary_count=sqlSession.selectOne("salary.salary_count",map);
+			return salary_count;
+	
 	}
 }

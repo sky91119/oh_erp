@@ -24,14 +24,16 @@ public class SalaryController {
 	private SqlSession sqlSession;
 	@Autowired
 	private SalaryDao salaryDao;
-	@GetMapping("/insert")
-	public String insert(Model model) {
-		List<MemberDto> member = salaryDao.get_member();
-		model.addAttribute("member",member);
-	return "salary/insert";
 	
-	}
-	@PostMapping("/insert")
+//	@GetMapping("/insert")
+//	public String insert(Model model) {
+//		List<MemberDto> member = salaryDao.get_member();
+//		model.addAttribute("member",member);
+//	return "salary/insert";
+//	
+//	}
+	
+	@PostMapping("/insert_do")
 	public String insert(@ModelAttribute SalaryDto salaryDto,
 			@RequestParam String salary_date) {
 		//급여연월에 해당하는 급여계산대장이 있는지 조회
@@ -47,13 +49,15 @@ public class SalaryController {
 		}
 		else {
 			
-			return "redirect:insert?error";
+			return "redirect:list?error";
 		}
 	}
 	
 	@GetMapping("/list")
 	public String insertFinish(Model model){
 		List<SalaryDto> member_salary = salaryDao.member_salary();
+		List<MemberDto> member = salaryDao.get_member();
+		model.addAttribute("member",member);
 		model.addAttribute("member_salary",member_salary);
 		return "salary/list";
 	}
