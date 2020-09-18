@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 public class MemberDto {
 private int member_code, 
 department_no,
+benefit_code,
+project_code,
 member_basic_pay, 
 member_meal_pay, 
 member_car_pay;
@@ -25,7 +27,6 @@ member_position,
 member_bank, 
 member_bank_name, 
 member_post, 
-member_address,
-//부서테이블꺼도 하나 되나?
-department_name;	
+member_address;
+
 }

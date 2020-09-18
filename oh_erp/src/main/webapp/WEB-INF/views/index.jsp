@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<c:if test="${empty sessionScope}">
+<c:if test="${empty sessionScope.userinfo}">
 	
 <form action="login" method="post">
 	사원번호 : <input type="text" name="member_code"><br><br>
@@ -18,7 +18,7 @@
 
 </c:if>
 
-<c:if test="${not empty sessionScope}">
+<c:if test="${not empty sessionScope.userinfo}">
 
 
 </c:if>
