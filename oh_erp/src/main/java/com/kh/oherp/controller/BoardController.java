@@ -166,27 +166,6 @@ public class BoardController {
 						.body(res);
 	
 		}
-
-//		// 게시판 수정뷰
-//		@RequestMapping(value = "/updateView", method = RequestMethod.GET)
-//		public String updateView(BoardDto boardDto, Model model) throws Exception{
-//			logger.info("updateView");
-//			
-//			model.addAttribute("update", service.read(boardVO.getBno()));
-//			
-//			return "board/updateView";
-//		}
-//		
-//		// 게시판 수정
-//		@RequestMapping(value = "/update", method = RequestMethod.POST)
-//		public String update(BoardDto boardDto) throws Exception{
-//			logger.info("update");
-//			
-//			service.update(boardVO);
-//			
-//			return "redirect:/board/list";
-//		}
-		
 		
 		}
 }
