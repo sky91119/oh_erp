@@ -221,12 +221,12 @@
       	<div class="modal-body">
 			<form action=${pageContext.request.contextPath}/attendance/request_do method="post">
 				<span>휴가 유형 </span>
-				<input type="hidden" name="userinfo" value="${userinfo.member_code}">
+<%-- 				<input type="hidden" name="writer" value="${userinfo.member_code}"> --%>
 				<select class="inline form-control col-6" name="requtype">
 					<option value="">선택 안됨</option>
 					<option value="오전반차">오전 반차</option>
 					<option value="오후연차">오후 반차</option>
-					<option value="오후연차">연차</option>
+					<option value="연차">연차</option>
 				</select>
 				<br>
 				<br>

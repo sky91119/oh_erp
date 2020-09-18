@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 -->
 	<!-- 휴가 요청 생성 -->
 	<insert id="request" parameterType="map">
-		insert into ATTENDANCE_REQUEST values(attendance_request_seq.nextval,#{userinfo},'휴가 생성 요청',#{requtype},#{cause},#{restartDate},#{refinishDate},'대기중',sysdate)
+		insert into ATTENDANCE_REQUEST values(attendance_request_seq.nextval,#{writer},'휴가 생성 요청',#{requtype},#{cause},#{restartDate},#{refinishDate},'대기중',sysdate)
 	</insert>
 	
 	
@@ -101,6 +101,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY attendance_request_today DESC
 	</select>
 	
+	<!-- 내 요청내역 리스트 -->
+		<select id="getMyList" resultType="memberRequestDto" parameterType="map">
+		SELECT ar.ATTENDANCE_REQUEST_NO,ar.MEMBER_CODE ,ar.ATTENDANCE_REQUEST_TYPE ,ar.ATTENDANCE_REQUEST_CONTENT ,ar.ATTENDANCE_REQUEST_CAUSE ,ar.ATTENDANCE_REQUEST_START ,ar.ATTENDANCE_REQUEST_FINISH ,ar.ATTENDANCE_REQUEST_MANAGEMENT ,ar.ATTENDANCE_REQUEST_TODAY ,m.MEMBER_NAME FROM ATTENDANCE_REQUEST ar INNER JOIN MEMBER m ON (m.MEMBER_CODE = ar.MEMBER_CODE)
+		WHERE 1=1
+		<if test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
+			and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS')
+
+			<if test='type == "승인이 필요한 요청들"'>
+				and(attendance_request_management='대기중')
+			</if>
+			<if test='type == "완료된 요청들"'>
+				and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+			</if>
+		</if>
+		
+		and ar.member_code=#{no} ORDER BY attendance_request_today DESC
+	</select>
 	
 	<!-- 게시글 수 출력 -->
 	<select id="listCnt" resultType="int" parameterType="map">

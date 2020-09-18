@@ -16,10 +16,17 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//목록
+	//요청관리 목록
 	@Override
 	public List<MemberRequestDto> getList(Map<String, Object> map) {
 		List<MemberRequestDto>list=sqlSession.selectList("attendanceRequest.getList2",map);
+		return list;
+	}
+	
+	//내 요청내역 목록
+	@Override
+	public List<MemberRequestDto> getMyList(Map<String, Object> map) {
+		List<MemberRequestDto>list=sqlSession.selectList("attendanceRequest.getMyList",map);
 		return list;
 	}
 
@@ -46,6 +53,7 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 	public void request(Map<String, Object> map) {
 		sqlSession.insert("attendanceRequest.request",map);
 	}
+
 
 
 	
