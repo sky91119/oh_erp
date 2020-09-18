@@ -30,7 +30,7 @@
 		
 	</thead>
 	<tbody>
-		<c:forEach var="DepartmentDto" items="${list}">
+		<c:forEach var="DepartmentDto" items="${departmentList}">
 			<tr>
 				<td>${DepartmentDto.department_no}</td>
 				<td>${DepartmentDto.department_name}</td>

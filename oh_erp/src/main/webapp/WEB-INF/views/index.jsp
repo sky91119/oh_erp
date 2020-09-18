@@ -2,14 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-
 <c:if test="${empty sessionScope.userinfo}">
 
 
 <!-- 로인인폼 -->
-	
 <form action="login" method="post">
 	   사원번호<br>
 	    <input type="text" id="uid" class="form-contro" placeholder="사원번호" required autofocus><br><br>
@@ -31,7 +28,7 @@
     <li data-target="#demo" data-slide-to="1"></li>
     <li data-target="#demo" data-slide-to="2"></li>
   </ul>
-  
+
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -44,7 +41,7 @@
       <img src="${pageContext.request.contextPath}/res/image/s1.png" alt="New York" width="1100" height="500">
     </div>
   </div>
-  
+
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -55,10 +52,7 @@
 </div>
 
 </c:if>
-
 <c:if test="${not empty sessionScope.userinfo}">
 
 
 </c:if>
-
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

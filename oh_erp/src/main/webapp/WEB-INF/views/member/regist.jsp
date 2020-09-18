@@ -78,11 +78,13 @@
 
 <div id="styled-select">   
     <select name="department_no" id="group">
-		<c:forEach var="DepartmentDto" items="${list}">
+		<c:forEach var="DepartmentDto" items="${departmentList}">
         <option value="${DepartmentDto.department_no}">${DepartmentDto.department_name}</option>
-		</c:forEach>		
+		</c:forEach>
     </select>   
 </div> 
+ 	
+	
 
 		<br><br>
 			<hr>

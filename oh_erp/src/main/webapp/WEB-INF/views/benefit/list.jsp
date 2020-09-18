@@ -29,7 +29,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="BenefitDto" items="${list}">
+		<c:forEach var="BenefitDto" items="${benefitList}">
 			<tr>
 				<td>${BenefitDto.benefit_name}</td>
 				<td>${BenefitDto.benefit_order}</td>
