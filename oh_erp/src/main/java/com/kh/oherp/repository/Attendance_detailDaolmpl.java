@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
+import com.kh.oherp.entity.Attendance_countDto;
 import com.kh.oherp.entity.DepartmentDto;
 
 @Repository
@@ -57,7 +58,7 @@ public void delete(int attendance_no) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("col", col);
 		map.put("order", order);
-		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list2", map);
+		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list", map);
 		return list;
 	}
 
@@ -70,7 +71,43 @@ public void delete(int attendance_no) {
 	model.addAttribute("list",list);
 		return list;
 	}
+
+//	@Override
+//	public List<Attendance_countDto> count(Model model){
+//		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");
+//		model.addAttribute("count", count);
+//		return count;
+//	}
+
+//	@Override
+//	public List<Attendance_detailListVo> in_null(Model model) {
+//		List<Attendance_detailListVo> in = sqlSession.selectList("attendance_detail.in_null");
+//		model.addAttribute("in", in);
+//		return in;
+//	}
+
+//	@Override
+//	public List<Attendance_detailListVo> out_null(Model model) {
+//		List<Attendance_detailListVo> out = sqlSession.selectList("attendance_detail.out_null");
+//		model.addAttribute("out", out);
+//		return out;
+//	}
+
+///	@Override
+//	public List<Attendance_detailListVo> list(Model model) {
+//		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");
+//		model.addAttribute("list", list);
+//		return list;
+//	}
 	
+//	@Override
+//	public List<Attendance_countDto> rank_page(Model model) {
+//		List<Attendance_countDto> rank_page = sqlSession.selectList("attendance_detail.rank_page");
+//		model.addAttribute("rank_page", rank_page);
+//		return rank_page;
+//	}
+
+
 	
 
 	//@Override

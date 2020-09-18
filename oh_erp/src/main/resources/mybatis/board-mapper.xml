@@ -3,73 +3,92 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 
-	mapper는 구문을 만들 수 있는 영역
-	일반적으로 테이블당 1개씩의 mapper를 둔다
-	
-	- namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
- -->
+<!-- mapper는 구문을 만들 수 있는 영역 일반적으로 테이블당 1개씩의 mapper를 둔다 - namespace : 영역을 
+	외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용) -->
 <mapper namespace="board">
 
 
 	<!-- 게시글 목록 조회(1) - 전부다 -->
 	<select id="getList" resultType="boardDto">
-		SELECT * FROM board 
+		SELECT * FROM board
 		ORDER BY board_no DESC
 	</select>
-	
+
 	<!-- 게시글 목록 검색 : $는 정적바인딩, #은 동적바인딩 -->
 	<select id="search" resultType="boardDto" parameterType="map">
-		SELECT * FROM board
+		SELECT *
+		FROM board
 		WHERE instr(${type}, #{keyword}) > 0
 		ORDER BY board_no DESC
 	</select>
-	
+
 	<select id="unionList" resultType="boardDto" parameterType="map">
 		SELECT * FROM board
 		<if test="type != null and keyword != null">
-		WHERE instr(${type}, #{keyword}) > 0
+			WHERE instr(${type}, #{keyword}) > 0
 		</if>
 		ORDER BY board_no DESC
 	</select>
-	
+
 	<select id="getSeq" resultType="int">
-		SELECT board_seq.nextval FROM dual
+		SELECT board_seq.nextval FROM
+		dual
 	</select>
-	
+
 	<insert id="write" parameterType="boardDto">
 		INSERT INTO board(
-			  board_no,
-  			  member_code,
-  			  board_type,
-  			  board_title,
- 			  board_content,
- 			  board_view,
-  			  board_date
+		board_no,
+		member_code,
+		board_type,
+		board_title,
+		board_content,
+		board_view,
+		board_date
 		) VALUES(
-			board_seq.nextval,
-			#{member_code}, 
-			#{board_type},
-			#{board_title},
-			#{board_content},
-			0,
-			sysdate
+		board_seq.nextval,
+		#{member_code},
+		#{board_type},
+		#{board_title},
+		#{board_content},
+		0,
+		sysdate
 		)
 
-		
+
 	</insert>
-	
+
 	<select id="get" resultType="boardDto" parameterType="int">
-		SELECT * FROM board WHERE board_no = #{board_no}
+		SELECT *
+		FROM board WHERE board_no = #{board_no}
 	</select>
-	
+
 	<!-- 조회수 증가 -->
 	<update id="view" parameterType="int">
-		UPDATE board 
+		UPDATE board
 		SET board_view=board_view+1
 		WHERE board_no=#{board_no}
 	</update>
-	
+
+	<!-- 삭제 -->
+	<delete id="del">
+		delete board where board_no=#{board_no}
+	</delete>
+
+	<!-- 분류 체크하면 이동 -->
+	<select id="checkList" resultType="boardDto"
+		parameterType="string">
+		board_type varchar2(12) NOT NULL check(board_type IN
+		('통합', '공지사항', '회사규정', '인사발령')),
+	</select>
+
+	<!-- 수정 -->
+	<update id="update" parameterType="boardDto">
+		UPDATE board
+		board_type = #{board_type}
+		board_title = #{board_title}
+		board_content = #{board_content}
+	</update>
+
 </mapper>
   
 

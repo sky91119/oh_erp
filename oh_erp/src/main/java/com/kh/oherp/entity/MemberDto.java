@@ -14,6 +14,7 @@ member_meal_pay,
 member_car_pay;
 
 private String 
+member_pw,
 member_account,
 member_name, 
 member_resident_number, 

@@ -14,4 +14,12 @@ public class BoardDto {
     private String board_content;  //내용
     private String board_view;  //조회수
     private String board_date;  // 날짜
+	public long getFsize() {    //파일 다운
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public String getFname() { //파일 다운 이름
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}

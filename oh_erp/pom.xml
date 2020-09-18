@@ -149,19 +149,19 @@
          <version>${org.springframework-version}</version>
       </dependency>
 
- <!-- 파일업로드 의존성 -->
-<dependency>
-    <groupId>commons-fileupload</groupId>
-    <artifactId>commons-fileupload</artifactId>
-    <version>1.4</version>
-</dependency>
- 
-<!-- 파일을 제어하는 기능을 수행하는 io도 설정 -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.7</version>
-</dependency>
+      <!-- 파일업로드 의존성 -->
+      <dependency>
+         <groupId>commons-fileupload</groupId>
+         <artifactId>commons-fileupload</artifactId>
+         <version>1.4</version>
+      </dependency>
+
+      <!-- 파일을 제어하는 기능을 수행하는 io도 설정 -->
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>2.7</version>
+      </dependency>
 
 
       <dependency>
@@ -210,37 +210,39 @@
          <scope>provided</scope>
       </dependency>
 
-        <!-- email dependency -->
+      <!-- email dependency -->
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context-support</artifactId>
-          <version>${org.springframework-version}</version>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context-support</artifactId>
+         <version>${org.springframework-version}</version>
       </dependency>
       <dependency>
-          <groupId>javax.mail</groupId>
-          <artifactId>javax.mail-api</artifactId>
-          <version>1.6.2</version>
+         <groupId>javax.mail</groupId>
+         <artifactId>javax.mail-api</artifactId>
+         <version>1.6.2</version>
       </dependency>
       <dependency>
          <groupId>com.sun.mail</groupId>
          <artifactId>javax.mail</artifactId>
          <version>1.6.2</version>
       </dependency>
-      
+
       <!-- 트랜잭션 관리 모듈 -->
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
-      
+
+
+
       <!-- aop 설정 -->
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-aop</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
-      
+
       <!-- AspectJ : AOP 구현을 위한 원천기술(외부기술) -->
       <dependency>
          <groupId>org.aspectj</groupId>
@@ -252,22 +254,19 @@
          <artifactId>aspectjweaver</artifactId>
          <version>${org.aspectj-version}</version>
       </dependency>
-      
-      <!-- 
-         웹소켓 의존성
-         - spring-websocket : 스프링에서 지원하는 웹소켓 모듈
-         - jackson-databind : 자바에서 JSON 관련 처리를 수행하는 모듈 
-      -->
+
+      <!-- 웹소켓 의존성 - spring-websocket : 스프링에서 지원하는 웹소켓 모듈 - jackson-databind 
+         : 자바에서 JSON 관련 처리를 수행하는 모듈 -->
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-websocket</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
-      
+
       <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-          <version>2.11.2</version>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>2.11.2</version>
       </dependency>
 
    </dependencies>

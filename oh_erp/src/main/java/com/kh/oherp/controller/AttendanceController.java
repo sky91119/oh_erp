@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.oherp.entity.AttendanceRequestDto;
+import com.kh.oherp.entity.MemberRequestDto;
 import com.kh.oherp.repository.AttendanceRequestDao;
 
 @Controller
@@ -22,6 +25,7 @@ public class AttendanceController {
 	@Autowired
 	private AttendanceRequestDao attendanceRequestDao;
 	
+
 	@RequestMapping("/request")
 	public String reqeust(
 				@RequestParam(required=false,defaultValue="모든 요청들") String type,
@@ -34,12 +38,50 @@ public class AttendanceController {
 		map.put("startDate",startDate);
 		map.put("finishDate",finishDate);
 		
-		List<AttendanceRequestDto>list=attendanceRequestDao.getList(map);
+		List<MemberRequestDto>list=attendanceRequestDao.getList(map);
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		
+		//게시글 수
+		int listCnt = attendanceRequestDao.listCnt(map);
+		model.addAttribute("listCnt",listCnt);
+		
 		return"attendance/request";
 	}
+	
+	@RequestMapping("/myrequest")
+	public String myrequest(
+				@RequestParam(required=false,defaultValue="모든 요청들") String type,
+				@RequestParam(required=false)String startDate,
+				@RequestParam(required=false)String finishDate,
+				Model model) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("type",type);
+		map.put("startDate",startDate);
+		map.put("finishDate",finishDate);
+		
+		List<MemberRequestDto>list=attendanceRequestDao.getList(map);
+		model.addAttribute("list",list);
+		model.addAttribute("map",map);
+		
+		//게시글 수
+		int listCnt = attendanceRequestDao.listCnt(map);
+		model.addAttribute("listCnt",listCnt);
+		
+		return "attendance/myrequest";
+	}
+	
+	
+//	@GetMapping("/request_data")
+//	@ResponseBody
+//	public List<AttendanceRequestDto> listData(Model model) {
+//		List<AttendanceRequestDto> list = sqlSession.selectList("attendanceRequest.getList");
+//		return list;
+//	}
+	
+	
+	
 	
 // 승인 버튼만 구현	
 //	@PostMapping("/request_yes")
@@ -61,6 +103,26 @@ public class AttendanceController {
 		attendanceRequestDao.requestManage(param);
 		
 		return"redirect:request";
+	}
+	
+	@PostMapping("/request_do")
+	public String request_do(
+				@RequestParam(required=false) String requtype,
+				@RequestParam String userinfo,
+				@RequestParam(required=false) String cause,
+				@RequestParam(required=false) String restartDate,
+				@RequestParam(required=false) String refinishDate
+			) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("requtype", requtype);
+		map.put("userinfo", userinfo);
+		map.put("cause", cause);
+		map.put("restartDate", restartDate);
+		map.put("refinishDate", refinishDate);
+		attendanceRequestDao.request(map);
+		
+		return"redirect:myrequest";
 	}
 	
 }

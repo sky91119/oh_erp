@@ -119,6 +119,7 @@
 			<div class="row">
 
 				<div class="col-4">
+					비밀번호<input type="password" name="member_pw"> <br> <br>
 					성명<input type="text" name="member_name"> <br> <br>
 					주민등록번호<input type="text" name="member_resident_number"> <br>
 					<br> 입사일자 <input type="date" class="form-control" name="member_start_work">

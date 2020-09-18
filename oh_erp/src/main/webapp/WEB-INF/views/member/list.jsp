@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
     <!--사원 검색창 -->
     <!--  
 <form action="search" method="post">
@@ -19,14 +24,10 @@
 </form>
 	-->
 	
-<table border="1">
-	<thead>
-		<tr>
-			<td>사원번호</td>
-			<td>성명</td>
-			<td>부서명</td>
-			<td>입사일자</td>
-		</tr>
+<table class="table table-hover">
+	<thead class="thead-dark">
+        <br>
+		<tr><th>사원번호</th><th>성명</th><th>부서명</th><th>입사일자<tr>
 	</thead>
 	<tbody>
 		<c:forEach var="MemberListVo" items="${list}">
