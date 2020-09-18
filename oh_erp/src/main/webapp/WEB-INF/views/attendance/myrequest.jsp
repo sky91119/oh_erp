@@ -132,51 +132,100 @@
 	</style>
     <script>
         window.onload = function(){
+            var start = document.querySelectorAll(".picker-start");//2개 , start[0] , start[1]
+            var end = document.querySelectorAll(".picker-end");//2개 , end[0] , end[1]
+            
             var options = {
-                //대상 지정
-                field: document.querySelector(".picker-start"),
-                
-                //두 번째 대상 지정
-                secondField: document.querySelector(".picker-end"),
-                
-                //날짜 표시 형식 지정
-                format: 'YYYY-MM-DD',
-                
-                //한 화면에 표시될 달의 개수
-                numberOfMonths: 2,
-                
-                //시작일 지정
-                //minDate:new Date(),//- 오늘부터 선택 가능
-               // minDate:moment(new Date()).add(1, 'days'),
-                
-                //문서에 포함시켜 표시
-                //inline:true,
+                    //대상 지정
+                    field: start[0],
+                    
+                    //두 번째 대상 지정
+                    secondField: end[0],
+                    
+                    //날짜 표시 형식 지정
+                    format: 'YYYY-MM-DD',
+                    
+                    //한 화면에 표시될 달의 개수
+                    numberOfMonths: 2,
+                    
+                    //시작일 지정
+                    //minDate:new Date(),//- 오늘부터 선택 가능
+                   // minDate:moment(new Date()).add(1, 'days'),
+                    
+                    //문서에 포함시켜 표시
+                    //inline:true,
 
-                //시작요일(1:월 ~ 7:일)
-                firstDay: 7,
+                    //시작요일(1:월 ~ 7:일)
+                    firstDay: 7,
+                    
+                    //자동으로 닫히지 않도록 설정
+                    //autoclose: false,
+                    
+                    //선택 방향 제어
+                    selectForward: true,
+                    selectBackword: false,
+                    
+                    //주말 제외
+                    disableWeekends:false,
+                    
+                    //날짜 제외
+                    disableDates:[
+                    ],
+                    
+                    //선택 후 이벤트 설정(start와 end는 momentjs의 객체)
+                    onSelect:function(start, end){
+                        if(!start || !end) return; //둘 중 하나라도 없으면 계산 중지
+                        var days = end.diff(start, 'days') + 1;
+                        console.log(days);
+                    }
+                };
+                var picker = new Lightpick(options);
                 
-                //자동으로 닫히지 않도록 설정
-                //autoclose: false,
-                
-                //선택 방향 제어
-                selectForward: true,
-                selectBackword: false,
-                
-                //주말 제외
-                disableWeekends:false,
-                
-                //날짜 제외
-                disableDates:[
-                ],
-                
-                //선택 후 이벤트 설정(start와 end는 momentjs의 객체)
-                onSelect:function(start, end){
-                    if(!start || !end) return; //둘 중 하나라도 없으면 계산 중지
-                    var days = end.diff(start, 'days') + 1;
-                    console.log(days);
-                }
-            };
-            var picker = new Lightpick(options);
+                options = {
+                   //대상 지정
+                   field: start[1],
+                   
+                   //두 번째 대상 지정
+                   secondField: end[1],
+                   
+                   //날짜 표시 형식 지정
+                   format: 'YYYY-MM-DD',
+                   
+                   //한 화면에 표시될 달의 개수
+                   numberOfMonths: 2,
+                   
+                   //시작일 지정
+                   //minDate:new Date(),//- 오늘부터 선택 가능
+                  // minDate:moment(new Date()).add(1, 'days'),
+                   
+                   //문서에 포함시켜 표시
+                   //inline:true,
+
+                   //시작요일(1:월 ~ 7:일)
+                   firstDay: 7,
+                   
+                   //자동으로 닫히지 않도록 설정
+                   //autoclose: false,
+                   
+                   //선택 방향 제어
+                   selectForward: true,
+                   selectBackword: false,
+                   
+                   //주말 제외
+                   disableWeekends:false,
+                   
+                   //날짜 제외
+                   disableDates:[
+                   ],
+                   
+                   //선택 후 이벤트 설정(start와 end는 momentjs의 객체)
+                   onSelect:function(start, end){
+                       if(!start || !end) return; //둘 중 하나라도 없으면 계산 중지
+                       var days = end.diff(start, 'days') + 1;
+                       console.log(days);
+                   }
+               };
+               picker = new Lightpick(options);
         };
       
     </script>
@@ -251,9 +300,9 @@
 
     <div class="row padding32-bot">
     	
-    	<!-- 조회 날짜 선택 -->
+    	    	<!-- 조회 날짜 선택 -->
     	<div class="col-6">
-    		<form action=${pageContext.request.contextPath}/attendance/myrequest method="post">
+    		<form action=${pageContext.request.contextPath}/attendance/request method="post">
     			<div class="left-float40 inline">
     				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜" value="${map.startDate}">
   					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜" value="${map.finishDate}">
@@ -272,7 +321,7 @@
         </div>
         
         <div class="col-6 sum-request">
-        	<span>총 요청수 : ${listCnt} </span>
+        	<span>총 요청수 : ${mylistCnt} </span>
         </div>
 
      </div>
@@ -287,6 +336,7 @@
      				<th>요청 사유</th>
      				<th>상태</th>
      				<th>신청일자</th>
+     				<th>관리</th>
      			</tr>
      		</thead>
      		<tbody>
@@ -321,11 +371,19 @@
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
      					</td>
-
+     					<td>	<!-- 승인/거절 버튼 -->
+     						<c:if test="${manage eq '대기중'}">
+     							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
+     								<input type="hidden" name="attendance_request_no" value="${memberRequestDto.attendance_request_no}">
+     								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
+     								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
+     							</form>
+     								
+     						</c:if>
+     					</td>
      			</tr>
      			</c:forEach>
      		</tbody>
      	</table>
      </div>
-     
 </div>
