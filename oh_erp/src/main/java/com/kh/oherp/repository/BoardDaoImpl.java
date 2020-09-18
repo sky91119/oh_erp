@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.oherp.entity.BoardDto;
 
+
+
 	@Repository
 	public class BoardDaoImpl implements BoardDao{
 
@@ -23,6 +25,7 @@ import com.kh.oherp.entity.BoardDto;
 			//2. 게시글 등록
 			boardDto.setBoard_no(no);
 			sqlSession.insert("board.write", boardDto);
+
 			return no;
 		}
 
@@ -45,6 +48,13 @@ import com.kh.oherp.entity.BoardDto;
 			
 		}
 
+		// 게시물 수정
+		@Override
+		public void update(BoardDto boardDto) throws Exception {
+			sqlSession.update("board.update", boardDto);
+		}
+		
+//		--
 		@Override
 		public int countBoard() {
 			// TODO Auto-generated method stub

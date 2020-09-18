@@ -21,6 +21,9 @@ BoardDto read(int board_no);
 
 	//board에 있는 데이터 삭제
 	 public void delete(int board_no); //지우기
+	 
+	 //게시글 수정
+	 public void update(BoardDto boardDto)throws Exception; //지우기
 
 
 	int countBoard();

@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+public class Attendance_countDto {
 
-public class Attendance_detailDto {
+	//통계를 위해 만든 뷰(Attendance_count_page에 )를 저장하기 위한 DTO
 
-	private int attendance_no;
+	private String in_time;
+	private int cnt;
 	private int member_code;
-	private String attendance_in;
-	private String attendance_out;
-	private String attendance_note;
-	private int attendance_total;
-	
+	private String member_name;
 }
+
+

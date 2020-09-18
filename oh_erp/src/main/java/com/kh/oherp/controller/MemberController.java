@@ -55,7 +55,7 @@ public class MemberController {
 	@GetMapping("/list")
 	public String list(Model model) {
 		memberDao.list(model);
-		return "member/list";
+		return "/member/list";
 	}
 
 	@GetMapping("/login")
@@ -68,6 +68,7 @@ public class MemberController {
 	
 	@Autowired
 	private PasswordEncoder encoder;
+	
 	
 	@PostMapping("/login")
 	public String login(

@@ -12,7 +12,7 @@
 	<input type="text" name="keyword">
 	
 	
-	<input type="submit" value="검색">
+	<input type="submit"  class="btn btn-secondary" value="검색">
 	
 	<select name="type">
 		<option value="department_no">부서코드</option>
@@ -22,15 +22,12 @@
 	
 </form>
 
-<table border="1">
-	<thead>
-		<tr>
-			<td>부서코드</td>
-			<td>부서명</td>
-			<td>사용</td>
-			<td>수정</td>
-			<td></td>
-		</tr>
+<table class="table table-hover">
+	<thead class="thead-dark">
+		
+		<br>
+			<tr><th>부서코드</th><th>부서명</th><th>사용</th><th>수정</th><th>삭제<tr>
+		
 	</thead>
 	<tbody>
 		<c:forEach var="DepartmentDto" items="${list}">
@@ -38,8 +35,8 @@
 				<td>${DepartmentDto.department_no}</td>
 				<td>${DepartmentDto.department_name}</td>
 				<td>${DepartmentDto.department_use}</td>
-				<td><a href="update/${DepartmentDto.department_no}">수정</a></td>
-				<td><a href ="delete/${DepartmentDto.department_no}">삭제</a></td>
+				<td><a href="update/${DepartmentDto.department_no}" class="btn btn-secondary">수정</a></td>
+				<td><a href ="delete/${DepartmentDto.department_no}" class="btn btn-secondary">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -67,11 +64,11 @@
 <form action="regist" method="post">
 부서명<input type="text" name="department_name">
 <!--  사용여부<input type="text" name="department_use">-->
-<input type="submit" value="저장">
+<input type="submit" value="저장" class="btn btn-primary">
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div></div>
