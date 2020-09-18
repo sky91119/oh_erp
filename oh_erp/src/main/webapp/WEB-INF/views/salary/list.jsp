@@ -95,6 +95,10 @@
         </div>
 
     </div>
+    
+    <div class="col-6 sum-request">
+        	<span>총 요청수 : ${salary_count}</span>
+        </div>
     <div>
         <table class="table left-font">
             <thead>

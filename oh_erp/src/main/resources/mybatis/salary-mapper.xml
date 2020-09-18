@@ -63,6 +63,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="member_salary" resultType="SalaryDto">
    		SELECT * FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE order by sl.salary_date desc
    </select>
+   
+   <select id="salary_count" resultType="int">
+   		select count(*) FROM salary
+   </select>
+   
 </mapper>
 
 
