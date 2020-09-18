@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +137,9 @@
       </div>     
           </li>  
   </ul>
-  
+  <c:if test="${not empty sessionScope}">
+
+
        <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="no-login"></span> 사원번호  ${sessionScope.userinfo.member_code} </a>
       </li>
@@ -144,6 +147,8 @@
       <li><a href="#"><span class="na-log-in"></span>성명  ${sessionScope.userinfo.member_name} </a>
       </li>
     </ul>
+</c:if>
+
 </nav>
       </nav>
 
