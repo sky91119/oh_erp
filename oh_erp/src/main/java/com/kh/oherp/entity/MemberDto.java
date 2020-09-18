@@ -25,5 +25,5 @@ member_bank,
 member_bank_name, 
 member_post, 
 member_address;
-	
+
 }

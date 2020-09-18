@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SalaryDto {
 
+	private int salary_no;
 	private String 
 	salary_date,
 	salary_sortation,
@@ -18,5 +19,9 @@ public class SalaryDto {
 	salary_article,
 	salary_member;
 	
-	private int salary_no;
+	private String 
+	member_name,
+	member_basic_pay,
+	member_meal_pay,
+	member_car_pay;
 }

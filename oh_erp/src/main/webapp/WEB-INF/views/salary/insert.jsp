@@ -6,27 +6,38 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <script>
-function check(){
-	var url = location.search.substr(location.search.indexOf("?") + 1);
-    console.log(url);
-    if(url=='error') {
-       history.replaceState({}, null, location.pathname);
-       alert("동일기간에 이미 생성된 급여가 있습니다"+
-    		   "급여를 생성하시겠습니까?");
-    }
-}
+// function check(){
+// 	var url = location.search.substr(location.search.indexOf("?") + 1);
+//     console.log(url);
+//     if(url=='error') {
+//        history.replaceState({}, null, location.pathname);
+//        alert("동일기간에 이미 생성된 급여가 있습니다"+
+//     		   "급여를 생성하시겠습니까?");
+//     }
+// }
 
-function apply_check(){    
-    var result = confirm("등록하시겠습니까?");
-     if (!result){ 
-        return false;
-     }
-     else{
-        document.form.submit();
-        }
-     }
+// function apply_check(){    
+//     var result = confirm("등록하시겠습니까?");
+//      if (!result){ 
+//         return false;
+//      }
+//      else{
+//         document.form.submit();
+//         }
+//      }
 
-window.onload=get_semester;
+// window.onload=check;
+
+// function sampleModalPopup(){
+//     // 팝업 호출 url
+//     var url = "${pageContext.request.contextPath}/salary/list";
+    
+//     // 팝업 호출
+//     $("#sampleModalPopup > .modal-dialog").load(url, function() { 
+//         $("#sampleModalPopup").modal("shown"); 
+//     });
+// }
+
 </script>
 
 
@@ -46,7 +57,6 @@ window.onload=get_semester;
 	<table>
 	<h5>급여정보입력</h5>
 	<p></p>
-		<input type="hidden" id="salary_no" name="salary_no">
 		<tr>
 			<td>귀속연월</td>
 			<td><input type="month" class="form-control" id="salary_date" name="salary_date">
@@ -56,8 +66,8 @@ window.onload=get_semester;
 		<tr>
 			<td>급여구분</td>
 			<td><select class="form-control" id="salary_sortation" name="salary_sortation">
-					<option value="basicpay">기본급</option>
-					<option value="bonuspay">기본급+상여</option>
+					<option value="기본급">기본급</option>
+					<option value="기본급+상여">기본급+상여</option>
 			</select></td>
 		</tr>
 <p></p>
@@ -82,25 +92,23 @@ window.onload=get_semester;
 		</tr>
 		<p></p>
 		<tr>
-			<td>대상항목</td>
-			<td><input type="radio" id="salary_article" name="salary_article" value="all"> 
-			<label for="salary_article">전체</label>
-			<input type="radio" id="salary_article" name="salary_article" value="choice"> 
-			<label for="salary_article">선택</label></td>
-		</tr>
-		<p></p>
-		<tr>
 			<td>대상사원</td>
-			<td><input type="radio" id="salary_member" name="salary_member" value="all"> 
+			<td><input type="checkbox" id="salary_member" name="salary_member" value="전체"> 
 			<label for="salary_member">전체</label> 
-			<input type="radio" id="salary_member" name="salary_member" value="choice">
-		    <label for="salary_member">선택</label></td>
+			
+			<select name="salary_member" id="salary_member" class="form-control" required>
+<%--                 <option value="" ${param.majorSearch == '' ? 'selected':''}>사원 선택</option> --%>
+				<option>사원 선택</option>
+                <c:forEach var="memberDto" items="${member}">
+                   <option value="${memberDto.member_code}">${memberDto.member_name}</option>
+                </c:forEach>
+            </select>
 		</tr>
 		<p></p>
 		</div>
 	</table>	
 	<p></p>
-		<input type="submit" value="저장">
+		<input type="submit" value="저장" onclick="sampleModalPopup();">
 </form>
       </div>
       <div class="modal-footer">
