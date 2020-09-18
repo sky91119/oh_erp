@@ -60,22 +60,26 @@ public class AttendanceController {
 				@RequestParam(required=false,defaultValue="모든 요청들") String type,
 				@RequestParam(required=false)String startDate,
 				@RequestParam(required=false)String finishDate,
-				@RequestParam(required=false)int no,
+				HttpSession session,
 				Model model) {
+
+		MemberDto memberDto = (MemberDto)session.getAttribute("userinfo");
+		int writer = memberDto.getMember_code();
 		
 		Map<String,Object>map=new HashMap<>();
 		map.put("type",type);
 		map.put("startDate",startDate);
 		map.put("finishDate",finishDate);
-		map.put("no",no);
+		map.put("writer", writer);
+		
 		
 		List<MemberRequestDto>list=attendanceRequestDao.getMyList(map);
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		
 		//게시글 수
-		int listCnt = attendanceRequestDao.listCnt(map);
-		model.addAttribute("listCnt",listCnt);
+		//int mylistCnt = attendanceRequestDao.mylistCnt(map);
+		//model.addAttribute("listCnt",mylistCnt);
 		
 		return "attendance/myrequest";
 	}

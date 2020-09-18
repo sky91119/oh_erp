@@ -12,5 +12,6 @@ public interface AttendanceRequestDao {
 	//void requestManageYes(int attendance_request_no);
 	void requestManage(Map<String,Object> param); //승인,거절버튼
 	int listCnt(Map<String, Object> map); //게시글 수
+	int mylistCnt(Map<String, Object> map); //내 게시글 수
 	void request(Map<String,Object> map);
 }

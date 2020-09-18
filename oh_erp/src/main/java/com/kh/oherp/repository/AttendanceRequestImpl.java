@@ -48,11 +48,20 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 		int listCnt=sqlSession.selectOne("attendanceRequest.listCnt",map);
 		return listCnt;
 	}
+	
+	//내 게시글 수
+	@Override
+	public int mylistCnt(Map<String, Object> map) {
+		int mylistCnt=sqlSession.selectOne("attendanceRequest.mylistCnt",map);
+		return mylistCnt;
+	}
 
+	//요청 생성
 	@Override
 	public void request(Map<String, Object> map) {
 		sqlSession.insert("attendanceRequest.request",map);
 	}
+
 
 
 

@@ -117,8 +117,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<select id="getMyList" resultType="memberRequestDto" parameterType="map">
 		SELECT ar.ATTENDANCE_REQUEST_NO,ar.MEMBER_CODE ,ar.ATTENDANCE_REQUEST_TYPE ,ar.ATTENDANCE_REQUEST_CONTENT ,ar.ATTENDANCE_REQUEST_CAUSE ,ar.ATTENDANCE_REQUEST_START ,ar.ATTENDANCE_REQUEST_FINISH ,ar.ATTENDANCE_REQUEST_MANAGEMENT ,ar.ATTENDANCE_REQUEST_TODAY ,m.MEMBER_NAME FROM ATTENDANCE_REQUEST ar INNER JOIN MEMBER m ON (m.MEMBER_CODE = ar.MEMBER_CODE)
 		WHERE 1=1
-		<if test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
-			and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+		<choose>
+			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
+							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
 ,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
 ,'YYYY-MM-DD HH24:MI:SS')
 
@@ -128,9 +129,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test='type == "완료된 요청들"'>
 				and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
 			</if>
-		</if>
+			</when>
+			<otherwise>
+				<if test='type == "승인이 필요한 요청들"'>
+					and(attendance_request_management='대기중')
+				</if>
+				<if test='type == "완료된 요청들"'>
+					and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+				</if>
+			</otherwise>
+		</choose>
 		
-		and ar.member_code=#{no} ORDER BY attendance_request_today DESC
+		and ar.member_code=#{writer} ORDER BY attendance_request_today DESC
 	</select>
 	
 	<!-- 게시글 수 출력 -->
@@ -161,6 +171,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 		
 	</select>
+	
+	
+	<!-- 내 게시글 수 출력 
+		<select id="mylistCnt" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM ATTENDANCE_REQUEST 
+		WHERE 1=1
+				<choose>
+			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
+							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS')
+
+			<if test='type == "승인이 필요한 요청들"'>
+				and(attendance_request_management='대기중')
+			</if>
+			<if test='type == "완료된 요청들"'>
+				and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+			</if>
+			</when>
+			<otherwise>
+				<if test='type == "승인이 필요한 요청들"'>
+					and(attendance_request_management='대기중')
+				</if>
+				<if test='type == "완료된 요청들"'>
+					and(attendance_request_management='승인됨' or attendance_request_management='거절됨')
+				</if>
+			</otherwise>
+		</choose>
+		and ar.member_code=#{no}
+	</select> -->
 	
 	<!-- 승인 버튼 누르면 상태 승인으로 변하게 
 	<update id="requestManageYes" parameterType="int">

@@ -98,7 +98,7 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">출퇴근기록관리</a>
         <a class="dropdown-item" href="#">근태조회</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest?no=${userinfo.member_code}">요청내역</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
         <!-- 관리자일때만 메뉴 표시 -->
         <c:if test="${userinfo.member_position eq '관리자'}">
