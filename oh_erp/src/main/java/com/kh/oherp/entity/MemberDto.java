@@ -25,6 +25,7 @@ member_position,
 member_bank, 
 member_bank_name, 
 member_post, 
-member_address;
-	
+member_address,
+//부서테이블꺼도 하나 되나?
+department_name;	
 }

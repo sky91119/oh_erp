@@ -5,20 +5,22 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-
-
- <c:if test="${ empty  columnMap}">
+<c:if test="${empty sessionScope}">
+	
 <form action="login" method="post">
 	사원번호 : <input type="text" name="member_code"><br><br>
 	비밀번호 : <input type="password" name="member_pw"><br><br>
 	<input type="submit" value="로그인">
+	<br>
+	
 </form>
+
 
 </c:if>
 
+<c:if test="${not empty sessionScope}">
 
 
-
-
+</c:if>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
