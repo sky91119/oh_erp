@@ -70,18 +70,27 @@
   <body>
   
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="http://localhost:8080/oherp/">ERP</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    
+
+   &emsp;&emsp;                   
+ 
+   <a class="navbar-brand"href="${pageContext.request.contextPath}">
+   <!--     로고 -->
+	  <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
+   </a>
+    &emsp;  &emsp; 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCosllapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 <!-- Dropdown -->
-   &emsp; &emsp; &emsp;&emsp;&emsp;
-     <ul class="navbar-nav">
+
+     <ul class="navbar-nav align-items-center">
+ 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         급여관리
       </a>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" style="text-align: center;">
        <p>상용직</p>
         <a class="dropdown-item" href="#">급여계산대장</a>
         <a class="dropdown-item" href="#">급여현황</a>
@@ -98,8 +107,12 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">출퇴근기록관리</a>
         <a class="dropdown-item" href="#">근태조회</a>
-        <a class="dropdown-item" href="#">요청</a>
-        <a class="dropdown-item" href="#">요청관리</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
+       
+        <!-- 관리자일때만 메뉴 표시 -->
+        <c:if test="${userinfo.member_position eq '관리자'}">
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/request">요청관리</a>
+        </c:if>
       </div>
       
         <li class="nav-item dropdown">
@@ -128,25 +141,26 @@
         게시판
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="http://localhost:8080/oherp/board/list">통합</a>
-        <a class="dropdown-item" href="http://localhost:8080/oherp/board/list2">공지사항</a>
-        <a class="dropdown-item" href="http://localhost:8080/oherp/board/list3">회사규정</a>
-        <a class="dropdown-item" href="http://localhost:8080/oherp/board/list4">인사발령</a>    
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/list">통합</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/list2">공지사항</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/list3">회사규정</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/list4">인사발령</a>    
       </div>     
           </li>  
   </ul>
-  <c:if test="${not empty sessionScope}">
-
-
+  <c:if test="${not empty sessionScope.userinfo}">
        <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="no-login"></span> 사원번호  ${sessionScope.userinfo.member_code} </a>
       </li>
-      &nbsp;   &nbsp;;
+      &nbsp; 
       <li><a href="#"><span class="na-log-in"></span>성명  ${sessionScope.userinfo.member_name} </a>
       </li>
     </ul>
 </c:if>
 
+  <c:if test="${not empty sessionScope.userinfo}">
+  
+  </c:if>
 </nav>
       </nav>
 
