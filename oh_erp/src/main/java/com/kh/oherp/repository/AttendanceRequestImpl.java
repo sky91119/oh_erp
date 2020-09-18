@@ -42,6 +42,11 @@ public class AttendanceRequestImpl implements AttendanceRequestDao{
 		return listCnt;
 	}
 
+	@Override
+	public void request(Map<String, Object> map) {
+		sqlSession.insert("attendanceRequest.request",map);
+	}
+
 
 	
 }

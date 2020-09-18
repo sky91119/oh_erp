@@ -49,6 +49,30 @@ public class AttendanceController {
 		return"attendance/request";
 	}
 	
+	@RequestMapping("/myrequest")
+	public String myrequest(
+				@RequestParam(required=false,defaultValue="모든 요청들") String type,
+				@RequestParam(required=false)String startDate,
+				@RequestParam(required=false)String finishDate,
+				Model model) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("type",type);
+		map.put("startDate",startDate);
+		map.put("finishDate",finishDate);
+		
+		List<MemberRequestDto>list=attendanceRequestDao.getList(map);
+		model.addAttribute("list",list);
+		model.addAttribute("map",map);
+		
+		//게시글 수
+		int listCnt = attendanceRequestDao.listCnt(map);
+		model.addAttribute("listCnt",listCnt);
+		
+		return "attendance/myrequest";
+	}
+	
+	
 //	@GetMapping("/request_data")
 //	@ResponseBody
 //	public List<AttendanceRequestDto> listData(Model model) {
@@ -79,6 +103,26 @@ public class AttendanceController {
 		attendanceRequestDao.requestManage(param);
 		
 		return"redirect:request";
+	}
+	
+	@PostMapping("/request_do")
+	public String request_do(
+				@RequestParam(required=false) String requtype,
+				@RequestParam String userinfo,
+				@RequestParam(required=false) String cause,
+				@RequestParam(required=false) String restartDate,
+				@RequestParam(required=false) String refinishDate
+			) {
+		
+		Map<String,Object>map=new HashMap<>();
+		map.put("requtype", requtype);
+		map.put("userinfo", userinfo);
+		map.put("cause", cause);
+		map.put("restartDate", restartDate);
+		map.put("refinishDate", refinishDate);
+		attendanceRequestDao.request(map);
+		
+		return"redirect:myrequest";
 	}
 	
 }
