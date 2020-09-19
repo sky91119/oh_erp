@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 public class MemberDto {
 private int member_code, 
 department_no,
+benefit_code,
+project_code,
 member_basic_pay, 
 member_meal_pay, 
 member_car_pay;

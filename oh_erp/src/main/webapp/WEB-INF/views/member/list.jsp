@@ -30,7 +30,7 @@
 		<tr><th>사원번호</th><th>성명</th><th>부서명</th><th>입사일자<tr>
 	</thead>
 	<tbody>
-		<c:forEach var="MemberListVo" items="${list}">
+		<c:forEach var="MemberListVo" items="${memberList}">
 			<tr>
 				<td>${MemberListVo.member_code}</td>
 				<td>${MemberListVo.member_name}</td>
