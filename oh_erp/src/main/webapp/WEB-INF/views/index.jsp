@@ -3,15 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+
+
+
 <c:if test="${empty sessionScope.userinfo}">
 
 
-<!-- 로인인폼 -->
+<!-- 로그인인폼 -->
 <form action="login" method="post">
 	   사원번호<br>
-	    <input type="text" id="uid" class="form-contro" placeholder="사원번호" required autofocus><br><br>
+	    <input type="text" id="uid" class="form-contro" placeholder="사원번호" name="member_code" required autofocus><br><br>
 	    비밀번호<br>
-        <input type="password" id="upw" class="form-contro" placeholder="비밀번호" required><br><br>
+        <input type="password" id="upw" class="form-contro" placeholder="비밀번호" name="member_pw" required ><br><br>
 	  	<button type="submit" class="btn btn-primary btn-md">로그인</button>
 </form>
 
@@ -52,7 +55,10 @@
 </div>
 
 </c:if>
+
+
+
 <c:if test="${not empty sessionScope.userinfo}">
-
-
+	  	
 </c:if>
+
