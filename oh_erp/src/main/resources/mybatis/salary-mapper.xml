@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!--급여목록 조회-->
    <select id="List" resultType="salaryDto">
-      select * from salary 
+      select * from salary
       order by salary_date desc
    </select>
    
@@ -60,13 +60,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		select * from member
    </select>
    
-   <select id="member_salary" resultType="SalaryDto">
-   		SELECT * FROM SALARY sl LEFT OUTER JOI
-   		N member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE order by sl.salary_date desc
+   <select id="member_salary" resultType="map" parameterType="map">
+   		SELECT * FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE
+   		WHERE 1=1
+   		<if test="member_code != null">
+	   		AND mb.member_code = #{member_code} 
+        </if>
+        <if test="salary_date != null">
+	    	AND to_char(sl.salary_date,'yyyy-MM') = #{salary_date}
+        </if>
+   		 order by sl.salary_date desc
    </select>
    
-   <select id="salary_count" resultType="int">
-   		select count(*) FROM salary
+   <select id="salary_count" resultType="int" parameterType="map">
+   		select count(*) FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE
+   		WHERE 1=1
+   		<if test="member_code != null">
+	    	AND mb.member_code = #{member_code}
+        </if>
+        <if test="salary_date != null">
+	    	AND to_char(sl.salary_date,'yyyy-MM') = #{salary_date}
+        </if>
    </select>
    
 </mapper>

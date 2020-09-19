@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>   
    
    <!-- 급여연월을 이용한 단일조회 -->      
-   <select id="get" parameterType="daily_work_date" resultType="daily_work">
+   <select id="get" parameterType="string" resultType="daily_workDto">
   select * from daily_work where to_char(daily_work_date,'yyyy-MM-dd') = #{daily_work_date}
    
    </select>
@@ -37,14 +37,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <!--급여 검색 -->
-   <select id="search" resultType="daily_work" parameterType="map"> 
+   <select id="search" resultType="daily_workDto" parameterType="map"> 
       select * from daily_work
       where instr(${type},#{keyword}) > 0
       order by daily_work_date desc
    </select>
    
    <!--급여목록조회 + 급여검색 -->
-   <select id="daily_work_list" resultType="daily_work" parameterType="map">
+   <select id="daily_work_list" resultType="daily_workDto" parameterType="map">
       SELECT * from daily_work
       <if test="type != null and keyword != null">
          where instr(${type},#{keyword}) > 0
@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		SELECT * FROM daily_work dw LEFT OUTER JOIN daily_worker dwr ON dw.daily_worker_code = dwr.DAILY_WORKER_name ORDER BY daily_worker_name ASC;
    </select>
    
-   <select id="daily_work_count" resultType="int">
+   <select id="dw_count" resultType="int">
    		select count(*) FROM daily_work
    </select>
    

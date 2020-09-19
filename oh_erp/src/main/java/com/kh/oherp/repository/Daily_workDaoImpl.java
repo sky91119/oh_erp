@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.kh.oherp.entity.Daily_workDto;
 import com.kh.oherp.entity.MemberDto;
-import com.kh.oherp.entity.SalaryDto;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +32,8 @@ public class Daily_workDaoImpl implements Daily_workDao{
 
 	@Override
 	public int dw_count(Map<String, Object> map) {
-		int daily_count=sqlSession.selectOne("daily.daily_count",map);
-		return daily_count;
+		int dw_count=sqlSession.selectOne("daily.dw_count",map);
+		return dw_count;
 	}
 
 }

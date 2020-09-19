@@ -24,12 +24,12 @@ public class SalaryDaoImpl implements SalaryDao{
 		return member;
 	}
 	@Override
-	public List<SalaryDto> member_salary() {
-		List<SalaryDto> member_salary = sqlSession.selectList("salary.member_salary");
+	public List member_salary(Map<String,Object>map) {
+		List member_salary = sqlSession.selectList("salary.member_salary",map);
 		return member_salary;
 	}
 	@Override
-	public int salary_count(Map<String, Object> map) {
+	public int salary_count(Map<String,Object>map) {
 			int salary_count=sqlSession.selectOne("salary.salary_count",map);
 			return salary_count;
 	

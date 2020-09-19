@@ -81,7 +81,7 @@
         <p class="title">급여 계산 대장</p>
     </div>
 	<div class="row titlediv">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:5px;">
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:5px;">
   신규
 </button>
 </div>

@@ -1,6 +1,10 @@
 package com.kh.oherp.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,23 +52,32 @@ public class SalaryController {
 			return "redirect:list";
 		}
 		else {
-			
 			return "redirect:list?error";
 		}
 	}
 	
 	@GetMapping("/list")
-	public String insertFinish(Model model){
-		List<SalaryDto> member_salary = salaryDao.member_salary();
+	public String insertFinish(Model model , HttpServletRequest request){
+		Map<String,Object>map=new HashMap<>();
+		String member_code =  request.getParameter("member_code");
+		String salary_date= request.getParameter("salary_date");
+		if(member_code != null && member_code.length() > 0) {
+			map.put("member_code" ,member_code);
+		}
+		if(salary_date != null && salary_date.length() > 0 ) {
+			map.put("salary_date" ,salary_date);
+		}
+		
+		List member_salary = salaryDao.member_salary(map);
 		List<MemberDto> member = salaryDao.get_member();
 		model.addAttribute("member",member);
 		model.addAttribute("member_salary",member_salary);
+		int salary_count = salaryDao.salary_count(map);
+		model.addAttribute("salary_count",salary_count);
+		model.addAttribute("member_code",map.get("member_code"));
+		model.addAttribute("salary_date",map.get("salary_date"));
 		return "salary/list";
 	}
-	
-//	@PostMapping("/list")
-//	public String  list(@ModelAttribute SalaryDto salaryDto) {
-//	}
 	
 	
 }
