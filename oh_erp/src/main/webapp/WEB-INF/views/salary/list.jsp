@@ -220,9 +220,7 @@
 							    </div>
 							  </div></div>
 							  </td>
-  		                     	 
   		                     	 <td>${salaryDto.member_name}</td>
-                   
                     </tr>
                 </c:forEach>
             </tbody>
