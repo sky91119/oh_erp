@@ -14,35 +14,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  -->
 <mapper namespace="member">
 
-
-
 	<insert id="regist" parameterType="memberDto">
-		INSERT INTO member(
+			INSERT INTO member(
 			 member_code,
 			 member_pw,
-			 department_no, 
-			 member_account, 
-			 member_basic_pay, 
-			 member_meal_pay,
-			 member_car_pay,
+			 department_no,
+			 project_code,
+			 benefit_code,
 			 member_name,
-			 member_resident_number, 
-			 member_start_work, 
+			 member_resident_number,
+			 member_start_work,
 			 member_last_work,
-			 member_last_work_cause, 
-			 member_position, 
-			 member_bank, 
-			 member_bank_name, 
-			 member_post, 
-			 member_address
+			 member_last_work_cause,
+			 member_position,
+			 member_bank,
+			 member_account,
+			 member_bank_name,
+			 member_basic_pay, 
+			 member_meal_pay, 
+			 member_car_pay,
+			 member_post,
+			 member_address 
 		) values(
-		member_seq.nextval, 
+		member_seq.nextval,
 		#{member_pw},
 		#{department_no},
-		#{member_account},
-		#{member_basic_pay}, 
-		#{member_meal_pay},
-		#{member_car_pay},
+		1,
+		1,
 		#{member_name},
 		#{member_resident_number}, 
 		#{member_start_work}, 
@@ -50,7 +48,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{member_last_work_cause}, 
 		#{member_position}, 
 		#{member_bank},
+		#{member_account},
 		#{member_bank_name}, 
+		#{member_basic_pay}, 
+		#{member_meal_pay},
+		#{member_car_pay},
 		#{member_post},
 		#{member_address}
 		)
@@ -68,7 +70,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--사원리스트 조회-->
 	<select id="getList" resultType="memberListVo">
-SELECT m.member_code, m.member_name, m.member_start_work, d.department_name
+SELECT 
+m.member_code, m.member_name, m.member_start_work, 
+d.department_name
 FROM MEMBER m, DEPARTMENT d
 WHERE m.department_no = d.department_no
 	</select>

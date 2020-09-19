@@ -45,7 +45,7 @@ public class MemberDaolmpl implements MemberDao {
 	@Override
 	public List<MemberListVo> list(Model model) {
 		List<MemberListVo> list = sqlSession.selectList("member.getList");
-		model.addAttribute("list", list);
+		model.addAttribute("memberList", list);
 		return list;
 	}
 

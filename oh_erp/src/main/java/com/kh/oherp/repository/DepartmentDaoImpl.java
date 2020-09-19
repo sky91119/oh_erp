@@ -37,7 +37,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	@Override
 	public List<DepartmentDto> list(Model model) {
 		List<DepartmentDto> list = sqlSession.selectList("department.getList");
-		model.addAttribute("list", list);
+		model.addAttribute("departmentList", list);
 		return list;
 	}
 
@@ -59,7 +59,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		map.put("type",type);
 		map.put("keyword",keyword);
 		List<DepartmentDto> list= sqlSession.selectList("department.unionList", map);
-		model.addAttribute("list", list);
+		model.addAttribute("departmentList", list);
 
 		return list;
 	}

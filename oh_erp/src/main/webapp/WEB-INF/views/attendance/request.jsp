@@ -72,6 +72,11 @@
          	font-size: 0.75rem;
          	border-radius: 2px;
 		}
+	/*휴가 요청 버튼*/
+		.plz{
+			text-align: right;
+		}
+			
 	/*요청관리 상태별 조회*/	
 		.manage{
 			background-color:lightgray;	
