@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.kh.oherp.entity.ProjectDto" alias="projectDto"/>
 		<typeAlias type="com.kh.oherp.entity.SalaryDto" alias="salaryDto"/>
 		<typeAlias type="com.kh.oherp.entity.Daily_workerDto" alias="daily_workerDto"/>
+		<typeAlias type="com.kh.oherp.entity.Daily_workDto" alias="daily_workDto"/>
 	</typeAliases>
 	
 </configuration>
