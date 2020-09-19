@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kh.oherp.entity.BenefitDto;
 import com.kh.oherp.entity.DepartmentDto;
 import com.kh.oherp.entity.MemberDto;
-import com.kh.oherp.entity.MemberListVo;
 import com.kh.oherp.entity.ProjectDto;
 import com.kh.oherp.repository.DepartmentDao;
 import com.kh.oherp.repository.MemberDao;
@@ -78,7 +77,6 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(
 			@ModelAttribute MemberDto memberDto,
-			@ModelAttribute MemberListVo memberListVo,
 			HttpSession session) {
 //		[1] DB에서 해당 회원의 정보를 모두 불러온다
 		MemberDto find = sqlSession.selectOne(
@@ -97,7 +95,7 @@ public class MemberController {
 
 		//그 외의 모든 경우는 오류로 간주
 		return "redirect:login?error";
-	
+
 	}
 	
 	@GetMapping("/mypage")

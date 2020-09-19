@@ -159,11 +159,19 @@
 </c:if>
 
   <c:if test="${not empty sessionScope.userinfo}">
-  
+		<input type="button" value="logout" onClick="logout();" />
   </c:if>
 </nav>
       </nav>
-
+<script>
+function logout(){
+	 var con = confirm("로그아웃 하시겠습니까?");
+	 if(con == true){
+	  location.href="${pageContext.request.contextPath}/logout";
+	  //logout을 위해 세션을 제거하는 페이지 호출
+	 }else{}
+	}	
+</script>
  
 
 

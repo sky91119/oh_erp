@@ -16,4 +16,7 @@ public interface MemberDao {
 	
 	//사원리스트 조회기능 부서명도 불러와야됨.
 	List<MemberListVo> list(Model model);
+
+	
+	
 }

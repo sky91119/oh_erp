@@ -83,7 +83,8 @@ public class DepartmentController {
 	}
 
 	@PostMapping("/{department_no}")
-	public String modify(@PathVariable int department_no, @ModelAttribute DepartmentDto departmentDto) {
+	public String modify(@PathVariable int department_no, 
+			@ModelAttribute DepartmentDto departmentDto) {
 		departmentDao.modify(departmentDto);
 		return "redirect:/department/list";
 	}
