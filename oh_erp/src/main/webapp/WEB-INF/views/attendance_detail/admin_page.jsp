@@ -78,34 +78,24 @@
    
 </style>
 
-<div class="container-fluid">
-   <div>
-      <p class="title">근태관리목록</p>
-   </div>
+
    
-     <div class="row padding32-bot">
+  <div class="row padding32-bot">
        <div class="col-2">
           <input type="date" class="form-control">
        </div>
     
-    <div class="col-2">
-         <form action=${pageContext.request.contextPath}/attendance_detail/admin_page method="post">
-            <select class="form-control" name="type" onchange="this.form.submit()">
-               <option value="정상근태된 기록">
-               정상근태된 기록<br><br>
-                                       <!--근무중이거나 퇴근한 직원들의 기록을 볼 수 있습니다.--></option>
-               <option value="출근 누락된 기록">
-               출근 누락된 기록<br><br>
-                                       <!--결근한 직원들의 근무일정을 볼 수 있습니다.--></option>
-               <option value="퇴근 누락된 기록">
-               퇴근 누락된 기록<br><br>
-                                     <!--퇴근이 누락된 직원들의 출퇴근기록을 볼 수 있습니다.--></option>
-            </select>
+    <div class="col-4">
+          <select class="inline form-control col-6" name="type" onchange="this.form.submit()">
+      <option value="" class="manage">${map.type}</option>
+	  <option value="정상근퇴된 기록">정상근태된 기록</option>
+	  <option value="출근누락된 기록">출근누락된 기록</option>
+	  <option value="퇴근누락된 기록">퇴근누락된 기록</option>
+	  </select>
             
-         </form>
+    </div> 
          
-         </div>
-          <div class="col-4 ">
+          <div class="col-2 ">
           
           
           </div>
@@ -211,6 +201,7 @@
    <th>근무노트</th>
    <th>합계</th>
    <th>   </th>
+    <th>   </th>
  
   
   </tr>
@@ -225,7 +216,11 @@
             <td>${Attendance_detailListVo.attendance_in}</td>
             <td>${Attendance_detailListVo.attendance_out}</td>
             <td>${Attendance_detailListVo.attendance_note}</td>
-            <td>${Attendance_detailListVo.attendance_total}</td>            
+            <td>${Attendance_detailListVo.attendance_total}</td> 
+            
+             <td>
+            <a href ="edit/${Attendance_detailListVo.attendance_no}">수정</a>
+            </td>           
             <td>
             <a href ="delete/${Attendance_detailListVo.attendance_no}">삭제</a>
             </td>

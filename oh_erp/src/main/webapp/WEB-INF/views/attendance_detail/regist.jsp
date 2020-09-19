@@ -101,12 +101,6 @@ text-align: left;
                
                <br> <br>
                
-            <!--지점<select class="form-control" name="attendance_spot">
-						<option value="서울지점">서울지점</option>
-						<option value="경기지점">경기지점</option>
-						<option value="기타">기타</option>
-		</select>-->
-               <br> <br>
               
               
                출근시간

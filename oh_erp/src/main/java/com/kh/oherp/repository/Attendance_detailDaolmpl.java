@@ -72,6 +72,31 @@ public void delete(int attendance_no) {
 		return list;
 	}
 
+	@Override
+	public void edit(Attendance_detailDto attendance_detailDto) {
+		sqlSession.update("attendance_detail.update", attendance_detailDto);
+	}
+
+	@Override
+	public List<Attendance_detailListVo> list3(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	//입력누락목록
+	//@Override
+	//public List<Attendance_detailListVo> list3(Map<String, Object> map) {
+	//	map.put("type", type);
+	//	List<Attendance_detailListVo> list =sqlSession.selectList("attendance_detail.list3", map);
+		
+	//	return list;
+	//}
+	
+
+
+
+
 //	@Override
 //	public List<Attendance_countDto> count(Model model){
 //		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");

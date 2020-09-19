@@ -69,10 +69,9 @@ order by ${col} ${order}
  <update id="update" parameterType="attendance_detailListVo">
  UPDATE attendance_detail 
 SET 
-attendance_in = #{attendance_in},
-ATTENDANCE_OUT = #{attendance_out},
-attendance_note = #{attendance_note},
-attendance_total = #{attendance_total}
+attendance_in = to_date(#{attendance_in},'yyyy-mm-dd"T"hh24:mi:ss'),
+ATTENDANCE_OUT = to_date(#{attendance_out},'yyyy-mm-dd"T"hh24:mi:ss'),
+attendance_note = #{attendance_note}
 WHERE  attendance_no = #{attendance_no}
  </update>
 
@@ -99,6 +98,27 @@ WHERE  attendance_no = #{attendance_no}
 GROUP BY TO_CHAR(ATTENDANCE_IN) ORDER BY attendance_in DESC;
  </select>
 
+
+
+<select id="list3" parameterType="Map" resultType="attendance_detailListVo">
+
+SELECT * FROM ATTENDANCE_DETAIL WHERE
+<choose>
+<when test='type=="출근누락된 기록"'>
+ ATTENDANCE_IN IS NULL;
+</when>
+ </choose>
+<choose>
+<when test='type=="퇴근누락된 기록"'>
+ATTENDANCE_IN out NULL;
+</when>
+</choose>
+</select>
+
+<select id="in">
+
+
+</select>
 </mapper>
 
 
