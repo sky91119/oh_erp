@@ -77,111 +77,26 @@ public void delete(int attendance_no) {
 		sqlSession.update("attendance_detail.update", attendance_detailDto);
 	}
 
+
+
+	//출근누락조회
 	@Override
-	public List<Attendance_detailListVo> list3(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Attendance_detailListVo> in(Model model) {
+	List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.in");
+	model.addAttribute("list", list);	
+	return list;
+	}
+
+	//퇴근 누락조회
+	@Override
+	public List<Attendance_detailListVo> out(Model model) {
+		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.out");
+		model.addAttribute("list", list);
+		return list;
 	}
 
 	
-	//입력누락목록
-	//@Override
-	//public List<Attendance_detailListVo> list3(Map<String, Object> map) {
-	//	map.put("type", type);
-	//	List<Attendance_detailListVo> list =sqlSession.selectList("attendance_detail.list3", map);
-		
-	//	return list;
-	//}
-	
 
-
-
-
-//	@Override
-//	public List<Attendance_countDto> count(Model model){
-//		List<Attendance_countDto> count = sqlSession.selectList("attendance_detail.count");
-//		model.addAttribute("count", count);
-//		return count;
-//	}
-
-//	@Override
-//	public List<Attendance_detailListVo> in_null(Model model) {
-//		List<Attendance_detailListVo> in = sqlSession.selectList("attendance_detail.in_null");
-//		model.addAttribute("in", in);
-//		return in;
-//	}
-
-//	@Override
-//	public List<Attendance_detailListVo> out_null(Model model) {
-//		List<Attendance_detailListVo> out = sqlSession.selectList("attendance_detail.out_null");
-//		model.addAttribute("out", out);
-//		return out;
-//	}
-
-///	@Override
-//	public List<Attendance_detailListVo> list(Model model) {
-//		List<Attendance_detailListVo> list = sqlSession.selectList("attendance_detail.list");
-//		model.addAttribute("list", list);
-//		return list;
-//	}
-	
-//	@Override
-//	public List<Attendance_countDto> rank_page(Model model) {
-//		List<Attendance_countDto> rank_page = sqlSession.selectList("attendance_detail.rank_page");
-//		model.addAttribute("rank_page", rank_page);
-//		return rank_page;
-//	}
-
-
-	
-
-	//@Override
-	//public List<Attendance_detailListVo>list(String col, String order) {
-	//Map<String, Object> map = new HashMap<>();
-	//map.put(col, col);
-	//map.put(order, order);
-	// List<Attendance_detailListVo> list = sqlSession.selectList(attendance_detail.list2, map);
-	//	return null;
-	//}
-
-	
-//	@Override
-//	public int detail_regist(Attendance_detailDto attendance_detailDto) {
-//		//관리표 번호 생성
-//		int no = sqlSession.selectOne("attendance_detail.getSeq");
-		
-		//관리표 등록 
-//		attendance_detailDto.setAttendance_no(no);
-//		sqlSession.insert("attendance_detail.detail_regist", attendance_detailDto);
-		
-//		return no;
-//	}
-	
-	
-	
-
-
-	//////////////////////////////////////////////////////
-
-//	@Override
-//	public int get(int attendance_no) {
-//		int attendance_detailDto = sqlSession.selectOne("attendance.get", attendance_no );
-//		return attendance_detailDto;
-//	}
-
-
-	
-
-
-
-	//@Override
-	//public int total(int attendance_total) {
-	//	sqlSession.update("attendance.total", attendance_total);
-	//	Attendance_detailDto attendance_detailDto = sqlSession.selectOne("attendance.total", attendance_total); 
-	//	return attendance_detailDto;
-	//}
-
-	
 
 
 

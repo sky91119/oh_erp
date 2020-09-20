@@ -61,6 +61,8 @@ order by ${col} ${order}
  select * from attendance_detail order by ${col} ${order}
  </select>
  
+
+ 
  
  <select id="edit" resultType="attendance_detailListVo" parameterType="int">
  select * from attendance_detail where member_code=#{member_code}
@@ -95,12 +97,12 @@ WHERE  attendance_no = #{attendance_no}
  
  <select id="inTime">
  SELECT TO_CHAR(ATTENDANCE_IN)attendance_in, count(*)cnt FROM ATTENDANCE_DETAIL
-GROUP BY TO_CHAR(ATTENDANCE_IN) ORDER BY attendance_in DESC;
+GROUP BY TO_CHAR(ATTENDANCE_IN) ORDER BY attendance_in DESC
  </select>
 
 
 
-<select id="list3" parameterType="Map" resultType="attendance_detailListVo">
+<!-- <select id="list3" parameterType="Map" resultType="attendance_detailListVo">
 
 SELECT * FROM ATTENDANCE_DETAIL WHERE
 <choose>
@@ -118,9 +120,21 @@ ATTENDANCE_IN out NULL;
 <select id="in">
 
 
+</select>-->
+
+<select id="in"  resultType="attendance_detailListVo">
+
+SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_IN IS NULL
+
 </select>
+
+
+<select id="out"  resultType="attendance_detailListVo">
+
+SELECT * FROM ATTENDANCE_DETAIL WHERE ATTENDANCE_out IS NULL
+
+</select>
+
 </mapper>
-
-
 
 

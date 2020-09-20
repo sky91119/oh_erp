@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.oherp.entity.Attendance_detailListVo;
 import com.kh.oherp.entity.DepartmentDto;
 
 public interface DepartmentDao {
@@ -31,6 +32,8 @@ public interface DepartmentDao {
 
 	void modify(DepartmentDto departmentDto);
 
+	//클릭 시 내림차순 
+	 public List<DepartmentDto> list(String col, String order);
 	
 }
 

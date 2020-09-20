@@ -86,11 +86,12 @@ text-align: left;
  </div>
  
 <div class="col-5">
+<br>
 
  사원코드<input type="text" class="form-control" name="member_code"> 
                <br> <br>
 
-               <br> <br>
+     <!--      <br> <br>
                근무일정
 					<select class="form-control">
 						<option value="">무일정근무</option>
@@ -100,9 +101,9 @@ text-align: left;
 					</select>
                
                <br> <br>
-               
+         -->      
               
-              
+              <br>
                출근시간
   <input type="datetime-local" class="form-control" name="attendance_in"> 
 
@@ -110,15 +111,22 @@ text-align: left;
                
                퇴근시간
                <input type="datetime-local" class="form-control" name="attendance_out"> 
-				
+				<hr>
+               <br><br>
+      <div align="center">
+      현재근무중
+      </div>        
                
-               현재근무중<input type="checkbox" class="form-control">
+               <input type="checkbox" class="form-control">
                 <br> <br>
                근무노트<textarea class="form-control" name="attendance_note"></textarea>
-<br><br>
+
 
 <hr>
- <input type="checkbox" class="form-control">확정됨
+<br><br>
+<div align="center">확정됨</div>
+ <input type="checkbox" class="form-control">
+ <br><br>
 <hr>
 <br><br>
  </div>

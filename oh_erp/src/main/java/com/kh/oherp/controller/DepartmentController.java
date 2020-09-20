@@ -37,12 +37,26 @@ public class DepartmentController {
 		}
 	}
 
+	//원래 목록
+//	@GetMapping("/list")
+//	public String list(Model model) {
+//		departmentDao.list(model);
+//		return "department/list";
+//	}
+
+	
 	@GetMapping("/list")
-	public String list(Model model) {
-		departmentDao.list(model);
+	public String list(Model model,
+			@RequestParam(required = false, defaultValue = "department_no") String col,
+			@RequestParam(required = false, defaultValue = "Desc") String order
+			) {
+		List<DepartmentDto> list = departmentDao.list(col,order);
+		model.addAttribute("list", list);
+		//departmentDao.list(model);
 		return "department/list";
 	}
-
+	
+	
 	// 파라미터 보이게하는 검색
 //	@GetMapping("/search")
 //	public String search(
@@ -62,7 +76,9 @@ public class DepartmentController {
 
 	// 파라미터 안보이게하는검색
 	@RequestMapping("/search")
-	public String search(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
+	public String search(
+			@RequestParam(required = false) String type, 
+			@RequestParam(required = false) String keyword,
 			Model model) {
 		departmentDao.search(type, keyword, model);
 

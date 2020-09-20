@@ -69,6 +69,28 @@ public class Attendance_detailController {
    
       return "/attendance_detail/admin_page";
  }
+
+//출근누락페이지 
+@GetMapping("/in")
+public String in(Model model) {
+ 
+List<Attendance_detailListVo> list = attendance_detailDao.in(model);
+ model.addAttribute("list", list);
+
+  return "/attendance_detail/in";
+}
+
+//퇴근누락페이지 
+@GetMapping("/out")
+public String out(Model model) {
+
+List<Attendance_detailListVo> list = attendance_detailDao.out(model);
+model.addAttribute("list", list);
+
+return "/attendance_detail/out";
+}
+
+
    
    //기록나누기실시
  //@GetMapping("/admin_page")
