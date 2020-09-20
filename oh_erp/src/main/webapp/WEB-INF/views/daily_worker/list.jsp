@@ -7,7 +7,7 @@
 <table border="1">
 	<thead>
 		<tr>
-			<td>노가다순번</td>
+			<td>순번</td>
 			<td>이름</td>
 			<td>개인정보</td>
 		</tr>

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import com.kh.oherp.entity.Daily_workerDto;
 import com.kh.oherp.entity.DepartmentDto;
+import com.kh.oherp.entity.MemberDto;
 
 @Repository
 public class Daily_workerDaoImpl implements Daily_workerDao{
@@ -36,4 +37,10 @@ public class Daily_workerDaoImpl implements Daily_workerDao{
 		return list;
 	}
 
+	@Override
+	public List<Daily_workerDto> get_member() {
+		List<Daily_workerDto> daily_worker= sqlSession.selectList("daily_worker.get_member");
+		return daily_worker;
+		
+	}
 }
