@@ -22,7 +22,7 @@ public class BenefitDaoImpl implements BenefitDao{
 	@Override
 	public List<BenefitDto> list(Model model) {
 		List<BenefitDto> list = sqlSession.selectList("benefit.getList");
-		model.addAttribute("list", list);
+		model.addAttribute("benefitList", list);
 		return list;
 	}
 	
