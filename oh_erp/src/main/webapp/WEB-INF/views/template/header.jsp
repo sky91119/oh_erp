@@ -79,11 +79,12 @@
 	  <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
    </a>
     &emsp;  &emsp; 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCosllapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
 <!-- Dropdown -->
 
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
      <ul class="navbar-nav align-items-center">
  
     <li class="nav-item dropdown">
@@ -148,17 +149,23 @@
           </li>  
   </ul>
   <c:if test="${not empty sessionScope.userinfo}">
-       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="no-login"></span> 사원번호  ${sessionScope.userinfo.member_code} </a>
-      </li>
-      &nbsp; 
-      <li><a href="#"><span class="na-log-in"></span>성명  ${sessionScope.userinfo.member_name} </a>
-      </li>
+       <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+  
+  
+   <span class="navbar-text">
+    사원번호  ${sessionScope.userinfo.member_code} 
+  </span>
+  &emsp;   
+   <span class="navbar-text">
+   성명  ${sessionScope.userinfo.member_name} 
+  </span>
+  
+ 
     </ul>
 </c:if>
-
+ &nbsp; 
   <c:if test="${not empty sessionScope.userinfo}">
-		<input type="button" value="logout" onClick="logout();" />
+		<input type="button" value="logout" class="btn btn-primary" onClick="logout();" />
   </c:if>
 </nav>
       </nav>
