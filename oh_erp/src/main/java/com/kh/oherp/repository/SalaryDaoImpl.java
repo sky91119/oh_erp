@@ -34,4 +34,9 @@ public class SalaryDaoImpl implements SalaryDao{
 			return salary_count;
 	
 	}
+	@Override
+	public List total_salary(Map<String, Object> map) {
+		List total_salary = sqlSession.selectList("salary.total_salary",map);
+		return total_salary;
+	}
 }

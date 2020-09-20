@@ -6,8 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- mapper는 구문을 만들 수 있는 영역 일반적으로 테이블당 1개씩의 mapper를 둔다 - namespace : 영역을 
 	외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용) - id : 구문을 외부에서 호출하기 위한 식별값 - parameterType 
 	: 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사) - resultType : 구문이 실행된 결과 유형(반환형과 유사) -->
-<mapper namespace="daily">
-<insert id="insert" parameterType="daily_workDto">
+<mapper namespace="daily_work">
+
+<insert id="dwinsert" parameterType="daily_workDto">
    INSERT INTO salary values(
 		daily_work_seq.nextval,
 		#{daily_worker_code},
@@ -52,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       order by daily_work_date desc
    </select>
    
-   <select id="get_member" resultType="daily_workerDto">
+   <select id="get_member" resultType="map">
    		select * from daily_worker
    </select>
    

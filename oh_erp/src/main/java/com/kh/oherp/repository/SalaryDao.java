@@ -12,6 +12,8 @@ public interface SalaryDao {
 	List<MemberDto> get_member();
 	
 	List member_salary(Map<String,Object>map);
+
+	List total_salary(Map<String,Object>map);
 	
 	int salary_count(Map<String,Object>map); //게시글 수
 }

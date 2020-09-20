@@ -10,6 +10,11 @@
 // function samp
 </script>
 <style>
+
+	.modal-dialog {
+    max-width: 680px;
+    margin: 1.75rem auto
+    }
     /*마진*/
     .margin20 {
         margin: 20px 20px 20px 20px;
@@ -165,7 +170,7 @@
         <div class="col-2">
             <form action=${pageContext.request.contextPath}/salary/list method="get">
                 <select class="form-control" name="member_code" onchange="this.form.submit()">
-                    <option>사원 선택</option>
+                    <option value="">사원 선택</option>
                 <c:forEach var="memberDto" items="${member}">
                    <option value="${memberDto.member_code}" ${member_code == memberDto.member_code ? 'selected':'' }>${memberDto.member_name}</option>
                 </c:forEach>
@@ -208,45 +213,53 @@
  							<fmt:parseDate value="${salaryDto.SALARY_PAYDAY}" 
 							var="payday" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <td><fmt:formatDate value="${payday}" pattern="YYYY/MM/dd"/></td>
-				<%-- <td><fmt:formatNumber value="${salaryDto.member_basic_pay}" pattern="#,###"/></td> --%>
-<!--   		                   		<td><button type="button" class="btn btn-outline-info btn-xs" data-toggle="modal" data-target="#myModal2" style="margin:1px; padding:1px;"> -->
-<!-- 							  조회 -->
-<!-- 							</button> -->
-<!-- 							<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"> -->
-<!-- 							  <div class="modal-dialog" role="document"> -->
-<!-- 							    <div class="modal-content"> -->
-<!-- 							      <div class="modal-header" align="left"> -->
-<!-- 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-<!-- 							        <h4 class="modal-title" id="myModalLabel2" align="left">급여대장</h4> -->
-<!-- 							      </div> -->
-<!-- 							      <div class="modal-body"> -->
-<!-- 							      <table class="table left-font"> -->
-<!--           						  <thead> -->
-<!-- 							        	<tr> -->
-<!-- 							        	<th>성명</th> -->
-<!-- 					                    <th>부서 </th> -->
-<!-- 					                    <th>직책</th> -->
-<!-- 					                    <th>급여</th> -->
-<!-- 					                    <th>식대</th> -->
-<!-- 					                    <th>차량유지비</th> -->
-<!-- 					                    <th>상여</th> -->
-<!-- 					                    <th>지급총액</th> -->
-<!-- 							        	</tr> -->
-<!-- 							      	</thead> -->
-<!-- 							      	<tbody> -->
-<!-- 							      	</tbody> -->
-<!-- 							      	</table> -->
-<!-- 							      </div> -->
-<!-- 							      <div class="modal-footer"> -->
-<!-- 							        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->
-<!-- 							      </div> -->
-<!-- 							    </div> -->
-<!-- 							  </div></div> -->
-<!-- 							  </td> -->
-								<td>${salaryDto.MEMBER_BASIC_PAY}</td>
+  		                   		<td><button type="button" class="btn btn-outline-info btn-xs" data-toggle="modal" data-target="#myModal2" style="margin:1px; padding:1px;">
+							  조회
+							</button>
+							<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header" align="left">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel2" align="left"></h4>
+							      </div>
+							      <div class="modal-body">
+							      <table class="table left-font">
+          						  <thead>
+							        	<tr>
+							        	<th>성명</th>
+					                    <th>부서 </th>
+					                    <th>직책</th>
+					                    <th>급여</th>
+					                    <th>식대</th>
+					                    <th>차량유지비</th>
+					                    <th>상여</th>
+					                    <th>지급총액</th>
+							        	</tr>
+							      	</thead>
+							      	<tbody>
+							      		<tr>
+								      		<td>${salaryDto.MEMBER_NAME }</td>
+								      		<td>${salaryDto.DEPARTMENT_NAME }</td>
+								      		<td>${salaryDto.MEMBER_POSITION }</td>
+								      		<td><fmt:formatNumber value="${salaryDto.MEMBER_BASIC_PAY}" pattern="#,###"/></td>
+								      		<td><fmt:formatNumber value="${salaryDto.MEMBER_MEAL_PAY }" pattern="#,###"/></td>
+								      		<td><fmt:formatNumber value="${salaryDto.MEMBER_CAR_PAY }" pattern="#,###"/></td>
+								      		<td><fmt:formatNumber value="${salaryDto.SALARY_SORTATION == '기본급' ? '0':salaryDto.MEMBER_BASIC_PAY }" pattern="#,###"/></td>
+								      		<td><fmt:formatNumber value="${salaryDto.PAY }" pattern="#,###"/></td>
+							      		</tr>
+							      	</tbody>
+							      	</table>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+							      </div>
+							    </div>
+							  </div></div>
+							  </td>
   		                     	 <td>${salaryDto.MEMBER_NAME}</td>
+                   </c:forEach>
                     </tr>
-                </c:forEach>
             </tbody>
         </table>
     </div>

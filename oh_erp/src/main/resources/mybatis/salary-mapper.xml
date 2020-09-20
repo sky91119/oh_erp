@@ -61,7 +61,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <select id="member_salary" resultType="map" parameterType="map">
-   		SELECT * FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE
+   		<!-- SELECT * FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE -->
+   		SELECT 
+   		CASE WHEN salary_sortation  = '기본급' THEN member_basic_pay+member_car_pay+member_meal_pay WHEN salary_sortation  = '기본급+상여' THEN (member_basic_pay)*2+member_car_pay+member_meal_pay END AS PAY
+   		, sl.* 
+   		, mb.*
+   		, d.*
+   		FROM SALARY sl LEFT OUTER JOIN member mb ON sl.SALARY_MEMBER = mb.MEMBER_CODE
+   					   LEFT OUTER JOIN DEPARTMENT d ON D.DEPARTMENT_NO = mb.DEPARTMENT_NO
    		WHERE 1=1
    		<if test="member_code != null">
 	   		AND mb.member_code = #{member_code} 
@@ -81,6 +88,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="salary_date != null">
 	    	AND to_char(sl.salary_date,'yyyy-MM') = #{salary_date}
         </if>
+   </select>
+   
+   <select id="total_salary" resultType="map" parameterType="map">
+   Select member_basic_pay+member_car_pay+member_meal_pay from member left outer join salary on member.member_code=salary.salary_member where 1=1
+   		<if test="member_code != null">
+	    	AND mb.member_code = #{member_code}
+        </if>
+        <if test="salary_date != null">
+	    	AND to_char(sl.salary_date,'yyyy-MM') = #{salary_date}
+        </if>
+   
+   
+   
    </select>
    
 </mapper>

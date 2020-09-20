@@ -1,8 +1,9 @@
-<%@page import="com.kh.oherp.repository.Daily_workDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<script src="<%=request.getContextPath()%>/res/js/lightpick.js"></script>
+	
 	<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <script>
 // function samp
@@ -70,7 +71,7 @@
         border-radius: 2px;
         #bf0920
     }
-
+    
     /*텍스트*/
     .left-font {
         text-align: left;
@@ -80,11 +81,7 @@
  <div>
         <p class="title">급여 계산 대장</p>
     </div>
-	<div class="row titlediv">
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:5px;">
-  신규
-</button>
-</div>
+
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" align="left">
@@ -94,55 +91,35 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-    <form action=${pageContext.request.contextPath}/salary/insert_do method="post">
+    <form action=${pageContext.request.contextPath}/salary/dwinsert method="post">
 	<table>
-	<thead>급여정보입력</thead>
+	<thead>일용직 근무 입력</thead>
 	<p></p>
 		<tr>
-			<td>귀속연월</td>
-			<td><input type="month" class="form-control" id="salary_date" name="salary_date">
-			</td>
-		</tr>
-		<p></p>
-		<tr>
-			<td>급여구분</td>
-			<td><select class="form-control" id="salary_sortation" name="salary_sortation">
-					<option value="기본급">기본급</option>
-					<option value="기본급+상여">기본급+상여</option>
-			</select></td>
-		</tr>
-<p></p>
-		<tr>
-			<td>대상기간</td>
-
-			<td><input type="date" class="form-control"
-				name="salary_period_start" id="salary_period_start"></td>
-			<td>&nbsp;/&nbsp;</td>
-			<td><input type="date" class="form-control"
-				name="salary_period_finish" id="salary_period_finish"></td>
-		</tr>
-		<p></p>
-		<tr>
-			<td>지급일</td>
-			<td><input type="date" class="form-control" name="salary_payday" id="salary_payday"></td>
-		</tr>
-		<p></p>
-		<tr>
-			<td>급여대장명칭</td>
-			<td><input type="text" class="form-control" name="salary_name" id="salary_name"></td>
-		</tr>
-		<p></p>
-		<tr>
-			<td>대상사원</td>
-			<td><input type="checkbox" id="salary_member" name="salary_member" value="전체"> 
-			<label for="salary_member">전체</label> 
-			
-			<select name="salary_member" id="salary_member" class="form-control" required>
-				<option>사원 선택</option>
-                <c:forEach var="memberDto" items="${member}">
-                   <option value="${memberDto.member_code}">${memberDto.member_name}</option>
+			<td>일용직 사원</td>
+			<select name="daily_worker_code" id="daily_worker_code" class="form-control" required>
+				<option value="">사원 선택</option>
+                <c:forEach var="worker" items="${daily_worker}">
+                   <option value="${worker.DAILY_WORKER_CODE}">${worker.DAILY_WORKER_NAME}</option>
                 </c:forEach>
             </select>
+		</tr>
+		<p></p>
+		<tr>
+			<td>근무날짜</td>
+			<td><input type="date" class="form-control"
+				name="daily_work_date" id="daily_work_date"></td>
+		</tr>
+		<p></p>
+		<tr>
+			<td>시급</td>
+			<td><input type="text" id="daily_work_pay" class="form-control" name="daily_work_pay"></td>
+		</tr>
+<p></p>
+		<p></p>
+		<tr>
+			<td>근무시간</td>
+			<td><input type="text" class="form-control" name="daily_work_time" id="daily_work_time"></td>
 		</tr>
 		<p></p>
 		</div>
@@ -157,25 +134,37 @@
     </div>
   </div>
   </div>
-    <div class="col-6 sum-salary">
-        	<span>총 등록대장 : ${salary_count} 개</span>
-        </div>
 <div class="container-fluid">
-
     <div class="row padding32-bot">
         <div class="col-2">
-            <input type="date" class="form-control">
+        <form action=${pageContext.request.contextPath}/salary/list method="get">
+            <input type="date" name="daily_work_date" class="form-control" value="${daily_work_date}" onchange="this.form.submit()">
+            <input type="hidden" name="daily_worker_code" value="${daily_worker_code}">
+        </form>
         </div>
         <div class="col-2">
-            <form action=${pageContext.request.contextPath}/salary/list method="post">
-                <select class="form-control" name="type" onchange="this.form.submit()">
-                    <option value="all">전체</option>
-                    <option value="waiting">승인이 필요한 요청들</option>
+            <form action=${pageContext.request.contextPath}/salary/list method="get">
+                <select class="form-control" name="member_code" onchange="this.form.submit()">
+                    <option>사원 선택</option>
+                <c:forEach var="daily_workerDto" items="${member}">
+                   <option value="${memberDto.member_code}" ${member_code == memberDto.member_code ? 'selected':'' }>${memberDto.member_name}</option>
+                </c:forEach>
                 </select>
+                <input type="hidden" name="salary_date" value="${salary_date }">
             </form>
         </div>
-
+        <form action="${pageContext.request.contextPath}/salary/list" method="get">
+        	<input type="submit" class="btn btn-secondary"value="초기화" onclick="this.form.submit();">
+        </form>
     </div>
+    	<div class="row titlediv">
+<button type="button"  class="btn btn-dark" data-toggle="modal" data-target="#myModal" style="margin-right: auto;">
+  신규
+</button>
+</div>
+     <div class="sum-salary">
+        	<span>총  : ${salary_count} 개</span>
+        </div>
     <div>
         <table class="table left-font">
             <thead>
@@ -191,38 +180,20 @@
             <tbody>
                <c:forEach var="salaryDto" items="${member_salary}">
                     <tr>
-                    
-                   			 <fmt:parseDate value="${salaryDto.salary_date}" 
+                   			 <fmt:parseDate value="${salaryDto.SALARY_DATE}" 
 							var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <td><fmt:formatDate value="${date}" pattern="YYYY/MM"/></td>
- 		                       <td>${salaryDto.salary_sortation}</td>
-								<td>${salaryDto.salary_name}</td>			
- 							<fmt:parseDate value="${salaryDto.salary_payday}" 
+ 		                       <td>${salaryDto.SALARY_SORTATION}</td>
+								<td>${salaryDto.SALARY_NAME}</td>			
+ 							<fmt:parseDate value="${salaryDto.SALARY_PAYDAY}" 
 							var="payday" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <td><fmt:formatDate value="${payday}" pattern="YYYY/MM/dd"/></td>
-<%-- 							<td><fmt:formatNumber value="${salaryDto.member_basic_pay}" pattern="#,###"/></td> --%>
-  		                   		<td><button type="button" class="btn btn-outline-info btn-xs" data-toggle="modal" data-target="#myModal" style="margin:1px; padding:1px;">
-							  조회
-							</button>
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header" align="left">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel" align="left">급여대장</h4>
-							      </div>
-							      <div class="modal-body">
-							        Modal 내용
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-							      </div>
-							    </div>
-							  </div></div>
-							  </td>
-  		                     	 <td>${salaryDto.member_name}</td>
+				<td><fmt:formatNumber value="${salaryDto.MEMBER_BASIC_PAY}" pattern="#,###"/></td>
+  		                     	 <td>${salaryDto.MEMBER_NAME}</td>
+                   					<td>${total_salary}</td>
+                   </c:forEach>
+                   
                     </tr>
-                </c:forEach>
             </tbody>
         </table>
     </div>

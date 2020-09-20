@@ -13,6 +13,7 @@ public class Daily_workDto {
 	daily_work_time;
 	
 	private String
-	daily_work_date;
+	daily_work_date,
+	daily_worker_name;
 
 }
