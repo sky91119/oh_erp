@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
   <!--부서 검색창 -->
 <!--<form action="search" method="post">
 <span>부서리스트</span>
@@ -19,7 +19,12 @@
 	
 </form>
 -->
-<table border="1">
+<div class="alert alert-success">
+	<strong><h4>수당리스트</h4></strong>
+</div>
+
+ <table class="table table-hover">
+
 	<thead>
 		<tr>
 			<td>수당항목명</td>
@@ -39,3 +44,6 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
