@@ -9,9 +9,7 @@
     <!-- date-range-picker -->
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/lightpick.css">
     <script src="<%=request.getContextPath()%>/res/js/lightpick.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+
 	<style>
 
 	/*마진*/	
@@ -72,11 +70,6 @@
          	font-size: 0.75rem;
          	border-radius: 2px;
 		}
-	/*휴가 요청 버튼*/
-		.plz{
-			text-align: right;
-		}
-			
 	/*요청관리 상태별 조회*/	
 		.manage{
 			background-color:lightgray;	
@@ -100,14 +93,7 @@
 		}
 		.inline{
 			display:inline;
-		}
-	/*승인 수락 버튼*/
-		.btn-group-sm>.btn, .btn-sm {
-   			 padding: .25rem .5rem;
-   			 font-size: .875rem;
-   			 line-height: 1.4;
-  		  	 border-radius: .2rem;
-		}	
+		};
 	
 	</style>
     <script>
@@ -158,30 +144,8 @@
             };
             var picker = new Lightpick(options);
         };
-      
     </script>
-    
-<!--    <script>
-        $(function () {
-            $.get('request_data', function (data) {
-                    console.log(data);
-                    let container = $('#pagination');
-                    container.pagination({
-                        dataSource: data,
-                        callback: function (data, pagination) {
-                            var dataHtml = '';
-                            $.each(data, function (index, item) {
-                                dataHtml += '<tr><td>' + item.attendance_request_type + '</td><td>' + item.member_code + '</td><td>' + item.attendance_request_content + '</td><td>' + item.attendance_request_cause + '</td><td>' + item.attendance_request_management + '</td><td>' + item.attendance_request_today + '</td></tr>';});
-                            $("#tbody").html(dataHtml);
-                        }
-                    })
-                });
-        })
-    </script>   --> 
 
-    
-    
-   
 <div class="container-fluid">
 	<div>
 		<p class="title">요청 관리</p>
@@ -210,7 +174,7 @@
         </div>
         
         <div class="col-6 sum-request">
-        	<span>총 요청수 : ${listCnt} </span>
+        	<span>총 요청수 : 3</span>
         </div>
 
      </div>
@@ -229,41 +193,41 @@
      			</tr>
      		</thead>
      		<tbody>
-     			<c:forEach var="memberRequestDto" items="${list}">
+     			<c:forEach var="attendanceDto" items="${list}">
      				<tr>	
-     					<td>${memberRequestDto.attendance_request_type}</td>
-     					<td>${memberRequestDto.member_name}</td>
-     					<td>${memberRequestDto.attendance_request_content}</td>
-     					<td>${memberRequestDto.attendance_request_cause}</td>
+     					<td>${attendanceDto.attendance_request_type}</td>
+     					<td>${attendanceDto.member_code}</td>
+     					<td>${attendanceDto.attendance_request_content}</td>
+     					<td>${attendanceDto.attendance_request_cause}</td>
      					<td>
-							<c:set var="manage" value="${memberRequestDto.attendance_request_management}" />
+							<c:set var="manage" value="${attendanceDto.attendance_request_management}" />
 							<c:choose>
 								<c:when test="${manage eq '거절됨'}">
 									<div class="no offset-2 col-6">
-     									${memberRequestDto.attendance_request_management}
+     									${attendanceDto.attendance_request_management}
      								</div>
 								</c:when>
 								<c:when test="${manage eq '승인됨'}">
 								  	 <div class="ok offset-2 col-6">
-     									${memberRequestDto.attendance_request_management}
+     									${attendanceDto.attendance_request_management}
      								</div>
 								</c:when>
 								<c:otherwise>
 									<div class="waiting offset-2 col-6">
-     									${memberRequestDto.attendance_request_management}
+     									${attendanceDto.attendance_request_management}
      								</div>
 								</c:otherwise>
 							</c:choose>			
      					</td>
      					<td>
-     						<fmt:parseDate value="${memberRequestDto.attendance_request_today}" 
+     						<fmt:parseDate value="${attendanceDto.attendance_request_today}" 
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
      					</td>
      					<td>	<!-- 승인/거절 버튼 -->
      						<c:if test="${manage eq '대기중'}">
      							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
-     								<input type="hidden" name="attendance_request_no" value="${memberRequestDto.attendance_request_no}">
+     								<input type="hidden" name="attendance_request_no" value="${attendanceDto.attendance_request_no}">
      								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
      								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
      							</form>

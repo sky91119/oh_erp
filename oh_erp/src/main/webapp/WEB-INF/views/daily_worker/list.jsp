@@ -12,7 +12,10 @@
  <table class="table table-hover">
 	<thead>
 		<tr>
+
 			<td>일용직순번</td>
+			<td>순번</td>
+
 			<td>이름</td>
 			<td>개인정보</td>
 		</tr>
