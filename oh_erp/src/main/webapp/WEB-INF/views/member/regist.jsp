@@ -121,32 +121,32 @@
 			<div class="row">
 
 				<div class="col-4">
-					비밀번호<input type="password" name="member_pw"> <br> <br>
-					성명<input type="text" name="member_name"> <br> <br>
-					주민등록번호<input type="text" name="member_resident_number"> <br>
+					비밀번호<br><input type="password" name="member_pw"> <br> <br>
+					성명<br><input type="text" name="member_name"> <br> <br>
+					주민등록번호<br><input type="text" name="member_resident_number"> <br>
 					<br> 입사일자 <input type="date" class="form-control" name="member_start_work">
-					<br> <br> 직위/직급<input type="text" name="member_position">					
-					<br> <br> 
-					퇴사일자<input type="date" class="form-control"  name="member_last_work"> 
-					<br> <br> 
-					퇴사사유<input type="text" name="member_last_work_cause">
+					<br>  직위/직급<br><input type="text" name="member_position">					
 					<br> <br>
-					우편번호<input type="text" name="member_post"> 
+					퇴사일자<input type="date" class="form-control"  name="member_last_work"> 
+					<br>  
+					퇴사사유<br><input type="text" name="member_last_work_cause">
+					 <br>
+					<br>우편번호<br><input type="text" name="member_post"> 
 					<br> <br> 
-					주소<input type="text" name="member_address">
+					주소<br><input type="text" name="member_address">
 				</div>
 
 				<div class="col-4">
-					은행<input type="text" name="member_bank"> <br>
-					<br> 계좌번호<input type="text" name="member_account"> <br>
-					<br> 예금주<input type="text" name="member_bank_name"> <br>
+					은행<br><input type="text" name="member_bank"> <br>
+					<br> 계좌번호<br><input type="text" name="member_account"> <br>
+					<br> 예금주<br><input type="text" name="member_bank_name"> <br>
 
 				</div>
 
 				<div class="col-4">
-					기본급<input type="text" name="member_basic_pay"> <br> <br>
-					식대<input type="text" name="member_meal_pay"> <br> <br>
-					차량유지비<input type="text" name="member_car_pay"> <br> <br>
+					기본급<br><input type="text" name="member_basic_pay"> <br> <br>
+					식대<br><input type="text" name="member_meal_pay"> <br> <br>
+					차량유지비<br><input type="text" name="member_car_pay"> <br> <br>
 				</div>
 
 			</div>
@@ -156,9 +156,11 @@
 
 		<!-- --------------------------- -->
 		<div align="center">
-			<input type="submit" value="사원등록하기">
+			<input type="submit" value="사원등록하기" class="btn btn-info">
 		</div>
 	</form>
 </body>
 </html>
 
+
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
