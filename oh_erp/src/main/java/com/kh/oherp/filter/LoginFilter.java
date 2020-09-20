@@ -54,7 +54,7 @@ import com.kh.oherp.entity.MemberDto;
 //	         - 사용자에게 알려지는 주소이므로 context path를 적어야 한다
 //	         - 필터는 반드시 절대경로로 써야 함!
 //	         resp.sendRedirect("/home/member/login.jsp");
-	         resp.sendRedirect(req.getContextPath()+"/");
+	         resp.sendRedirect(req.getContextPath()+"/member/login.jsp");
 	      }
 	      
 	   }
