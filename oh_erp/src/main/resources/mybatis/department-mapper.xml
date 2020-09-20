@@ -83,6 +83,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE DEPARTMENT_NO = #{department_no}
    	</update>
    
+   <!--내림차순 -->
+   <select id="list2" resultType="departmentDto" parameterType="Map">
+   
+   select*from department order by ${col} ${order}
+   </select>
 </mapper>
 
 

@@ -76,7 +76,7 @@
  
    <a class="navbar-brand"href="${pageContext.request.contextPath}">
    <!--     로고 -->
-	  <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
+     <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
    </a>
     &emsp;  &emsp; 
 
@@ -104,7 +104,11 @@
         근태관리
       </a>
       <div class="dropdown-menu">
+<<<<<<< HEAD
       	<a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
+=======
+         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
+>>>>>>> refs/remotes/origin/master
         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/admin_page">출퇴근기록관리</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
@@ -164,18 +168,18 @@
 </c:if>
  &nbsp; 
   <c:if test="${not empty sessionScope.userinfo}">
-		<input type="button" value="logout" class="btn btn-info" onClick="logout();" />
+      <input type="button" value="logout" class="btn btn-info" onClick="logout();" />
   </c:if>
 </nav>
       </nav>
 <script>
 function logout(){
-	 var con = confirm("로그아웃 하시겠습니까?");
-	 if(con == true){
-	  location.href="${pageContext.request.contextPath}/logout";
-	  //logout을 위해 세션을 제거하는 페이지 호출
-	 }else{}
-	}	
+    var con = confirm("로그아웃 하시겠습니까?");
+    if(con == true){
+     location.href="${pageContext.request.contextPath}/logout";
+     //logout을 위해 세션을 제거하는 페이지 호출
+    }else{}
+   }   
 </script>
  
 
