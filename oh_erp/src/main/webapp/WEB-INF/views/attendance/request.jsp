@@ -8,108 +8,12 @@
     <script src="<%=request.getContextPath()%>/res/js/moment.min.js"></script>  
     <!-- date-range-picker -->
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/lightpick.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/request.css">
     <script src="<%=request.getContextPath()%>/res/js/lightpick.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
-	<style>
 
-	/*마진*/	
-		.margin20 {
-			margin: 20px 20px 20px 20px;
-		}
-		
-	/*패딩*/
-		.padding32 {
-			padding:32px;
-		}	
-		.padding32-bot{
-			padding-bottom:32px;
-		}
-		.padding10{
-			padding:10px;
-		}
-		.padding15{
-			padding:15px;
-		}
-
-	/*제목*/
-		.title{
-			font-size: 25px;
-			text-align:left;
-			padding-bottom:15px;
-        	}
-	/*총 요청수*/ 
-		.sum-request{
-			font-size:16px;
-			text-align:right;
-		}       
-	/*요청관리 상태*/
-		.waiting{
-        	background-color: #D27300;
-         	margin: 0px 3px 0px 0px;
-         	padding: 2px 8px;
-         	color: #ffffff;
-         	text-align: center;
-         	font-size: 0.75rem;
-         	border-radius: 2px;
-		}
-		.ok{
-	    	background-color: #01853d;
-         	margin: 0px 3px 0px 0px;
-         	padding: 2px 8px;
-         	color: #ffffff;
-         	text-align: center;
-         	font-size: 0.75rem;
-         	border-radius: 2px;
-		}
-		.no{
-	 		 background-color: #bf0920;
-        	 margin: 0px 3px 0px 0px;
-         	padding: 2px 8px;
-         	color: #ffffff;
-         	text-align: center;
-         	font-size: 0.75rem;
-         	border-radius: 2px;
-		}
-	/*휴가 요청 버튼*/
-		.plz{
-			text-align: right;
-		}
-			
-	/*요청관리 상태별 조회*/	
-		.manage{
-			background-color:lightgray;	
-		}
-	
-	/*텍스트*/
-		.left-font{
-			text-align:left;
-		}
-		
-		.left-float40{
-			float:left;			
-			width: 38%;
-			text-align:left;
-		}
-		
-		.left-float60{
-			float:left;			
-			width: 62%;
-			text-align:left;
-		}
-		.inline{
-			display:inline;
-		}
-	/*승인 수락 버튼*/
-		.btn-group-sm>.btn, .btn-sm {
-   			 padding: .25rem .5rem;
-   			 font-size: .875rem;
-   			 line-height: 1.4;
-  		  	 border-radius: .2rem;
-		}	
-	
-	</style>
     <script>
         window.onload = function(){
             var options = {
@@ -160,26 +64,6 @@
         };
       
     </script>
-    
-<!--    <script>
-        $(function () {
-            $.get('request_data', function (data) {
-                    console.log(data);
-                    let container = $('#pagination');
-                    container.pagination({
-                        dataSource: data,
-                        callback: function (data, pagination) {
-                            var dataHtml = '';
-                            $.each(data, function (index, item) {
-                                dataHtml += '<tr><td>' + item.attendance_request_type + '</td><td>' + item.member_code + '</td><td>' + item.attendance_request_content + '</td><td>' + item.attendance_request_cause + '</td><td>' + item.attendance_request_management + '</td><td>' + item.attendance_request_today + '</td></tr>';});
-                            $("#tbody").html(dataHtml);
-                        }
-                    })
-                });
-        })
-    </script>   --> 
-
-    
     
    
 <div class="container-fluid">
