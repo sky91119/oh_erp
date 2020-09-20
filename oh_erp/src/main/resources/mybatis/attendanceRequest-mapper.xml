@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 -->
 	<!-- 휴가 요청 생성 -->
 	<insert id="request" parameterType="map">
-		insert into ATTENDANCE_REQUEST values(attendance_request_seq.nextval,#{writer},'휴가 생성 요청',#{requtype},#{cause},#{restartDate},#{refinishDate},'대기중',sysdate)
+		insert into ATTENDANCE_REQUEST values(attendance_request_seq.nextval,#{writer},'휴가 생성 요청',#{requtype},#{restartDate},#{refinishDate},'대기중',sysdate,#{cause})
 	</insert>
 	
 	
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<!-- 날짜가 null이 아니라면 -->
 				<when test="startDate!=null and finishDate!=null">
 					WHERE(attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
-,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '23:59:59'
 ,'YYYY-MM-DD HH24:MI:SS'))
 					<choose>
 						<!-- 검색어가 null이 아니거나 모든요청들이 아니라면 -->
@@ -88,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<choose>
 			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
 							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
-,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '23:59:59'
 ,'YYYY-MM-DD HH24:MI:SS')
 
 			<if test='type == "승인이 필요한 요청들"'>
@@ -120,7 +120,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<choose>
 			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
 							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
-,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '23:59:59'
 ,'YYYY-MM-DD HH24:MI:SS')
 
 			<if test='type == "승인이 필요한 요청들"'>
@@ -150,7 +150,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<choose>
 			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
 							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
-,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '23:59:59'
 ,'YYYY-MM-DD HH24:MI:SS')
 
 			<if test='type == "승인이 필요한 요청들"'>
@@ -180,7 +180,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<choose>
 			<when test='startDate != null and startDate != "" and finishDate != null and finishDate != ""'>
 							and attendance_request_today BETWEEN to_date(#{startDate} || ' ' || '00:00:00'
-,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '11:59:59'
+,'YYYY-MM-DD HH24:MI:SS') AND to_date(#{finishDate} || ' ' || '23:59:59'
 ,'YYYY-MM-DD HH24:MI:SS')
 
 			<if test='type == "승인이 필요한 요청들"'>

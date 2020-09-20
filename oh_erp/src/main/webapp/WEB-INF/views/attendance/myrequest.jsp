@@ -127,9 +127,19 @@
   		  	 border-radius: .2rem;
 		}	
 		
+		.margin1{
+		margin-top:1rem;
+		}
+		
 		
 	
 	</style>
+	<%if(request.getParameter("reque_error") != null) { %>
+	<script>
+		alert("휴가 유형,날짜 선택 후 사유를 입력해주세요.");
+	</script>
+	<%} %>
+	
     <script>
         window.onload = function(){
             var start = document.querySelectorAll(".picker-start");//2개 , start[0] , start[1]
@@ -253,7 +263,7 @@
    
 <div class="container-fluid">
 	<div class="row titlediv">
-		<span class="col-11 title">요청 관리</span>
+		<span class="col-11 title">요청 내역</span>
 		<button type="button" class="col-1 btn btn-primary btn-sm plz" data-toggle="modal" data-target="#myModal">
 			휴가 생성 요청
 		</button>
@@ -301,8 +311,8 @@
     <div class="row padding32-bot">
     	
     	    	<!-- 조회 날짜 선택 -->
-    	<div class="col-6">
-    		<form action=${pageContext.request.contextPath}/attendance/request method="post">
+    	<div class="col-6 margin1">
+    		<form action=${pageContext.request.contextPath}/attendance/myrequest method="post">
     			<div class="left-float40 inline">
     				<input type="text" class="inline form-control picker-start col-5" name="startDate" placeholder="시작날짜" value="${map.startDate}">
   					<input type="text" class="inline form-control picker-end col-5" name="finishDate" placeholder="종료날짜" value="${map.finishDate}">
@@ -336,7 +346,6 @@
      				<th>요청 사유</th>
      				<th>상태</th>
      				<th>신청일자</th>
-     				<th>관리</th>
      			</tr>
      		</thead>
      		<tbody>
@@ -370,16 +379,6 @@
      						<fmt:parseDate value="${memberRequestDto.attendance_request_today}" 
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
-     					</td>
-     					<td>	<!-- 승인/거절 버튼 -->
-     						<c:if test="${manage eq '대기중'}">
-     							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
-     								<input type="hidden" name="attendance_request_no" value="${memberRequestDto.attendance_request_no}">
-     								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
-     								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
-     							</form>
-     								
-     						</c:if>
      					</td>
      			</tr>
      			</c:forEach>
