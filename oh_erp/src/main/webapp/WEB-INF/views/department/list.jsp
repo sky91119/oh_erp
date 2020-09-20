@@ -9,44 +9,37 @@
 <form action="search" method="post">
 <span>부서리스트</span>
 
-	<input type="text" name="keyword">
-	
-	
-	<input type="submit"  class="btn btn-info" value="검색">
-	
-	<select name="type">
-		<option value="department_no">부서코드</option>
-		<option value="department_name">부서명</option>
-		<option value="department_use">사용</option>
-	</select>
-	
-	
+   <input type="text" name="keyword">
+   
+   
+   <input type="submit"  class="btn btn-info" value="검색">
+   
+   <select name="type">
+      <option value="department_no">부서코드</option>
+      <option value="department_name">부서명</option>
+      <option value="department_use">사용</option>
+   </select>
+   
 </form>
 
 <table class="table table-hover">
-	<thead class="thead-dark">
-		
-		<br>
-			<tr>
-			
-			<th><a href = "list?col=department_no&order=asc">부서코드</a></th>
-			<th><a href = "list?col=department_name&order=asc">부서명</a></th>
-			<th>사용</th>
-			<th>수정</th>
-			<th>삭제<tr>
-		
-	</thead>
-	<tbody>
-		<c:forEach var="DepartmentDto" items="${departmentList}">
-			<tr>
-				<td>${DepartmentDto.department_no}</td>
-				<td>${DepartmentDto.department_name}</td>
-				<td>${DepartmentDto.department_use}</td>
-				<td><a href="update/${DepartmentDto.department_no}" class="btn btn-secondary">수정</a></td>
-				<td><a href ="delete/${DepartmentDto.department_no}" class="btn btn-secondary">삭제</a></td>
-			</tr>
-		</c:forEach>
-	</tbody>
+   <thead class="thead-dark">
+      
+      <br>
+         <tr><th>부서코드</th><th>부서명</th><th>사용</th><th>수정</th><th>삭제<tr>
+      
+   </thead>
+   <tbody>
+      <c:forEach var="DepartmentDto" items="${departmentList}">
+         <tr>
+            <td>${DepartmentDto.department_no}</td>
+            <td>${DepartmentDto.department_name}</td>
+            <td>${DepartmentDto.department_use}</td>
+            <td><a href="update/${DepartmentDto.department_no}" class="btn btn-secondary">수정</a></td>
+            <td><a href ="delete/${DepartmentDto.department_no}" class="btn btn-secondary">삭제</a></td>
+         </tr>
+      </c:forEach>
+   </tbody>
 </table>
 
 <!--  
