@@ -82,9 +82,7 @@
 
 <!-- Dropdown -->
 
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+
      <ul class="navbar-nav align-items-center">
  
     <li class="nav-item dropdown">
@@ -165,7 +163,7 @@
 </c:if>
  &nbsp; 
   <c:if test="${not empty sessionScope.userinfo}">
-		<input type="button" value="logout" class="btn btn-primary" onClick="logout();" />
+		<input type="button" value="logout" class="btn btn-info" onClick="logout();" />
   </c:if>
 </nav>
       </nav>

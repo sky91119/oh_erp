@@ -7,14 +7,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
     <!--사원 검색창 -->
-    <!--  
+    
 <form action="search" method="post">
 <span>사원리스트</span>
 
 	<input type="text" name="keyword">
 	
-	
-	<input type="submit" value="검색">
+	<input type="submit" value="검색" class="btn btn-info">
 	
 	<select name="type">
 		<option value="member_code">사원번호</option>
@@ -22,7 +21,7 @@
 	</select>
 	
 </form>
-	-->
+	
 	
 <table class="table table-hover">
 	<thead class="thead-dark">
@@ -40,3 +39,5 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
