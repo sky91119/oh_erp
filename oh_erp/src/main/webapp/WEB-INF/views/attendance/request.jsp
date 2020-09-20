@@ -28,13 +28,7 @@
                 
                 //한 화면에 표시될 달의 개수
                 numberOfMonths: 2,
-                
-                //시작일 지정
-                //minDate:new Date(),//- 오늘부터 선택 가능
-               // minDate:moment(new Date()).add(1, 'days'),
-                
-                //문서에 포함시켜 표시
-                //inline:true,
+
 
                 //시작요일(1:월 ~ 7:일)
                 firstDay: 7,
