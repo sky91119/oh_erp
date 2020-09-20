@@ -76,13 +76,12 @@
  
    <a class="navbar-brand"href="${pageContext.request.contextPath}">
    <!--     로고 -->
-	  <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
+     <img src="${pageContext.request.contextPath}/res/image/logo.png" alt="logo" style="width:150px;" display="inline">
    </a>
     &emsp;  &emsp; 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCosllapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
 <!-- Dropdown -->
+
 
      <ul class="navbar-nav align-items-center">
  
@@ -105,7 +104,7 @@
         근태관리
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근기록관리</a>
+         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/admin_page">출퇴근기록관리</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
@@ -129,11 +128,11 @@
         기본사항등록
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">사원등록</a>
-        <a class="dropdown-item" href="#">일용직등록</a>
-        <a class="dropdown-item" href="#">수당등록</a>
-        <a class="dropdown-item" href="#">부서등록</a>
-        <a class="dropdown-item" href="#">프로젝트등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/benefit/list">수당등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/department/list">부서등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/project/regist">프로젝트등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">일용직등록</a>
       </div>
       
         <li class="nav-item dropdown">
@@ -149,28 +148,34 @@
           </li>  
   </ul>
   <c:if test="${not empty sessionScope.userinfo}">
-       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="no-login"></span> 사원번호  ${sessionScope.userinfo.member_code} </a>
-      </li>
-      &nbsp; 
-      <li><a href="#"><span class="na-log-in"></span>성명  ${sessionScope.userinfo.member_name} </a>
-      </li>
+       <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+  
+  
+   <span class="navbar-text">
+    사원번호  ${sessionScope.userinfo.member_code} 
+  </span>
+  &emsp;   
+   <span class="navbar-text">
+   성명  ${sessionScope.userinfo.member_name} 
+  </span>
+  
+ 
     </ul>
 </c:if>
-
+ &nbsp; 
   <c:if test="${not empty sessionScope.userinfo}">
-		<input type="button" value="logout" onClick="logout();" />
+      <input type="button" value="logout" class="btn btn-info" onClick="logout();" />
   </c:if>
 </nav>
       </nav>
 <script>
 function logout(){
-	 var con = confirm("로그아웃 하시겠습니까?");
-	 if(con == true){
-	  location.href="${pageContext.request.contextPath}/logout";
-	  //logout을 위해 세션을 제거하는 페이지 호출
-	 }else{}
-	}	
+    var con = confirm("로그아웃 하시겠습니까?");
+    if(con == true){
+     location.href="${pageContext.request.contextPath}/logout";
+     //logout을 위해 세션을 제거하는 페이지 호출
+    }else{}
+   }   
 </script>
  
 

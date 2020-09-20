@@ -49,6 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    </select>   
    
+   <select id="get_member" resultType="daily_workerDto">
+   		select * from daily_worker
+   </select>
+   
    <!--부서목록 조회-->
    <select id="getList" resultType="daily_workerDto">
       select * from daily_worker 

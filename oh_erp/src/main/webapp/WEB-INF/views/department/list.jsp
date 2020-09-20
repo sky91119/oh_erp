@@ -12,7 +12,7 @@
 	<input type="text" name="keyword">
 	
 	
-	<input type="submit"  class="btn btn-secondary" value="검색">
+	<input type="submit"  class="btn btn-info" value="검색">
 	
 	<select name="type">
 		<option value="department_no">부서코드</option>

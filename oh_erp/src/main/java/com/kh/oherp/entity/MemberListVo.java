@@ -12,7 +12,7 @@ public class MemberListVo {
 	private int member_code, 
 	department_no,
 	member_basic_pay, 
-	member_meal_pay, 
+	member_meal_pay,  
 	member_car_pay;
 
 	private String 
