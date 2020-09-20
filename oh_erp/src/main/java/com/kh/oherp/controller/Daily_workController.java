@@ -33,7 +33,7 @@ public class Daily_workController {
 	@PostMapping("/dwinsert")
 	public String dwinsert(@ModelAttribute Daily_workDto daily_workDto,
 			@RequestParam String daily_work_date) {
-		Daily_workDto find =sqlSession.selectOne("daily.get", daily_workDto);
+		Daily_workDto find =sqlSession.selectOne("daily_work.get", daily_workDto);
 		daily_workDto.setDaily_work_date(daily_work_date);
 		if(find==null) {
 		return "redirect:dwlist";

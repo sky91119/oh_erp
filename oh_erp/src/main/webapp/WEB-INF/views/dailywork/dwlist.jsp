@@ -91,7 +91,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-    <form action=${pageContext.request.contextPath}/salary/dwinsert method="post">
+    <form action=${pageContext.request.contextPath}/dailywork/dwinsert method="post">
 	<table>
 	<thead>일용직 근무 입력</thead>
 	<p></p>

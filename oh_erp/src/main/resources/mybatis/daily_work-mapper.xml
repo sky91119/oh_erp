@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>   
    
    <!-- 급여연월을 이용한 단일조회 -->      
-   <select id="get" parameterType="string" resultType="daily_workDto">
+   <select id="get" parameterType="String" resultType="daily_workDto">
   select * from daily_work where to_char(daily_work_date,'yyyy-MM-dd') = #{daily_work_date}
    
    </select>
