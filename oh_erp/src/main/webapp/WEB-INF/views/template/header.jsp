@@ -105,7 +105,6 @@
         근태관리
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">출퇴근기록관리</a>
         <a class="dropdown-item" href="#">근태조회</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
