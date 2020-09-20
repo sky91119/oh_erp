@@ -72,23 +72,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <!--데이터 삭제-->
- 	<delete id="del" parameterType="int">
-	 delete department where department_no=#{department_no}
-	 </delete>
+    <delete id="del" parameterType="int">
+    delete department where department_no=#{department_no}
+    </delete>
    
    <!--부서명 수정-->
-   	<update id="mod" parameterType="departmentDto">
-	UPDATE DEPARTMENT 
-	SET DEPARTMENT_NAME = #{department_name} 
-	WHERE DEPARTMENT_NO = #{department_no}
-   	</update>
+      <update id="mod" parameterType="departmentDto">
+   UPDATE DEPARTMENT 
+   SET DEPARTMENT_NAME = #{department_name} 
+   WHERE DEPARTMENT_NO = #{department_no}
+      </update>
    
-   <!--내림차순 -->
-   <select id="list2" resultType="departmentDto" parameterType="Map">
-   
-   select*from department order by ${col} ${order}
-   </select>
 </mapper>
-
 
 
