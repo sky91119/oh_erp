@@ -134,6 +134,12 @@
 		
 	
 	</style>
+	<%if(request.getParameter("reque_error") != null) { %>
+	<script>
+		alert("휴가 유형,날짜 선택 후 사유를 입력해주세요.");
+	</script>
+	<%} %>
+	
     <script>
         window.onload = function(){
             var start = document.querySelectorAll(".picker-start");//2개 , start[0] , start[1]
@@ -340,7 +346,6 @@
      				<th>요청 사유</th>
      				<th>상태</th>
      				<th>신청일자</th>
-     				<th>관리</th>
      			</tr>
      		</thead>
      		<tbody>
@@ -374,16 +379,6 @@
      						<fmt:parseDate value="${memberRequestDto.attendance_request_today}" 
 							var="time" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<fmt:formatDate value="${time}" pattern="MM/dd hh:mm a"/>
-     					</td>
-     					<td>	<!-- 승인/거절 버튼 -->
-     						<c:if test="${manage eq '대기중'}">
-     							<form action=${pageContext.request.contextPath}/attendance/request_manage method="post">
-     								<input type="hidden" name="attendance_request_no" value="${memberRequestDto.attendance_request_no}">
-     								<button class="btn btn-outline-primary btn-sm" name="management" value="승인">승인</button>
-     								<button class="btn btn-outline-danger btn-sm" name="management" value="거절">거절</button>
-     							</form>
-     								
-     						</c:if>
      					</td>
      			</tr>
      			</c:forEach>
