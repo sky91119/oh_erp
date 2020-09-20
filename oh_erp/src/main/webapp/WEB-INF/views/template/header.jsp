@@ -92,12 +92,14 @@
       </a>
       <div class="dropdown-menu" style="text-align: center;">
        <p>상용직</p>
-        <a class="dropdown-item" href="#">급여계산대장</a>
-        <a class="dropdown-item" href="#">급여현황</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/list">급여계산대장</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/all">급여현황</a>
+         <br>	
          <p>일용직</p>
-        <a class="dropdown-item" href="#">근무입력</a>
-        <a class="dropdown-item" href="#">급여계산대장</a>
-        <a class="dropdown-item" href="#">급여현황</a>
+        	
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">근무입력</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">급여계산대장</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwall">급여현황</a>
       </div>
        
          <li class="nav-item dropdown">

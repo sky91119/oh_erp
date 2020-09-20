@@ -23,6 +23,7 @@ public class Daily_workDaoImpl implements Daily_workDao{
 		return daily_work;
 	}
 
+	
 	@Override
 	public List<Daily_workDto> daily_salary() {
 		List<Daily_workDto> daily_salary = sqlSession.selectList("salary.member_salary");
