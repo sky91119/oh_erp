@@ -130,4 +130,9 @@ public class AttendanceController {
 		return"redirect:myrequest?no="+writer;
 	}
 	
+	@GetMapping("/plzrequest")
+	public String plzrequest() {
+		return "attendance/plzrequest";
+	}
+	
 }
