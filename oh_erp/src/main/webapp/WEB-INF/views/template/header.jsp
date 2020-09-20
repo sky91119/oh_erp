@@ -129,9 +129,9 @@
         기본사항등록
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/benefit/list">수당등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/department/list">부서등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/regist">프로젝트등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">일용직등록</a>
       </div>
