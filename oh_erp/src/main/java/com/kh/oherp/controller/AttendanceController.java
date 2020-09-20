@@ -125,9 +125,17 @@ public class AttendanceController {
 		map.put("cause", cause);
 		map.put("restartDate", restartDate);
 		map.put("refinishDate", refinishDate);
-		attendanceRequestDao.request(map);
 		
-		return"redirect:myrequest?no="+writer;
+		
+		boolean check = map.get("cause")=="" || map.get("requtype")=="" || map.get("restartDate")=="" || map.get("refinishDate")=="";
+		if(check){
+			return"redirect:myrequest?reque_error";
+			}
+		else {
+			attendanceRequestDao.request(map);
+			return"redirect:myrequest?no="+writer;
+		}
 	}
+	
 	
 }
