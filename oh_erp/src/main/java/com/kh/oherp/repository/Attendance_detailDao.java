@@ -1,6 +1,7 @@
 package com.kh.oherp.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,9 @@ import com.kh.oherp.entity.Attendance_countDto;
 
 public interface Attendance_detailDao {
 // 근태상세 등록을 하겠뜸
+	
 	public boolean regist(Attendance_detailDto attendance_detailDto);
+		
 	
 // 근태상세의 관리자만 조회가능한 페이지를 만들겠뜸
 	 List<Attendance_detailListVo> list(Model model);
@@ -22,6 +25,11 @@ public interface Attendance_detailDao {
 // admin_page에 있는 데이터 삭제
 	 public void delete(int attendance_no); //번호를 알려줄테니깐 지우렴
 
+	 //출근누락조회
+public List<Attendance_detailListVo> in (Model model);
+
+//출근누락조회
+public List<Attendance_detailListVo> out (Model model);
 
 //admin_page 조회검색
 	 public List<Attendance_detailListVo> search(
@@ -29,6 +37,8 @@ public interface Attendance_detailDao {
 				@RequestParam (required = false) String keyword,
 				Model model
 				);
+	 
+	 
 	 
 //합계 증가를 만들거임
 //	public Attendance_detailDto total(int attendance_total);
@@ -48,7 +58,8 @@ public interface Attendance_detailDao {
 //	public List<Attendance_detailListVo> out_null(Model model);
 	
 	 
-
+//수정
+	void edit(Attendance_detailDto attendance_detailDto);
 	 
 	 
 	 }

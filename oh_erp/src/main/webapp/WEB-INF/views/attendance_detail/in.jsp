@@ -26,6 +26,7 @@
       font-size: 25px;
       text-align:left;
       padding-bottom:15px;
+      background-color: #D27300;
         }
 /*총 요청수*/ 
    .sum-request{
@@ -84,26 +85,20 @@
        <div class="col-2">
           <input type="date" class="form-control">
        </div>
+
     
-   <!-- <div class="col-4">
-          <select class="inline form-control col-6" name="type" onchange="this.form.submit()">
-      <option value="" class="manage">${map.type}</option>
-	  <option value="정상근퇴된 기록">정상근태된 기록</option>
-	  <option value="출근누락된 기록">출근누락된 기록</option>
-	  <option value="퇴근누락된 기록">퇴근누락된 기록</option>
-	  </select>
-            
-    </div> -->
-    
-    <div class="col-2 sum-request">
-    <a href="<%=request.getContextPath()%>/attendance_detail/in">
-         <input class="form-control" type="button" value="출근누락된 기록"></a>
+    <div class="col-2 sum-request" >
+   
+        <!--input class="form-control background-color: #3DB7CC" type="button" value="출근누락된 기록">-->
          
+          <a href="<%=request.getContextPath()%>/attendance_detail/in">
+        <input class="form-control btn btn-info" type="button" value="출근누락된 기록"></a>
          </div> 
          
-             <div class="col-2 sum-request">
-         <a href="<%=request.getContextPath()%>/attendance_detail/out">
+             <div class="col-2">
+       <a href="<%=request.getContextPath()%>/attendance_detail/out">
          <input class="form-control" type="button" value="퇴근누락된 기록"></a>
+        
          
          </div> 
         
@@ -114,7 +109,7 @@
           </div>
          
         
-         <div class="col-2 sum-request">
+         <div class="col-2">
                 <select class="form-control" name="type" onchange="this.form.submit()">
                <option value="">다운로드</option>
                <option value="출퇴근기록">
@@ -128,18 +123,12 @@
          </div> 
         
         
-        <div class="col-2 sum-request">
+        <div class="col-2">
          <a href="<%=request.getContextPath()%>/attendance_detail/regist">
          <input class="form-control" type="button" value="+출퇴근기록생성하기"></a>
          
          </div> 
         
-        
-          <!--  <div class="col-8 sum-request">
-         
-           <span>총 시간 : 3</span><br>
-           <span>총 급여 : 3</span>
-        </div>-->
         
         </div>
         
@@ -160,11 +149,7 @@
             </form>
    </div>
         
-        <div class="col-1">
-      
-      <a href="<%=request.getContextPath()%>/attendance_detail/admin_page">
-        <input class="form-control" type="button" value="전체목록"></a>
-      </div>
+        
       
       <div class = "col-6">
       
@@ -176,24 +161,7 @@
          </div>
          
         
-         <!--<div class="col-2 search" class="form-control">
-         
-         <form action= "search" method="post">
-          <select name = "type" class="form-control">
-          <option value="member_code">사원번호</option>
-          <option value="attendance_date">근태번호</option>
-          </select>
-      
-      <div class = "search">
-          <input type = "text" name="keyword" placeholder="검색창" class="form-control">
-        
-          <input type = "submit" value="검색" class="form-control">
-            <a href="<%=request.getContextPath()%>/attendance_detail/admin_page">
-         <input class="form-control" type="button" value="목록보기"></a>
-          
-          </div>
-          </form>
-          </div>-->
+       
      <div>
      
      <br>
@@ -201,14 +169,10 @@
     <thead>
               <tr>
    
-   <!-- <th><a href="admin_page?col=attendance_no&order=desc">근태번호</a></th>
-    <th><a href="admin_page?col=member_code&order=desc">사원번호</a></th>
-   <!-- <th><a href="admin_page?col=member_name&order=desc">성명</a>
-    <th><a href="admin_page?col=attendance_in&order=desc">날짜</a></th>
-    </th>-->
-    <th><a href="admin_page?col=attendance_no&order=desc">근태번호</a></th>   
-    <th><a href="admin_page?col=member_code&order=desc">사원번호</a></th>
-   <th><a href="admin_page?col=member_name&order=desc">성명</a></th>
+   
+    <th><a href="in?col=attendance_no&order=desc">근태번호</a></th>   
+    <th><a href="in?col=member_code&order=desc">사원번호</a></th>
+   <th><a href="in?col=member_name&order=desc">성명</a></th>
    <th>출근시간</th>
    <th>퇴근시간</th>
    <th>근무노트</th>
@@ -237,8 +201,10 @@
             <td>
             <a href ="delete/${Attendance_detailListVo.attendance_no}">삭제</a>
             </td>
+             
          </tr>
       </c:forEach>
+      
    </tbody>
    </table>
 </div>

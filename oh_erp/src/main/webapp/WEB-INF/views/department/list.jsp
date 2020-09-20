@@ -20,13 +20,20 @@
 		<option value="department_use">사용</option>
 	</select>
 	
+	
 </form>
 
 <table class="table table-hover">
 	<thead class="thead-dark">
 		
 		<br>
-			<tr><th>부서코드</th><th>부서명</th><th>사용</th><th>수정</th><th>삭제<tr>
+			<tr>
+			
+			<th><a href = "list?col=department_no&order=asc">부서코드</a></th>
+			<th><a href = "list?col=department_name&order=asc">부서명</a></th>
+			<th>사용</th>
+			<th>수정</th>
+			<th>삭제<tr>
 		
 	</thead>
 	<tbody>

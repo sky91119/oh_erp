@@ -2,6 +2,7 @@ package com.kh.oherp.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.oherp.entity.Attendance_detailDto;
 import com.kh.oherp.entity.Attendance_detailListVo;
@@ -34,7 +36,7 @@ public class Attendance_detailController {
    @Autowired
    private Attendance_detailDao attendance_detailDao; 
    
-   
+   //등록
    @GetMapping("/regist")
    public String regist() {
       return "attendance_detail/regist";
@@ -54,7 +56,7 @@ public class Attendance_detailController {
    }
    }
    ////////////////////////////////////////////////////////////////////////////
-   //이거  원래 admin_page
+   //관리자 페이지
 @GetMapping("/admin_page")
    public String admin_page(Model model,
         @RequestParam (required = false, defaultValue = "member_code") String col, //defaultValue =기본값 설정을 member_code라고 주겠다. 
@@ -67,6 +69,28 @@ public class Attendance_detailController {
    
       return "/attendance_detail/admin_page";
  }
+
+//출근누락페이지 
+@GetMapping("/in")
+public String in(Model model) {
+ 
+List<Attendance_detailListVo> list = attendance_detailDao.in(model);
+ model.addAttribute("list", list);
+
+  return "/attendance_detail/in";
+}
+
+//퇴근누락페이지 
+@GetMapping("/out")
+public String out(Model model) {
+
+List<Attendance_detailListVo> list = attendance_detailDao.out(model);
+model.addAttribute("list", list);
+
+return "/attendance_detail/out";
+}
+
+
    
    //기록나누기실시
  //@GetMapping("/admin_page")
@@ -91,24 +115,24 @@ public class Attendance_detailController {
 //  return "attendance_detail/admin_page";
 
 
-  //@GetMapping("/admin_edit")
- //  public String admin_edit(@RequestParam int member_code, Model model){
-//   Attendance_detailListVo attendance_detailListVo = attendance_detailListVo.edit(member_code);
-   
-   //   model.addAttribute("attendance_detailListVo", attendance_detailListVo);
-   //   return "attendance_detail/admin_edit";
-  // }
+//수정
+ @GetMapping("/edit/{attendance_no}")
+ public String edit(@PathVariable int attendance_no,
+		 Model model) {
+	 model.addAttribute("attendance_no", attendance_no);
+	 return "/attendance_detail/edit";
+ }
 
 
-  
-//  @GetMapping("/admin_edit")
-//  public String admin_edit(
-//	  @RequestParam) {
-	  
-//	return "redirect:/attendance_detail/admin_edit";
-		
-//  }
-  
+ @PostMapping("/{attendance_no}")
+ public String edit(@PathVariable int attendance_no, 
+		 @ModelAttribute Attendance_detailDto attendance_detailDto) {
+	 attendance_detailDao.edit(attendance_detailDto);
+	 return "redirect:/attendance_detail/admin_page";
+ }
+ 
+ //삭제
+	 
 @GetMapping("/delete/{attendance_no}")
 public String delete(@PathVariable int attendance_no) {
 	attendance_detailDao.delete(attendance_no);
@@ -116,6 +140,7 @@ public String delete(@PathVariable int attendance_no) {
   
 }
 
+//검색
 @RequestMapping("/search")
 public String search(
 		@RequestParam (required = false) String type,
@@ -125,6 +150,17 @@ public String search(
 	attendance_detailDao.search(type, keyword, model);
 
 	return "attendance_detail/admin_page";
+}
+
+
+//@GetMapping("/admin_page")
+//public String admin_page() {
+//	return "redirect:/attendance_detail/admin_page";
+//}
+
+@GetMapping("/rank_page")
+public String rank_page() {
+	return "attendane_detail/rank_page";
 }
 
 
@@ -144,7 +180,6 @@ public String search(
 	
 //}
 
-
 //count_page 통계
 //@GetMapping("/count_page")
 //public Map<String, Integer> count_page(){
@@ -153,26 +188,24 @@ public String search(
  //   map.put("2020-09", 5);	
  //   return map;
 //}
-//@GetMapping("/count_page")
-//public List<Attendance_StatsVo> count_page(){
-//	List<Attendance_statsVo> list = new ArrayList<>();
-//}
-//}
 
-
-
-
-//@GetMapping("/admin_page")
-//public String admin_page(Model model,
-//      @RequestParam (required = false, defaultValue = "member_code") String col, //defaultValue =기본값 설정을 member_code라고 주겠다. 
-//                                                          
-//       @RequestParam (required = false, defaultValue= "asc") String order //너가 아무말도 없으면 내가 코드를 오름차순으로 보여주겠다. 
- //      ){ //나는 col과 order라는 값을 추가로 받겠다. 
-
- //  List<Attendance_detailListVo> list = attendance_detailDao.list(col, order);
- //   model.addAttribute("list", list);
-
- //   return "/attendance_detail/admin_page";
+//@GetMapping("/rank_page")
+//public List<Attendance_StatsVo> rank_page(){
+//	List<Attendance_StatsVo> list = new ArrayList<>();
+//	list.add(Attendance_StatsVo.builder().month("2020-01").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-02").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-03").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-04").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-05").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-06").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-07").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-08").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-09").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-10").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-11").count(3).build());
+//	list.add(Attendance_StatsVo.builder().month("2020-12").count(3).build());
+//	return list;
+	
 //}
 
 
@@ -185,14 +218,6 @@ public String search(
 // return "attendance_detail/admin_page";
 //}
 
-
-//rank_page
-//@GetMapping("/rank_page")
-//public String rank_page(Model model) {
-//		List<Attendance_rankDto> rank_page= attendance_detailDao.rank_page(model);
-//		model.addAttribute("rank_page", rank_page);
-//		return "attendance_detail/rank_page";
-//}
 
 
 //관리자만 볼 수 있는 조회페이지
@@ -207,43 +232,7 @@ public String search(
 //         return "redirect:attendance/admin_page";
 //   }
    
-   //@GetMapping("/detail_content")
-   //public String detail_content(
-         //@RequestParam int attendance_no,
-         //Model model) {
-      //Attendance_detailDto attendance_detailDto = sqlSession.selectOne("attendance.get", attendance_no);
-      //Attendance_detailDto attendance_detailDto= attendance_detailDao.get(attendance_no);
-      //model.addAttribute("attendance_detailDto", attendance_detailDto);
-      //return "attendance/detail_content";
-   //}
-   
-   //@PostMapping("/detail_content")
-   //public String detail_content(@RequestParam int attendance_no) {
-   //   return "/
-   //}
    
 
 
-//   @GetMapping("/create")
-//   public String create() {
-//      return "attendance/create";
-//   }
-//   
-//   @PostMapping("/create")
-//   public String create(
-//         @ModelAttribute Attendance_detailDto attendance_detailDto) {
-//      return "redirect:/attendance/create_finish";
-//   }
-//   
-//   
-//   @GetMapping("/create_finish")
-//   public String create_finish() {
-//      return "attendance/create_finish";
-//   }
-//   
-//   @PostMapping("/create_finish")
-//   public String create_finish(
-//         @ModelAttribute Attendance_detailDto attendance_detailDto) {
-//      return "redirect:/attendance/create_finish";//"attendance/redirect:create_finish";
-//   }
 }
