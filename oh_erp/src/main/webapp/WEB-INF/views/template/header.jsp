@@ -121,12 +121,12 @@
       
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-  <!--        캘린더
+         캘린더
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">회사일정</a>
         <a class="dropdown-item" href="#">근무일정</a>
-      </div>-->
+      </div>
       	 
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
