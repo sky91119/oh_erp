@@ -69,4 +69,4 @@
 <input type="submit" class="btn btn-info">
 </form>
 <a href="http://localhost:8080/oherp/board/list" class="btn btn-secondary" type="submit">목록으로</a>
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+

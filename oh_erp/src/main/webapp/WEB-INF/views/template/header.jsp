@@ -71,7 +71,7 @@
   </head>
   <body>
   
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     
 
    &emsp;&emsp;                   
@@ -137,7 +137,7 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/department/list">부서등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/regist">프로젝트등록</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}daily_worker/list">일용직등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/daily_worker/list">일용직등록</a>
       </div>
       
         <li class="nav-item dropdown">
@@ -191,5 +191,5 @@ function logout(){
     
    
        <!--본문 -->
-    <div class="col-sm" style="margin: 60px"> 
+    <div class="col-sm" style="margin: 100px"> 
     
