@@ -41,4 +41,3 @@
 </table>
 <a href="${pageContext.request.contextPath}/member/regist" class="btn btn-info">사원등록</a>
 
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

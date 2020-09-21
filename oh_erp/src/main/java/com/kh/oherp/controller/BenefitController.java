@@ -23,11 +23,11 @@ public class BenefitController {
 	@Autowired
 	private BenefitDao benefitDao;
 	@PostMapping("/regist")
-	public void regist(
+	public String regist(
 			@ModelAttribute BenefitDto benefitDto
 			) {
 		benefitDao.regist(benefitDto);
-//		return "redirect:
+		return "redirect:list";
 	}
 	
 	@GetMapping("/list")

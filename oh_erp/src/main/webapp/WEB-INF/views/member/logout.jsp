@@ -70,13 +70,13 @@ html {
       <form action="login" method="post">
         <h5 class="form-signin-heading">로그인 정보를 입력하세요</h5>
         <label for="inputEmail" class="sr-only">Your ID</label>
-        <input type="text" id="uid" class="form-control" name="member_code" placeholder="Your ID" required autofocus><BR>
+        <input type="text" id="uid" class="form-control" name="member_code" placeholder="사원번호" required autofocus><BR>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="upw" class="form-control" name="member_pw" placeholder="Password" required><br>
+        <input type="password" id="upw" class="form-control" name="member_pw" placeholder="패스워드" required><br>
         <div class="checkbox">
         
         </div>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
           </BR>
             </form>
 	</div>
