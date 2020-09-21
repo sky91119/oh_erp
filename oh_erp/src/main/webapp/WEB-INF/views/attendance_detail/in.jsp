@@ -148,8 +148,11 @@
             
             </form>
    </div>
-        
-        
+        <div class="col-1">
+      
+      <a href="<%=request.getContextPath()%>/attendance_detail/admin_page">
+        <input class="form-control" type="button" value="전체목록"></a>
+      </div>
       
       <div class = "col-6">
       
