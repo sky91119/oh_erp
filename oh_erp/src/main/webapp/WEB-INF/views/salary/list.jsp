@@ -136,15 +136,13 @@
 		<p></p>
 		<tr>
 			<td>대상사원</td>
-			<td><input type="checkbox" id="salary_member" name="salary_member" value="전체"> 
-			<label for="salary_member">전체</label> 
 			
-			<select name="salary_member" id="salary_member" class="form-control" required>
+			<td><select name="salary_member" id="salary_member" class="form-control" required>
 				<option value="">사원 선택</option>
                 <c:forEach var="memberDto" items="${member}">
                    <option value="${memberDto.member_code}">${memberDto.member_name}</option>
                 </c:forEach>
-            </select>
+            </select></td>
 		</tr>
 		<p></p>
 		</div>

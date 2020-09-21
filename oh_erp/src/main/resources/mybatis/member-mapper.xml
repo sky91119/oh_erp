@@ -83,6 +83,17 @@ WHERE m.department_no = d.department_no
 		SELECT * FROM member WHERE member_code = #{member_code}
 	</select>
 	
+	   <!--부서목록조회 + 부서검색 -->
+   <select id="unionList" resultType="memberListVo" parameterType="map">
+      SELECT 
+m.member_code, m.member_name, m.member_start_work, 
+d.department_name
+FROM MEMBER m, DEPARTMENT d
+      <if test="type != null and keyword != null">
+         where instr(${type},#{keyword}) > 0
+      </if>      
+      order by member_code desc
+   </select>
 	
 	
 </mapper>

@@ -48,4 +48,3 @@
 	<%-- <h3>조회수 : ${boardDto.board_view}</h3> --%>
 	<%-- <h3>날짜 : ${boardDto.board_date}</h3> --%>
 
-	<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

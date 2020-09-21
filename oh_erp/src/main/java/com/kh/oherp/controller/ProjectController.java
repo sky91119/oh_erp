@@ -28,7 +28,7 @@ public class ProjectController {
 		boolean result =projectDao.regist(projectDto);
 		
 		if(result) {
-			return "redirect:list";
+			return "redirect:regist";
 		} else {
 			return "redirect:regist?error";
 		}

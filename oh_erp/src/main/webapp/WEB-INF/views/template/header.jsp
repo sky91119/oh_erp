@@ -20,6 +20,8 @@
      <!--스타일 -->
         <style>  
          
+         
+         
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -69,7 +71,7 @@
   </head>
   <body>
   
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     
 
    &emsp;&emsp;                   
@@ -90,21 +92,24 @@
         급여관리
       </a>
       <div class="dropdown-menu" style="text-align: center;">
-       <p>상용직</p>
-        <a class="dropdown-item" href="#">급여계산대장</a>
-        <a class="dropdown-item" href="#">급여현황</a>
-         <p>일용직</p>
-        <a class="dropdown-item" href="#">근무입력</a>
-        <a class="dropdown-item" href="#">급여계산대장</a>
-        <a class="dropdown-item" href="#">급여현황</a>
+       <p style="color:#FF8000">상용직</p>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/list">급여계산대장</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/all">급여현황</a>
+         <br>	
+<!--         <p style="color:#FF8000">일용직</p>
+ 
+<%--         <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">근무입력</a> --%>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">근무입력/급여계산대장</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwall">급여현황</a>-->
       </div>
-       
+     
          <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         근태관리
       </a>
       <div class="dropdown-menu">
-         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
+
+      	<a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/admin_page">출퇴근기록관리</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
@@ -116,23 +121,23 @@
       
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        캘린더
+         캘린더
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">회사일정</a>
         <a class="dropdown-item" href="#">근무일정</a>
       </div>
-      
+      	 
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         기본사항등록
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/benefit/list">수당등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/department/list">부서등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/regist">프로젝트등록</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">일용직등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/daily_worker/list">일용직등록</a>
       </div>
       
         <li class="nav-item dropdown">
@@ -186,5 +191,5 @@ function logout(){
     
    
        <!--본문 -->
-    <div class="col-sm" style="margin: 60px"> 
+    <div class="col-sm" style="margin: 100px"> 
     

@@ -17,7 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{daily_work_time}
 	 )
     </insert>
-   
    <!-- 이름을 이용한 단일조회 -->      
    <select id="getName" parameterType="String" resultType="daily_workDto">
    SELECT * FROM daily_work dw LEFT OUTER JOIN daily_worker dwr ON dw.daily_worker_code = dwr.DAILY_WORKER_name 

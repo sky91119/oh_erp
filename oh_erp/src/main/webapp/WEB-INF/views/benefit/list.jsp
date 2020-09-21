@@ -44,6 +44,5 @@
 		</c:forEach>
 	</tbody>
 </table>
+<a href="${pageContext.request.contextPath}/benefit/regist" class="btn btn-info">수당등록</a>
 
-
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

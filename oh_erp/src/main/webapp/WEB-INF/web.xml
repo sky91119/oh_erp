@@ -33,15 +33,41 @@
       - filter-name에 내가 등록시킬 필터의 bean name을 적는다
     
     예시 : 
+    -->
     <filter>
-       <filter-name>testFilter</filter-name>
+       <filter-name>LoginFilter</filter-name>
        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
     <filter-mapping>
-       <filter-name>testFilter</filter-name>
-       <url-pattern>/*</url-pattern>
+       <filter-name>LoginFilter</filter-name>
+       <url-pattern>/attendance/*</url-pattern>
+       <url-pattern>/attendance_detail/*</url-pattern>
+       <url-pattern>/salary/*</url-pattern>
+       <url-pattern>/daily_worker/*</url-pattern>
+       <url-pattern>/member/*</url-pattern>
+       <url-pattern>/department/*</url-pattern>
+       <url-pattern>/project/*</url-pattern>
+       <url-pattern>/benefit/*</url-pattern>
+       
     </filter-mapping>
-    -->
+
+
+    <filter>
+       <filter-name>AdminFilter</filter-name>
+       <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+       <filter-name>AdminFilter</filter-name>
+       <url-pattern>/attendance/request</url-pattern>
+ <!--        <url-pattern>/attendance_detail/</url-pattern>
+       <url-pattern>/salary/*</url-pattern>
+       <url-pattern>/daily_worker/*</url-pattern>
+       <url-pattern>/member/*</url-pattern>
+       <url-pattern>/department/*</url-pattern>
+       <url-pattern>/project/*</url-pattern>
+       <url-pattern>/benefit/*</url-pattern>-->
+       
+    </filter-mapping>
 
    <!-- 최상위 설정파일 등록 -->
    <context-param>
@@ -71,5 +97,11 @@
       <servlet-name>appServlet</servlet-name>
       <url-pattern>/</url-pattern>
    </servlet-mapping>
+   
+   <!-- 에러화면 -->
+<error-page> <error-code>400</error-code> <location>/400</location> </error-page> 
+<error-page> <error-code>404</error-code> <location>/404</location> </error-page> 
+<error-page> <error-code>500</error-code> <location>/500</location> </error-page>
+<error-page> <error-code>405</error-code> <location>/405</location> </error-page> 
 
 </web-app>

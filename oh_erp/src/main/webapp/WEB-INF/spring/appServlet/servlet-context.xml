@@ -80,7 +80,7 @@
    <beans:bean id="groupServer" class="com.kh.spring24.websocket.WebSocketGroupServer"></beans:bean>
    <beans:bean id="memberServer" class="com.kh.spring24.websocket.WebSocketMemberServer"></beans:bean>
    <websocket:handlers>-->
-      <!-- 접속주소는 ws://localhost:8080/spring24/basic -->
+      
       <!-- <websocket:mapping handler="basicServer" path="/basic"/>
       <websocket:mapping handler="groupServer" path="/group"/>
       <websocket:mapping handler="memberServer" path="/member"/>-->
@@ -92,7 +92,6 @@
    </websocket:handlers>-->
    
 </beans:beans>
-
 
 
 

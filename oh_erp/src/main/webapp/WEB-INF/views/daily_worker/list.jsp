@@ -14,8 +14,6 @@
 		<tr>
 
 			<td>일용직순번</td>
-			<td>순번</td>
-
 			<td>이름</td>
 			<td>개인정보</td>
 		</tr>
@@ -38,7 +36,7 @@
 -->
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;">
 <!--모달 버튼이름을 적어-->  
-일용직 등록 ( ்́ꇴ ்̀)♡
+일용직 등록
 </button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" align="left">
@@ -83,5 +81,5 @@
     </div>
   </div></div>
   
-  <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+  
   
