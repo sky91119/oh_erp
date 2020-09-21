@@ -96,13 +96,13 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/list">급여계산대장</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/salary/all">급여현황</a>
          <br>	
-         <p style="color:#FF8000">일용직</p>
-        	
+<!--         <p style="color:#FF8000">일용직</p>
+ 
 <%--         <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">근무입력</a> --%>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwlist">근무입력/급여계산대장</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwall">급여현황</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/dailywork/dwall">급여현황</a>-->
       </div>
-       
+     
          <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         근태관리
@@ -121,13 +121,13 @@
       
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        캘린더
+  <!--        캘린더
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">회사일정</a>
         <a class="dropdown-item" href="#">근무일정</a>
-      </div>
-      
+      </div>-->
+      	 
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         기본사항등록
@@ -137,7 +137,7 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/department/list">부서등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">사원등록</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/regist">프로젝트등록</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/list">일용직등록</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}daily_worker/list">일용직등록</a>
       </div>
       
         <li class="nav-item dropdown">
