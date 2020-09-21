@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.oherp.entity.BenefitDto;
 import com.kh.oherp.entity.DepartmentDto;
@@ -60,6 +61,14 @@ public class MemberController {
 	public String list(Model model) {
 		memberDao.list(model);
 		return "/member/list";
+	}
+	
+	@RequestMapping("/search")
+	public String search(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
+			Model model) {
+		memberDao.search(type, keyword, model);
+
+		return "member/list";
 	}
 
 	@GetMapping("/login")

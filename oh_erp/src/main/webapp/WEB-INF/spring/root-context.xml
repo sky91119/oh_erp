@@ -70,7 +70,8 @@
    </bean>    
 
    <!-- 필터는 DispatcherServlet과 동일한 시점에 생겨야 하므로 전역 설정파일(root-context.xml)에 생성 -->
-<!--    <bean id="testFilter" class="com.kh.spring16.filter.TestFilter"></bean> -->
+    <bean id="LoginFilter" class="com.kh.oherp.filter.LoginFilter"></bean> 
+    <bean id="AdminFilter" class="com.kh.oherp.filter.AdminFilter"></bean> 
 
     <!-- 
       이메일 전송 도구를 등록
