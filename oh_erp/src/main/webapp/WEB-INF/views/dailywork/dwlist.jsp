@@ -79,7 +79,7 @@
 </style>
 <div class="container-fluid">
  <div>
-        <p class="title">급여 계산 대장</p>
+        <p class="title">일용직 급여 계산 대장</p>
     </div>
 
 </div>
@@ -159,7 +159,7 @@
     </div>
     	<div class="row titlediv">
 <button type="button"  class="btn btn-dark" data-toggle="modal" data-target="#myModal" style="margin-right: auto;">
-  신규
+  근무등록
 </button>
 </div>
      <div class="sum-salary">
@@ -169,12 +169,11 @@
         <table class="table left-font">
             <thead>
                 <tr>
-                    <th>귀속 연월</th>
-                    <th>급여 구분</th>
-                    <th>대장 명칭</th>
-                    <th>월급 지급일</th>
-                    <th>급여</th>
-                    <th>사원이름</th>
+                    <th>성명</th>
+                    <th>근무 날짜</th>
+                    <th>근무시간</th>
+                    <th>시급</th>
+                    <th>일당</th>
                 </tr>
             </thead>
             <tbody>

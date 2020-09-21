@@ -64,5 +64,27 @@ public class Daily_workController {
 		model.addAttribute("daily_work_date",map.get("daily_work_date"));
 		return "dailywork/dwlist";
 	}
+	
+	@GetMapping("/dwall")
+	public String dwall(Model model , HttpServletRequest request){
+		Map<String,Object>map=new HashMap<>();
+		String daily_worker_code =  request.getParameter("daily_worker_code");
+		String daily_work_date= request.getParameter("daily_work_date");
+		if(daily_worker_code != null && daily_worker_code.length() > 0) {
+			map.put("daily_worker_code" ,daily_worker_code);
+		}
+		if(daily_work_date != null && daily_work_date.length() > 0 ) {
+			map.put("daily_work_date" ,daily_work_date);
+		}
+		List daily_salary = daily_workDao.daily_salary();
+		List daily_worker= daily_workDao.get_member();
+		model.addAttribute("daily_worker",daily_worker);
+		model.addAttribute("daily_salary",daily_salary);
+		int daily_count = daily_workDao.dw_count(map);
+		model.addAttribute("daily_count",daily_count);
+		model.addAttribute("daily_worker_code",map.get("daily_worker_code"));
+		model.addAttribute("daily_work_date",map.get("daily_work_date"));
+		return "dailywork/dwall";
+	}
 
 }
