@@ -36,7 +36,7 @@
 -->
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;">
 <!--모달 버튼이름을 적어-->  
-일용직 등록 ( ்́ꇴ ்̀)♡
+일용직 등록
 </button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" align="left">
