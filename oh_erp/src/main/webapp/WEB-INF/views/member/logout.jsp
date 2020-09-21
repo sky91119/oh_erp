@@ -69,9 +69,9 @@ html {
 		<div class="card-body">
       <form action="login" method="post">
         <h5 class="form-signin-heading">로그인 정보를 입력하세요</h5>
-        <label for="inputEmail" class="sr-only">Your ID</label>
+        <label for="inputEmail" class="sr-only">사원번호</label>
         <input type="text" id="uid" class="form-control" name="member_code" placeholder="사원번호" required autofocus><BR>
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only">패스워드</label>
         <input type="password" id="upw" class="form-control" name="member_pw" placeholder="패스워드" required><br>
         <div class="checkbox">
         
