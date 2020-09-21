@@ -169,7 +169,7 @@
 </c:if>
  &nbsp; 
   <c:if test="${not empty sessionScope.userinfo}">
-      <input type="button" value="logout" class="btn btn-info" onClick="logout();" />
+      <input type="button" value="로그아웃" class="btn btn-info" onClick="logout();" />
   </c:if>
 </nav>
       </nav>
