@@ -108,8 +108,6 @@
         근태관리
       </a>
       <div class="dropdown-menu">
-
-      	<a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/regist">출퇴근등록</a>
         <a class="dropdown-item" href="<%=request.getContextPath()%>/attendance_detail/admin_page">출퇴근기록관리</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/attendance/myrequest">요청내역</a>
        
