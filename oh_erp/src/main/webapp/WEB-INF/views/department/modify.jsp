@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
    <h3> 부서수정</h3>
-<form action="${pageContext.request.contextPath}/department/${department_no}" method="post">
+<form action="" method="post">
 부서명<input type="text" name="department_name">
 <!--  사용여부<input type="text" name="department_use">-->
 <input type="submit" value="저장">

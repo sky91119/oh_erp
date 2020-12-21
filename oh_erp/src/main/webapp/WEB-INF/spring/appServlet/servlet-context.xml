@@ -37,7 +37,7 @@
     <!-- 
        정적 자원은 DispatcherServlet이 처리하면 안된다
        - 있는 그대로 사전 처리 없이 접근하도록 해야함
-       - lovation은 실제 위치를 작성
+       - location은 실제 위치를 작성
        - mapping은 접근할 주소를 작성
        - **은 하위 모든 내용을 의미
      -->
@@ -59,7 +59,7 @@
       인터셉터 등록 
       - mvc 설정 사용
       - 범위 설정 시 * 와 **는 차이가 있음
-      - exclue-mapping을 사용하면 주소의 뺄샘이 가능
+      - exclude-mapping을 사용하면 주소의 뺄샘이 가능
       
       예시
       <interceptors>
