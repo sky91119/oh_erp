@@ -73,9 +73,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 SELECT 
 m.member_code, m.member_name, m.member_start_work, 
 d.department_name
-FROM MEMBER m, DEPARTMENT d
-WHERE m.department_no = d.department_no
+FROM MEMBER m
+left outer join DEPARTMENT d
+on m.department_no = d.department_no
 	</select>
+
 	
 	
 	<!--사원번호를 통한 단일조회 -->
@@ -86,9 +88,13 @@ WHERE m.department_no = d.department_no
 	   <!--부서목록조회 + 부서검색 -->
    <select id="unionList" resultType="memberListVo" parameterType="map">
       SELECT 
-m.member_code, m.member_name, m.member_start_work, 
-d.department_name
-FROM MEMBER m, DEPARTMENT d
+m.member_code,
+m.member_name,
+d.department_name, 
+m.member_start_work
+FROM MEMBER m
+LEFT OUTER JOIN department d
+ON m.DEPARTMENT_NO = d.DEPARTMENT_NO
       <if test="type != null and keyword != null">
          where instr(${type},#{keyword}) > 0
       </if>      

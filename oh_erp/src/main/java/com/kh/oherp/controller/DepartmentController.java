@@ -82,7 +82,7 @@ public class DepartmentController {
       return "department/modify";
    }
 
-   @PostMapping("/{department_no}")
+   @PostMapping("/update/{department_no}")
    public String modify(@PathVariable int department_no, 
          @ModelAttribute DepartmentDto departmentDto) {
       departmentDao.modify(departmentDto);
